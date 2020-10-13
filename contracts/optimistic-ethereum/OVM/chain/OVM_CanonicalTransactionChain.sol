@@ -29,6 +29,7 @@ contract OVM_CanonicalTransactionChain is OVM_BaseChain, Lib_AddressResolver { /
 
     using Lib_TimeboundRingBuffer for TimeboundRingBuffer;
     TimeboundRingBuffer internal queue;
+    TimeboundRingBuffer internal chain;
 
     struct MultiBatchContext {
         uint numSequencedTransactions;
@@ -112,6 +113,7 @@ contract OVM_CanonicalTransactionChain is OVM_BaseChain, Lib_AddressResolver { /
         }
 
         bytes32 batchRoot = keccak256(abi.encode(
+            msg.sender,
             _target,
             _gasLimit,
             _data
@@ -135,12 +137,68 @@ contract OVM_CanonicalTransactionChain is OVM_BaseChain, Lib_AddressResolver { /
         });
     }
 
+    function getLatestBatchContext() public view returns(uint40 totalElements, uint32 nextQueueIndex) {
+        bytes28 extraData = batches.getExtraData();
+        totalElements = uint40(uint256(extraData & 0x0000000000000000000000000000000000000000000000ffffffffff));
+        nextQueueIndex = uint32(bytes4(timestampAndBlockNumber & 0xffffffffffffffffffffffffffffffffffffffffffffff0000000000));
+        return totalElements, nextQueueIndex;
+    }
+
+    function makeLatestBatchContext(uint40 totalElements, uint32 nextQueueIndex) public view returns(bytes28) {
+        bytes28 totalElementsAndNextQueueIndex = bytes28(bytes4(uint32(nextQueueIndex))) | bytes28(uint256(uint40(totalElements)));
+        return totalElementsAndNextQueueIndex;
+    }
 
     /****************************************
      * Public Functions: Batch Manipulation *
      ****************************************/
 
     // TODO: allow the sequencer/users to append queue batches independently
+    function appendQueueTransaction()
+        public
+    {
+        uint40 totalElements, uint32 nextQueueIndex = getLatestBatchContext();
+        Lib_OVMCodec.QueueElement nextQueueElement = getQueueElement(nextQueueIndex);
+    }
+
+    function _appendQueueBatch()
+        override
+        internal
+    {
+        uint40 totalElements, uint32 nextQueueIndex = getLatestBatchContext();
+        TransactionChainElement memory element = TransactionChainElement({
+            isSequenced: false,
+            queueIndex: nextQueueIndex,
+            timestamp: 0,
+            blocknumber: 0,
+            txData: hex""
+        });
+        bytes32 root = _hashTransactionChainElement(element);
+        bytes32 _hashBatchHeader(Lib_OVMCodec.ChainBatchHeader({
+            batchIndex: batches.getLength(),
+            batchRoot: root,
+            batchSize: 1,
+            prevTotalElements: totalElements,
+            extraData: hex""
+        })
+         memory _batchHeader
+    )
+
+        bytes28 latestBatchContext = makeLatestBatchContext(totalElements + 1, nextQueueIndex + 1);
+        batches.push(batchHeaderHash, latestBatchContext);
+    }
+
+    function getTotalElements()
+        override
+        public
+        view
+        returns (
+            uint256 _totalElements
+        )
+    {
+        uint40 totalElements, uint32 nextQueueIndex = getLatestBatchContext();
+        return uint256(totalElements);
+    }
 
 
     /**

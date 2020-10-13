@@ -84,6 +84,7 @@ library Lib_OVMCodec {
         bytes32 batchRoot;
         uint40 timestamp;
         uint32 blockNumber;
+        address l1TxOrigin;
     }
 
     struct EOATransaction {
