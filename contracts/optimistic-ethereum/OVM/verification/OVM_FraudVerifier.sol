@@ -15,7 +15,11 @@ import { iOVM_StateManagerFactory } from "../../iOVM/execution/iOVM_StateManager
 import { iOVM_StateCommitmentChain } from "../../iOVM/chain/iOVM_StateCommitmentChain.sol";
 import { iOVM_CanonicalTransactionChain } from "../../iOVM/chain/iOVM_CanonicalTransactionChain.sol";
 
-contract OVM_FraudVerifier is iOVM_FraudVerifier, Lib_AddressResolver {
+/* Contract Imports */
+import { OVM_FraudContributor } from "./../OVM_FraudContributor.sol";
+import { OVM_BondManager } from "./../OVM_BondManager.sol";
+
+contract OVM_FraudVerifier is OVM_FraudContributor, iOVM_FraudVerifier, Lib_AddressResolver {
 
     /*******************************************
      * Contract Variables: Contract References *
@@ -46,6 +50,7 @@ contract OVM_FraudVerifier is iOVM_FraudVerifier, Lib_AddressResolver {
     {
         ovmStateCommitmentChain = iOVM_StateCommitmentChain(resolve("OVM_StateCommitmentChain"));
         ovmCanonicalTransactionChain = iOVM_CanonicalTransactionChain(resolve("OVM_CanonicalTransactionChain"));
+        ovmBondManager = OVM_BondManager(resolve("OVM_BondManager"));
     }
 
 
@@ -95,6 +100,7 @@ contract OVM_FraudVerifier is iOVM_FraudVerifier, Lib_AddressResolver {
     )
         override
         public
+        contributesToFraudProof(_preStateRoot)
     {
         if (_hasStateTransitioner(_preStateRoot)) {
             return;
@@ -147,6 +153,7 @@ contract OVM_FraudVerifier is iOVM_FraudVerifier, Lib_AddressResolver {
     )
         override
         public
+        contributesToFraudProof(_preStateRoot)
     {
         iOVM_StateTransitioner transitioner = transitioners[_preStateRoot];
 
@@ -178,13 +185,26 @@ contract OVM_FraudVerifier is iOVM_FraudVerifier, Lib_AddressResolver {
             "Invalid post-state root inclusion proof."
         );
 
+        // If the post state root did not match, then there was fraud and we should delete the batch
         require(
             _postStateRoot != transitioner.getPostStateRoot(),
             "State transition has not been proven fraudulent."
         );
 
+        // delete the state batch
         ovmStateCommitmentChain.deleteStateBatch(
             _postStateRootBatchHeader
+        );
+
+        // Get the timestamp and publisher for that block
+        (uint256 timestamp, address publisher) = abi.decode(_postStateRootBatchHeader.extraData, (uint256, address));
+
+        // slash the bonds at the bond manager
+        ovmBondManager.finalize(
+            _preStateRoot,
+            _postStateRootBatchHeader.batchIndex,
+            publisher,
+            timestamp
         );
     }
 
