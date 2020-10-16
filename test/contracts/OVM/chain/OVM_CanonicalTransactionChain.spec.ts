@@ -128,7 +128,7 @@ const encodeBatchContext = (context: BatchContext): string => {
   )
 }
 
-describe('OVM_CanonicalTransactionChain', () => {
+describe.only('OVM_CanonicalTransactionChain', () => {
   let signer: Signer
   let sequencer: Signer
   before(async () => {
@@ -233,7 +233,7 @@ describe('OVM_CanonicalTransactionChain', () => {
     it('should revert when accessing a non-existent element', async () => {
       await expect(
         OVM_CanonicalTransactionChain.getQueueElement(0)
-      ).to.be.revertedWith('Index too large')
+      ).to.be.revertedWith('Index out of bounds.')
     })
 
     describe('when the requested element exists', () => {
@@ -385,7 +385,7 @@ describe('OVM_CanonicalTransactionChain', () => {
     it('should revert if the queue is empty', async () => {
       await expect(
         OVM_CanonicalTransactionChain.appendQueueBatch(1)
-      ).to.be.revertedWith('Index too large.')
+      ).to.be.revertedWith('Index out of bounds.')
     })
 
     describe('when the queue is not empty', () => {
@@ -450,7 +450,7 @@ describe('OVM_CanonicalTransactionChain', () => {
             it(`should revert if appending ${size} + 1 elements`, async () => {
               await expect(
                 OVM_CanonicalTransactionChain.appendQueueBatch(size + 1)
-              ).to.be.revertedWith('Index too large.')
+              ).to.be.revertedWith('Index out of bounds.')
             })
           })
         })

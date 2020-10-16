@@ -7,7 +7,7 @@ import { Lib_OVMCodec } from "../../libraries/codec/Lib_OVMCodec.sol";
 import { Lib_AddressResolver } from "../../libraries/resolver/Lib_AddressResolver.sol";
 import { Lib_MerkleUtils } from "../../libraries/utils/Lib_MerkleUtils.sol";
 import { Lib_MerkleRoot } from "../../libraries/utils/Lib_MerkleRoot.sol";
-import { TimeboundRingBuffer, Lib_TimeboundRingBuffer } from "../../libraries/utils/Lib_TimeboundRingBuffer.sol";
+import { Lib_RingBuffer } from "../../libraries/utils/Lib_RingBuffer.sol";
 
 /* Interface Imports */
 import { iOVM_BaseChain } from "../../iOVM/chain/iOVM_BaseChain.sol";
@@ -31,6 +31,7 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, OVM_Ba
     uint256 constant public MIN_ROLLUP_TX_GAS = 20000;
     uint256 constant public MAX_ROLLUP_TX_SIZE = 10000;
     uint256 constant public L2_GAS_DISCOUNT_DIVISOR = 10;
+
     // Encoding Constants
     uint256 constant internal BATCH_CONTEXT_SIZE = 16;
     uint256 constant internal BATCH_CONTEXT_LENGTH_POS = 12;
@@ -47,9 +48,9 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, OVM_Ba
     uint256 internal lastOVMTimestamp;
     address internal sequencer;
 
-    using Lib_TimeboundRingBuffer for TimeboundRingBuffer;
-    TimeboundRingBuffer internal queue;
-    TimeboundRingBuffer internal chain;
+    using Lib_RingBuffer for Lib_RingBuffer.RingBuffer;
+    Lib_RingBuffer.RingBuffer internal queue;
+    Lib_RingBuffer.RingBuffer internal chain;
 
 
     /***************
@@ -69,8 +70,8 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, OVM_Ba
         sequencer = resolve("OVM_Sequencer");
         forceInclusionPeriodSeconds = _forceInclusionPeriodSeconds;
 
-        queue.init(100, 50, 10000000000); // TODO: Update once we have arbitrary condition
-        batches.init(2, 50, 0); // TODO: Update once we have arbitrary condition
+        // queue.init(32, 10000000000);
+        // batches.init(32, 0);
     }
 
 
@@ -87,6 +88,8 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, OVM_Ba
         )
     {
         (uint40 totalElements,) = _getLatestBatchContext();
+        console.log("TOTAL ELEMENTS");
+        console.log(totalElements);
         return uint256(totalElements);
     }
 
@@ -103,14 +106,14 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, OVM_Ba
             Lib_OVMCodec.QueueElement memory _element
         )
     {
-        uint32 trueIndex = uint32(_index * 2);
+        uint40 trueIndex = uint40(_index * 2);
         bytes32 queueRoot = queue.get(trueIndex);
         bytes32 timestampAndBlockNumber = queue.get(trueIndex + 1);
 
         uint40 elementTimestamp;
         uint32 elementBlockNumber;
         assembly {
-            elementTimestamp := and(timestampAndBlockNumber, 0x000000000000000000000000000000000000000000000000000000ffffffffff)
+            elementTimestamp :=           and(timestampAndBlockNumber, 0x000000000000000000000000000000000000000000000000000000ffffffffff)
             elementBlockNumber := shr(40, and(timestampAndBlockNumber, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffff0000000000))
         }
 
@@ -176,7 +179,7 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, OVM_Ba
             timestampAndBlockNumber := or(timestamp(), shl(40, number()))
         }
 
-        queue.push2(transactionHash, timestampAndBlockNumber, bytes28(0));
+        queue.push2(transactionHash, timestampAndBlockNumber, bytes27(0));
 
         (, uint32 nextQueueIndex) = _getLatestBatchContext();
         // TODO: Evaluate if we need timestamp
@@ -339,6 +342,9 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, OVM_Ba
             numQueuedTransactions
         );
 
+        console.log("NUM QUEUED ELEMENTS");
+        console.log(numQueuedTransactions);
+
         emit SequencerBatchAppended(
             nextQueueIndex - numQueuedTransactions,
             numQueuedTransactions,
@@ -403,13 +409,13 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, OVM_Ba
             uint32 _nextQueueIndex
         )
     {
-        bytes28 extraData = batches.getExtraData();
+        bytes27 extraData = batches.getExtraData();
 
         uint40 totalElements;
         uint32 nextQueueIndex;
         assembly {
-            totalElements := and(shr(32, extraData), 0x000000000000000000000000000000000000000000000000000000ffffffffff)
-            nextQueueIndex := shr(40, and(shr(32, extraData), 0xffffffffffffffffffffffffffffffffffffffffffffffffffffff0000000000))
+            totalElements :=          and(shr(40, extraData), 0x000000000000000000000000000000000000000000000000000000ffffffffff)
+            nextQueueIndex := shr(40, and(shr(40, extraData), 0xffffffffffffffffffffffffffffffffffffffffffffffffffffff0000000000))
         }
 
         return (totalElements, nextQueueIndex);
@@ -428,15 +434,16 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, OVM_Ba
         internal
         pure
         returns (
-            bytes28 _context
+            bytes27 _context
         )
     {
-        bytes28 totalElementsAndNextQueueIndex;
+        bytes27 context;
         assembly {
-            totalElementsAndNextQueueIndex := shl(32, or(_totalElements, shl(40, _nextQueueIndex)))
+            context := _totalElements
+            context := or(context, shl(40, _nextQueueIndex))
         }
 
-        return totalElementsAndNextQueueIndex;
+        return context;
     }
 
     /**
@@ -496,10 +503,15 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, OVM_Ba
         });
 
         bytes32 batchHeaderHash = _hashBatchHeader(header);
-        bytes28 latestBatchContext = _makeLatestBatchContext(
+        bytes27 latestBatchContext = _makeLatestBatchContext(
             totalElements + uint40(header.batchSize),
             nextQueueIndex + uint32(_numQueuedTransactions)
         );
+
+        console.log("LATEST BATCH CONTEXT");
+        console.log(totalElements + uint40(header.batchSize));
+        console.log(nextQueueIndex + uint32(_numQueuedTransactions));
+        console.logBytes27(latestBatchContext);
 
         batches.push(batchHeaderHash, latestBatchContext);
     }
