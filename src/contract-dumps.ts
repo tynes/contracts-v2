@@ -44,7 +44,8 @@ const getStorageDump = async (
       const stream = trie.createReadStream()
 
       stream.on('data', (val: any) => {
-        storage[val.key.toString('hex')] = val.value.toString('hex')
+        storage['0x' + val.key.toString('hex')] =
+          '0x' + val.value.toString('hex').slice(2).padStart(64, '0')
       })
 
       stream.on('end', () => {
