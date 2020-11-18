@@ -221,7 +221,7 @@ contract OVM_L1CrossDomainMessenger is iOVM_L1CrossDomainMessenger, OVM_BaseCros
             bool exists,
             bytes memory encodedMessagePassingAccount
         ) = Lib_SecureMerkleTrie.get(
-            abi.encodePacked(0x4200000000000000000000000000000000000000),
+            abi.encodePacked(resolve("OVM_L2ToL1MessagePasser")),
             _proof.stateTrieWitness,
             _proof.stateRoot
         );
@@ -237,7 +237,7 @@ contract OVM_L1CrossDomainMessenger is iOVM_L1CrossDomainMessenger, OVM_BaseCros
 
         return Lib_SecureMerkleTrie.verifyInclusionProof(
             abi.encodePacked(storageKey),
-            abi.encodePacked(uint256(1)),
+            abi.encodePacked(uint8(1)),
             _proof.storageTrieWitness,
             account.storageRoot
         );
