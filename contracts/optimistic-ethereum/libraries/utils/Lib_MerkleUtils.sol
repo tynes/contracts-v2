@@ -36,7 +36,7 @@ library Lib_MerkleUtils {
 
         uint256 currentLevel = 0;
         uint256 nextLevelSize = _hashes.length;
-        
+
         if (nextLevelSize % 2 == 1) {
             nodes[nextLevelSize] = defaultHashes[currentLevel];
             nextLevelSize += 1;
@@ -96,7 +96,7 @@ library Lib_MerkleUtils {
 
         for (uint256 i = 0; i < _siblings.length; i++) {
             bytes32 sibling = _siblings[i];
-            bool isRightSibling = uint8(_path >> i & 1) == 1;
+            bool isRightSibling = uint8(_path >> i & 1) == 0;
 
             if (isRightSibling) {
                 computedRoot = _getParentHash(computedRoot, sibling);
