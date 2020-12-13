@@ -117,7 +117,7 @@ export const makeStateDump = async (): Promise<any> => {
       secondsPerEpoch: 0,
     },
     ovmGlobalContext: {
-      ovmCHAINID: 420,
+      ovmCHAINID: 69,
       L2CrossDomainMessengerAddress:
         '0x4200000000000000000000000000000000000007',
     },
