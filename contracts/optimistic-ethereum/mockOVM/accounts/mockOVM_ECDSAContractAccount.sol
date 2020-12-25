@@ -26,8 +26,8 @@ contract mockOVM_ECDSAContractAccount is iOVM_ECDSAContractAccount {
      * @param _v Signature `v` parameter.
      * @param _r Signature `r` parameter.
      * @param _s Signature `s` parameter.
-     * @return _success Whether or not the call returned (rather than reverted).
-     * @return _returndata Data returned by the call.
+     * @return Whether or not the call returned (rather than reverted).
+     * @return Data returned by the call.
      */
     function execute(
         bytes memory _transaction,
@@ -39,8 +39,8 @@ contract mockOVM_ECDSAContractAccount is iOVM_ECDSAContractAccount {
         override
         public
         returns (
-            bool _success,
-            bytes memory _returndata
+            bool,
+            bytes memory
         )
     {
         bool isEthSign = _signatureType == Lib_OVMCodec.EOASignatureType.ETH_SIGNED_MESSAGE;
