@@ -132,13 +132,24 @@ contract mockOVM_CrossDomainMessenger is iOVM_BaseCrossDomainMessenger {
     function relayNextMessage()
         public
     {
-        require(hasNextMessage(), "No pending messages to relay");
+        require(
+            hasNextMessage(),
+            "mockOVM_CrossDomainMessenger: No pending messages to relay"
+        );
+
         ReceivedMessage memory nextMessage = fullReceivedMessages[lastRelayedMessage];
-        require(nextMessage.timestamp + delay < block.timestamp, "Message is not ready to be relayed. The delay period is not up yet!");
+        require(
+            nextMessage.timestamp + delay < block.timestamp,
+            "mockOVM_CrossDomainMessenger: Message is not ready to be relayed. The delay period is not up yet!"
+        );
 
         xDomainMessageSender = nextMessage.sender;
         (bool success,) = nextMessage.target.call{gas: nextMessage.gasLimit}(nextMessage.message);
-        require(success, "Cross-domain message call reverted. Did you set your gas limit high enough?");
+        require(
+            success,
+            "mockOVM_CrossDomainMessenger: Cross-domain message call reverted. Did you set your gas limit high enough?"
+        );
+
         lastRelayedMessage += 1;
     }
 }

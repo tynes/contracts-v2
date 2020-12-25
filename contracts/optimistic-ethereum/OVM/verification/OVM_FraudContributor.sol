@@ -6,7 +6,9 @@ import { Lib_AddressResolver } from "../../libraries/resolver/Lib_AddressResolve
 
 /// Minimal contract to be inherited by contracts consumed by users that provide
 /// data for fraud proofs
-abstract contract OVM_FraudContributor is Lib_AddressResolver {
+abstract contract OVM_FraudContributor is
+    Lib_AddressResolver
+{
 
     /**********************
      * Function Modifiers *

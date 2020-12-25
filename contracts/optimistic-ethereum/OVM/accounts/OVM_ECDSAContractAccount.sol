@@ -14,7 +14,9 @@ import { Lib_SafeMathWrapper } from "../../libraries/wrappers/Lib_SafeMathWrappe
 /**
  * @title OVM_ECDSAContractAccount
  */
-contract OVM_ECDSAContractAccount is iOVM_ECDSAContractAccount {
+contract OVM_ECDSAContractAccount is
+    iOVM_ECDSAContractAccount
+{
 
     /*************
      * Constants *
@@ -29,14 +31,7 @@ contract OVM_ECDSAContractAccount is iOVM_ECDSAContractAccount {
      ********************/
 
     /**
-     * Executes a signed transaction.
-     * @param _transaction Signed EOA transaction.
-     * @param _signatureType Hashing scheme used for the transaction (e.g., ETH signed message).
-     * @param _v Signature `v` parameter.
-     * @param _r Signature `r` parameter.
-     * @param _s Signature `s` parameter.
-     * @return Whether or not the call returned (rather than reverted).
-     * @return Data returned by the call.
+     * @inheritdoc iOVM_ECDSAContractAccount
      */
     function execute(
         bytes memory _transaction,
@@ -66,7 +61,7 @@ contract OVM_ECDSAContractAccount is iOVM_ECDSAContractAccount {
                 _r,
                 _s
             ) == Lib_SafeExecutionManagerWrapper.safeADDRESS(),
-            "Signature provided for EOA transaction execution is invalid."
+            "OVM_ECDSAContractAccount: Signature provided for EOA transaction execution is invalid."
         );
 
         Lib_OVMCodec.EIP155Transaction memory decodedTx = Lib_OVMCodec.decodeEIP155Transaction(_transaction, isEthSign);
@@ -74,20 +69,20 @@ contract OVM_ECDSAContractAccount is iOVM_ECDSAContractAccount {
         // Need to make sure that the transaction chainId is correct.
         Lib_SafeExecutionManagerWrapper.safeREQUIRE(
             decodedTx.chainId == Lib_SafeExecutionManagerWrapper.safeCHAINID(),
-            "Transaction chainId does not match expected OVM chainId."
+            "OVM_ECDSAContractAccount: Transaction chainId does not match expected OVM chainId."
         );
 
         // Need to make sure that the transaction nonce is right.
         Lib_SafeExecutionManagerWrapper.safeREQUIRE(
             decodedTx.nonce == Lib_SafeExecutionManagerWrapper.safeGETNONCE(),
-            "Transaction nonce does not match the expected nonce."
+            "OVM_ECDSAContractAccount: Transaction nonce does not match the expected nonce."
         );
 
         // TEMPORARY: Disable gas checks for minnet.
         // // Need to make sure that the gas is sufficient to execute the transaction.
         // Lib_SafeExecutionManagerWrapper.safeREQUIRE(
         //    gasleft() >= Lib_SafeMathWrapper.add(decodedTx.gasLimit, EXECUTION_VALIDATION_GAS_OVERHEAD),
-        //    "Gas is not sufficient to execute the transaction."
+        //    "OVM_ECDSAContractAccount: Gas is not sufficient to execute the transaction."
         // );
 
         // Transfer fee to relayer.
@@ -100,7 +95,7 @@ contract OVM_ECDSAContractAccount is iOVM_ECDSAContractAccount {
         );
         Lib_SafeExecutionManagerWrapper.safeREQUIRE(
             success == true,
-            "Fee was not transferred to relayer."
+            "OVM_ECDSAContractAccount: Fee was not transferred to relayer."
         );
 
         // Contract creations are signalled by sending a transaction to the zero address.

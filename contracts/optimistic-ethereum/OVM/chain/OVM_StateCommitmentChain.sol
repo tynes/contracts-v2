@@ -6,6 +6,7 @@ pragma experimental ABIEncoderV2;
 import { Lib_OVMCodec } from "../../libraries/codec/Lib_OVMCodec.sol";
 import { Lib_AddressResolver } from "../../libraries/resolver/Lib_AddressResolver.sol";
 import { Lib_MerkleTree } from "../../libraries/utils/Lib_MerkleTree.sol";
+import { Lib_SmartRequire } from "../../libraries/utils/Lib_SmartRequire.sol";
 
 /* Interface Imports */
 import { iOVM_FraudVerifier } from "../../iOVM/verification/iOVM_FraudVerifier.sol";
@@ -20,7 +21,11 @@ import '@openzeppelin/contracts/math/SafeMath.sol';
 /**
  * @title OVM_StateCommitmentChain
  */
-contract OVM_StateCommitmentChain is iOVM_StateCommitmentChain, Lib_AddressResolver {
+contract OVM_StateCommitmentChain is
+    Lib_AddressResolver,
+    Lib_SmartRequire,
+    iOVM_StateCommitmentChain
+{
 
     /*************
      * Constants *
@@ -43,6 +48,7 @@ contract OVM_StateCommitmentChain is iOVM_StateCommitmentChain, Lib_AddressResol
         uint256 _sequencerPublishWindow
     )
         Lib_AddressResolver(_libAddressManager)
+        Lib_SmartRequire("OVM_StateCommitmentChain")
     {
         FRAUD_PROOF_WINDOW = _fraudProofWindow;
         SEQUENCER_PUBLISH_WINDOW = _sequencerPublishWindow;
@@ -237,6 +243,7 @@ contract OVM_StateCommitmentChain is iOVM_StateCommitmentChain, Lib_AddressResol
             timestamp != 0,
             "Batch header timestamp cannot be zero"
         );
+
         return SafeMath.add(timestamp, FRAUD_PROOF_WINDOW) > block.timestamp;
     }
 

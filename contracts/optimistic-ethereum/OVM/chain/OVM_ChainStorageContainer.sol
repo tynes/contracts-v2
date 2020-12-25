@@ -3,6 +3,7 @@ pragma solidity ^0.7.0;
 /* Library Imports */
 import { Lib_RingBuffer } from "../../libraries/utils/Lib_RingBuffer.sol";
 import { Lib_AddressResolver } from "../../libraries/resolver/Lib_AddressResolver.sol";
+import { Lib_SmartRequire } from "../../libraries/utils/Lib_SmartRequire.sol";
 
 /* Interface Imports */
 import { iOVM_ChainStorageContainer } from "../../iOVM/chain/iOVM_ChainStorageContainer.sol";
@@ -10,7 +11,11 @@ import { iOVM_ChainStorageContainer } from "../../iOVM/chain/iOVM_ChainStorageCo
 /**
  * @title OVM_ChainStorageContainer
  */
-contract OVM_ChainStorageContainer is iOVM_ChainStorageContainer, Lib_AddressResolver {
+contract OVM_ChainStorageContainer is
+    Lib_AddressResolver,
+    Lib_SmartRequire,
+    iOVM_ChainStorageContainer
+{
 
     /*************
      * Libraries *
@@ -40,6 +45,7 @@ contract OVM_ChainStorageContainer is iOVM_ChainStorageContainer, Lib_AddressRes
         string memory _owner
     )
         Lib_AddressResolver(_libAddressManager)
+        Lib_SmartRequire("OVM_ChainStorageContainer")
     {
         owner = _owner;
     }
@@ -52,7 +58,7 @@ contract OVM_ChainStorageContainer is iOVM_ChainStorageContainer, Lib_AddressRes
     modifier onlyOwner() {
         require(
             msg.sender == resolve(owner),
-            "OVM_ChainStorageContainer: Function can only be called by the owner."
+            "Function can only be called by the owner."
         );
         _;
     }

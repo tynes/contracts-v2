@@ -85,7 +85,7 @@ library Lib_RLPReader {
 
         require(
             itemType == RLPItemType.LIST_ITEM,
-            "Invalid RLP list value."
+            "Lib_RLPReader: Invalid RLP list value."
         );
 
         // Solidity in-memory arrays can't be increased in size, but *can* be decreased in size by
@@ -99,7 +99,7 @@ library Lib_RLPReader {
         while (offset < _in.length) {
             require(
                 itemCount < MAX_LIST_LENGTH,
-                "Provided RLP list exceeds max list length."
+                "Lib_RLPReader: Provided RLP list exceeds max list length."
             );
 
             (
@@ -168,7 +168,7 @@ library Lib_RLPReader {
 
         require(
             itemType == RLPItemType.DATA_ITEM,
-            "Invalid RLP bytes value."
+            "Lib_RLPReader: Invalid RLP bytes value."
         );
 
         return _copy(_in.ptr, itemOffset, itemLength);
@@ -245,7 +245,7 @@ library Lib_RLPReader {
     {
         require(
             _in.length <= 33,
-            "Invalid RLP bytes32 value."
+            "Lib_RLPReader: Invalid RLP bytes32 value."
         );
 
         (
@@ -256,7 +256,7 @@ library Lib_RLPReader {
 
         require(
             itemType == RLPItemType.DATA_ITEM,
-            "Invalid RLP bytes32 value."
+            "Lib_RLPReader: Invalid RLP bytes32 value."
         );
 
         uint256 ptr = _in.ptr + itemOffset;
@@ -344,7 +344,7 @@ library Lib_RLPReader {
     {
         require(
             _in.length == 1,
-            "Invalid RLP boolean value."
+            "Lib_RLPReader: Invalid RLP boolean value."
         );
 
         uint256 ptr = _in.ptr;
@@ -395,7 +395,7 @@ library Lib_RLPReader {
 
         require(
             _in.length == 21,
-            "Invalid RLP address value."
+            "Lib_RLPReader: Invalid RLP address value."
         );
 
         return address(readUint256(_in));
@@ -462,7 +462,7 @@ library Lib_RLPReader {
     {
         require(
             _in.length > 0,
-            "RLP item cannot be null."
+            "Lib_RLPReader: RLP item cannot be null."
         );
 
         uint256 ptr = _in.ptr;
@@ -482,7 +482,7 @@ library Lib_RLPReader {
             
             require(
                 _in.length > strLen,
-                "Invalid RLP short string."
+                "Lib_RLPReader: Invalid RLP short string."
             );
 
             return (1, strLen, RLPItemType.DATA_ITEM);
@@ -492,7 +492,7 @@ library Lib_RLPReader {
 
             require(
                 _in.length > lenOfStrLen,
-                "Invalid RLP long string length."
+                "Lib_RLPReader: Invalid RLP long string length."
             );
 
             uint256 strLen;
@@ -506,7 +506,7 @@ library Lib_RLPReader {
 
             require(
                 _in.length > lenOfStrLen + strLen,
-                "Invalid RLP long string."
+                "Lib_RLPReader: Invalid RLP long string."
             );
 
             return (1 + lenOfStrLen, strLen, RLPItemType.DATA_ITEM);
@@ -516,7 +516,7 @@ library Lib_RLPReader {
 
             require(
                 _in.length > listLen,
-                "Invalid RLP short list."
+                "Lib_RLPReader: Invalid RLP short list."
             );
 
             return (1, listLen, RLPItemType.LIST_ITEM);
@@ -526,7 +526,7 @@ library Lib_RLPReader {
 
             require(
                 _in.length > lenOfListLen,
-                "Invalid RLP long list length."
+                "Lib_RLPReader: Invalid RLP long list length."
             );
 
             uint256 listLen;
@@ -540,7 +540,7 @@ library Lib_RLPReader {
 
             require(
                 _in.length > lenOfListLen + listLen,
-                "Invalid RLP long list."
+                "Lib_RLPReader: Invalid RLP long list."
             );
 
             return (1 + lenOfListLen, listLen, RLPItemType.LIST_ITEM);

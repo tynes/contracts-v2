@@ -49,7 +49,7 @@ contract mockOVM_ECDSAContractAccount is iOVM_ECDSAContractAccount {
         // Need to make sure that the transaction nonce is right.
         Lib_SafeExecutionManagerWrapper.safeREQUIRE(
             decodedTx.nonce == Lib_SafeExecutionManagerWrapper.safeGETNONCE(),
-            "Transaction nonce does not match the expected nonce."
+            "mockOVM_ECDSAContractAccount: Transaction nonce does not match the expected nonce."
         );
 
         // Contract creations are signalled by sending a transaction to the zero address.

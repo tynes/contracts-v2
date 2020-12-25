@@ -5,6 +5,7 @@ pragma experimental ABIEncoderV2;
 /* Library Imports */
 import { Lib_OVMCodec } from "../../libraries/codec/Lib_OVMCodec.sol";
 import { Lib_AddressResolver } from "../../libraries/resolver/Lib_AddressResolver.sol";
+import { Lib_SmartRequire } from "../../libraries/utils/Lib_SmartRequire.sol";
 
 /* Interface Imports */
 import { iOVM_FraudVerifier } from "../../iOVM/verification/iOVM_FraudVerifier.sol";
@@ -17,7 +18,12 @@ import { iOVM_CanonicalTransactionChain } from "../../iOVM/chain/iOVM_CanonicalT
 /* Contract Imports */
 import { OVM_FraudContributor } from "./OVM_FraudContributor.sol";
 
-contract OVM_FraudVerifier is Lib_AddressResolver, OVM_FraudContributor, iOVM_FraudVerifier {
+contract OVM_FraudVerifier is
+    Lib_AddressResolver,
+    Lib_SmartRequire,
+    iOVM_FraudVerifier,
+    OVM_FraudContributor
+{
 
     /*************
      * Variables *
@@ -37,6 +43,7 @@ contract OVM_FraudVerifier is Lib_AddressResolver, OVM_FraudContributor, iOVM_Fr
         address _libAddressManager
     )
         Lib_AddressResolver(_libAddressManager)
+        Lib_SmartRequire("OVM_FraudVerifier")
     {}
 
 

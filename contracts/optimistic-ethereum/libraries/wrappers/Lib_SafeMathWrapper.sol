@@ -96,9 +96,12 @@ library Lib_SafeMathWrapper {
             uint256
         )
     {
-        Lib_SafeExecutionManagerWrapper.safeREQUIRE(_b <= _a, _errorMessage);
-        uint256 c = _a - _b;
+        Lib_SafeExecutionManagerWrapper.safeREQUIRE(
+            _b <= _a,
+            _errorMessage
+        );
 
+        uint256 c = _a - _b;
         return c;
     }
 
@@ -241,7 +244,11 @@ library Lib_SafeMathWrapper {
             uint256
         )
     {
-        Lib_SafeExecutionManagerWrapper.safeREQUIRE(_b != 0, _errorMessage);
+        Lib_SafeExecutionManagerWrapper.safeREQUIRE(
+            _b != 0,
+            _errorMessage
+        );
+
         return _a % _b;
     }
 }

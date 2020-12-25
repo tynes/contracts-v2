@@ -187,7 +187,7 @@ library Lib_MerkleTrie {
 
         require(
             exists || isFinalNode,
-            "Provided proof is invalid."
+            "Lib_MerkleTrie: Provided proof is invalid."
         );
 
         bytes memory value = exists ? _getNodeValue(proof[pathLength - 1]) : bytes('');
@@ -268,19 +268,19 @@ library Lib_MerkleTrie {
                 // First proof element is always the root node.
                 require(
                     keccak256(currentNode.encoded) == currentNodeID,
-                    "Invalid root hash"
+                    "Lib_MerkleTrie: Invalid root hash"
                 );
             } else if (currentNode.encoded.length >= 32) {
                 // Nodes 32 bytes or larger are hashed inside branch nodes.
                 require(
                     keccak256(currentNode.encoded) == currentNodeID,
-                    "Invalid large internal hash"
+                    "Lib_MerkleTrie: Invalid large internal hash"
                 );
             } else {
                 // Nodes smaller than 31 bytes aren't hashed.
                 require(
                     Lib_BytesUtils.toBytes32(currentNode.encoded) == currentNodeID,
-                    "Invalid internal node hash"
+                    "Lib_MerkleTrie: Invalid internal node hash"
                 );
             }
 

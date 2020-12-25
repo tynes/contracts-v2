@@ -7,6 +7,7 @@ import { Lib_OVMCodec } from "../../libraries/codec/Lib_OVMCodec.sol";
 import { Lib_AddressResolver } from "../../libraries/resolver/Lib_AddressResolver.sol";
 import { Lib_MerkleTree } from "../../libraries/utils/Lib_MerkleTree.sol";
 import { Lib_Math } from "../../libraries/utils/Lib_Math.sol";
+import { Lib_SmartRequire } from "../../libraries/utils/Lib_SmartRequire.sol";
 
 /* Interface Imports */
 import { iOVM_CanonicalTransactionChain } from "../../iOVM/chain/iOVM_CanonicalTransactionChain.sol";
@@ -19,7 +20,11 @@ import { OVM_ExecutionManager } from "../execution/OVM_ExecutionManager.sol";
 /**
  * @title OVM_CanonicalTransactionChain
  */
-contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, Lib_AddressResolver {
+contract OVM_CanonicalTransactionChain is
+    Lib_AddressResolver,
+    Lib_SmartRequire,
+    iOVM_CanonicalTransactionChain
+{
 
     /*************
      * Constants *
@@ -59,6 +64,7 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, Lib_Ad
         uint256 _maxTransactionGasLimit
     )
         Lib_AddressResolver(_libAddressManager)
+        Lib_SmartRequire("OVM_CanonicalTransactionChain")
     {
         forceInclusionPeriodSeconds = _forceInclusionPeriodSeconds;
         forceInclusionPeriodBlocks = _forceInclusionPeriodBlocks;
@@ -419,7 +425,11 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, Lib_Ad
             }
 
             for (uint32 j = 0; j < curContext.numSubsequentQueueTransactions; j++) {
-                require(nextQueueIndex < queueLength, "Not enough queued transactions to append.");
+                require(
+                    nextQueueIndex < queueLength,
+                    "Not enough queued transactions to append."
+                );
+
                 leaves[leafIndex] = _getQueueLeafHash(nextQueueIndex);
                 nextQueueIndex++;
                 leafIndex++;
@@ -797,12 +807,27 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, Lib_Ad
         // If there are existing elements, this batch must come later.
         if (getTotalElements() > 0) {
             (,, uint40 lastTimestamp, uint40 lastBlockNumber) = _getBatchExtraData();
-            require(_firstContext.blockNumber >= lastBlockNumber, "Context block number is lower than last submitted.");
-            require(_firstContext.timestamp >= lastTimestamp, "Context timestamp is lower than last submitted.");
+            require(
+                _firstContext.blockNumber >= lastBlockNumber,
+                "Context block number is lower than last submitted."
+            );
+
+            require(
+                _firstContext.timestamp >= lastTimestamp,
+                "Context timestamp is lower than last submitted."
+            );
         }
+
         // Sequencer cannot submit contexts which are more than the force inclusion period old.
-        require(_firstContext.timestamp + forceInclusionPeriodSeconds >= block.timestamp, "Context timestamp too far in the past.");
-        require(_firstContext.blockNumber + forceInclusionPeriodBlocks >= block.number, "Context block number too far in the past.");
+        require(
+            _firstContext.timestamp + forceInclusionPeriodSeconds >= block.timestamp,
+            "Context timestamp too far in the past."
+        );
+
+        require(
+            _firstContext.blockNumber + forceInclusionPeriodBlocks >= block.number,
+            "Context block number too far in the past."
+        );
     }
 
     /**
@@ -865,8 +890,15 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, Lib_Ad
         view
     {
         // Batches cannot be added from the future, or subsequent enqueue() contexts would violate monotonicity.
-        require(_finalContext.timestamp <= block.timestamp, "Context timestamp is from the future.");
-        require(_finalContext.blockNumber <= block.number, "Context block number is from the future.");
+        require(
+            _finalContext.timestamp <= block.timestamp,
+            "Context timestamp is from the future."
+        );
+
+        require(
+            _finalContext.blockNumber <= block.number,
+            "Context block number is from the future."
+        );
     }
 
     /**

@@ -3,6 +3,7 @@ pragma solidity ^0.7.0;
 
 /* Library Imports */
 import { Lib_AddressResolver } from "../../libraries/resolver/Lib_AddressResolver.sol";
+import { Lib_SmartRequire } from "../../libraries/utils/Lib_SmartRequire.sol";
 
 /* Interface Imports */
 import { iOVM_StateTransitioner } from "../../iOVM/verification/iOVM_StateTransitioner.sol";
@@ -15,7 +16,11 @@ import { OVM_StateTransitioner } from "./OVM_StateTransitioner.sol";
 /**
  * @title OVM_StateTransitionerFactory
  */
-contract OVM_StateTransitionerFactory is iOVM_StateTransitionerFactory, Lib_AddressResolver {
+contract OVM_StateTransitionerFactory is
+    Lib_AddressResolver,
+    Lib_SmartRequire,
+    iOVM_StateTransitionerFactory
+{
 
     /***************
      * Constructor *
@@ -25,6 +30,7 @@ contract OVM_StateTransitionerFactory is iOVM_StateTransitionerFactory, Lib_Addr
         address _libAddressManager
     )
         Lib_AddressResolver(_libAddressManager)
+        Lib_SmartRequire("OVM_StateTransitioner")
     {}
 
 

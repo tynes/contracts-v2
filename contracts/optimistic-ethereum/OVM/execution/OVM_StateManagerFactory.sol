@@ -11,7 +11,9 @@ import { OVM_StateManager } from "./OVM_StateManager.sol";
 /**
  * @title OVM_StateManagerFactory
  */
-contract OVM_StateManagerFactory is iOVM_StateManagerFactory {
+contract OVM_StateManagerFactory is
+    iOVM_StateManagerFactory
+{
 
     /********************
      * Public Functions *

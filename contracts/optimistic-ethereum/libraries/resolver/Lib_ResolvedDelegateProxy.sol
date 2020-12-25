@@ -49,7 +49,7 @@ contract Lib_ResolvedDelegateProxy {
         address target = addressManager[address(this)].getAddress((implementationName[address(this)]));
         require(
             target != address(0),
-            "Target address must be initialized."
+            "Lib_ResolvedDelegateProxy: Target address must be initialized."
         );
 
         (bool success, bytes memory returndata) = target.delegatecall(msg.data);

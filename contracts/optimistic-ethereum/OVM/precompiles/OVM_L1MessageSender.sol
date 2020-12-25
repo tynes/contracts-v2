@@ -9,7 +9,9 @@ import { iOVM_ExecutionManager } from "../../iOVM/execution/iOVM_ExecutionManage
  * @title OVM_L1MessageSender
  * @dev L2 CONTRACT (NOT COMPILED)
  */
-contract OVM_L1MessageSender is iOVM_L1MessageSender {
+contract OVM_L1MessageSender is
+    iOVM_L1MessageSender
+{
 
     /********************
      * Public Functions *

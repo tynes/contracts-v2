@@ -3,6 +3,7 @@ pragma solidity ^0.7.0;
 
 /* Library Imports */
 import { Lib_AddressResolver } from "../../libraries/resolver/Lib_AddressResolver.sol";
+import { Lib_SmartRequire } from "../../libraries/utils/Lib_SmartRequire.sol";
 
 /* Interface Imports */
 import { iOVM_ERC20 } from "../../iOVM/precompiles/iOVM_ERC20.sol";
@@ -12,7 +13,11 @@ import { iOVM_FraudVerifier } from "../../iOVM/verification/iOVM_FraudVerifier.s
 /**
  * @title OVM_BondManager
  */
-contract OVM_BondManager is iOVM_BondManager, Lib_AddressResolver {
+contract OVM_BondManager is
+    Lib_AddressResolver,
+    Lib_SmartRequire,
+    iOVM_BondManager
+{
 
     /****************************
      * Constants and Parameters *
@@ -54,6 +59,7 @@ contract OVM_BondManager is iOVM_BondManager, Lib_AddressResolver {
         address _libAddressManager
     )
         Lib_AddressResolver(_libAddressManager)
+        Lib_SmartRequire("OVM_BondManager")
     {
         token = _token;
     }
@@ -74,8 +80,14 @@ contract OVM_BondManager is iOVM_BondManager, Lib_AddressResolver {
         public
     {
         // The sender must be the transitioner that corresponds to the claimed pre-state root
-        address transitioner = address(iOVM_FraudVerifier(resolve("OVM_FraudVerifier")).getStateTransitioner(_preStateRoot, _txHash));
-        require(transitioner == msg.sender, Errors.ONLY_TRANSITIONER);
+        address transitioner = address(iOVM_FraudVerifier(
+            resolve("OVM_FraudVerifier")
+        ).getStateTransitioner(_preStateRoot, _txHash));
+
+        require(
+            transitioner == msg.sender,
+            Errors.ONLY_TRANSITIONER
+        );
 
         witnessProviders[_preStateRoot].total += _gasSpent;
         witnessProviders[_preStateRoot].gasSpent[_who] += _gasSpent;
@@ -91,8 +103,15 @@ contract OVM_BondManager is iOVM_BondManager, Lib_AddressResolver {
         override
         public
     {
-        require(msg.sender == resolve("OVM_FraudVerifier"), Errors.ONLY_FRAUD_VERIFIER);
-        require(witnessProviders[_preStateRoot].canClaim == false, Errors.ALREADY_FINALIZED);
+        require(
+            msg.sender == resolve("OVM_FraudVerifier"),
+            Errors.ONLY_FRAUD_VERIFIER
+        );
+
+        require(
+            witnessProviders[_preStateRoot].canClaim == false,
+            Errors.ALREADY_FINALIZED
+        );
 
         // allow users to claim from that state root's
         // pool of collateral (effectively slashing the sequencer)
@@ -152,8 +171,15 @@ contract OVM_BondManager is iOVM_BondManager, Lib_AddressResolver {
         public
     {
         Bond storage bond = bonds[msg.sender];
-        require(bond.withdrawalTimestamp == 0, Errors.WITHDRAWAL_PENDING);
-        require(bond.state == State.COLLATERALIZED, Errors.WRONG_STATE);
+        require(
+            bond.withdrawalTimestamp == 0,
+            Errors.WITHDRAWAL_PENDING
+        );
+
+        require(
+            bond.state == State.COLLATERALIZED,
+            Errors.WRONG_STATE
+        );
 
         bond.state = State.WITHDRAWING;
         bond.withdrawalTimestamp = uint32(block.timestamp);
@@ -170,8 +196,12 @@ contract OVM_BondManager is iOVM_BondManager, Lib_AddressResolver {
             block.timestamp >= uint256(bond.withdrawalTimestamp) + disputePeriodSeconds, 
             Errors.TOO_EARLY
         );
-        require(bond.state == State.WITHDRAWING, Errors.SLASHED);
-        
+
+        require(
+            bond.state == State.WITHDRAWING,
+            Errors.SLASHED
+        );
+
         // refunds!
         bond.state = State.NOT_COLLATERALIZED;
         bond.withdrawalTimestamp = 0;
@@ -201,7 +231,10 @@ contract OVM_BondManager is iOVM_BondManager, Lib_AddressResolver {
         Rewards storage rewards = witnessProviders[_preStateRoot];
 
         // only allow claiming if fraud was proven in `finalize`
-        require(rewards.canClaim, Errors.CANNOT_CLAIM);
+        require(
+            rewards.canClaim,
+            Errors.CANNOT_CLAIM
+        );
 
         // proportional allocation - only reward 50% (rest gets locked in the
         // contract forever
@@ -211,7 +244,10 @@ contract OVM_BondManager is iOVM_BondManager, Lib_AddressResolver {
         rewards.gasSpent[msg.sender] = 0;
 
         // transfer
-        require(token.transfer(msg.sender, amount), Errors.ERC20_ERR);
+        require(
+            token.transfer(msg.sender, amount),
+            Errors.ERC20_ERR
+        );
     }
 
     /// Checks if the user is collateralized

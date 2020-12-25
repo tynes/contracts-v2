@@ -65,7 +65,7 @@ contract OVM_ProxyEOA {
     {
         Lib_SafeExecutionManagerWrapper.safeREQUIRE(
             Lib_SafeExecutionManagerWrapper.safeADDRESS() == Lib_SafeExecutionManagerWrapper.safeCALLER(),
-            "EOAs can only upgrade their own EOA implementation"
+            "OVM_ProxyEOA: EOAs can only upgrade their own EOA implementation"
         );
 
         _setImplementation(_implementation);

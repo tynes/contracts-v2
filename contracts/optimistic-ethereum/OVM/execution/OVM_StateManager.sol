@@ -4,6 +4,7 @@ pragma experimental ABIEncoderV2;
 
 /* Library Imports */
 import { Lib_OVMCodec } from "../../libraries/codec/Lib_OVMCodec.sol";
+import { Lib_SmartRequire } from "../../libraries/utils/Lib_SmartRequire.sol";
 
 /* Interface Imports */
 import { iOVM_StateManager } from "../../iOVM/execution/iOVM_StateManager.sol";
@@ -11,7 +12,10 @@ import { iOVM_StateManager } from "../../iOVM/execution/iOVM_StateManager.sol";
 /**
  * @title OVM_StateManager
  */
-contract OVM_StateManager is iOVM_StateManager {
+contract OVM_StateManager is
+    Lib_SmartRequire,
+    iOVM_StateManager
+{
 
     /*************
      * Constants *
@@ -45,7 +49,9 @@ contract OVM_StateManager is iOVM_StateManager {
      */
     constructor(
         address _owner
-    ) {
+    )
+        Lib_SmartRequire("OVM_StateManager")
+    {
         owner = _owner;
     }
 

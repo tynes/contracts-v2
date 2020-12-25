@@ -42,8 +42,9 @@ abstract contract Ownable {
     modifier onlyOwner() {
         require(
             owner == msg.sender,
-            "Ownable: caller is not the owner"
+            "Lib_Ownable: caller is not the owner."
         );
+
         _;
     }
 
@@ -70,7 +71,7 @@ abstract contract Ownable {
     {
         require(
             _newOwner != address(0),
-            "Ownable: new owner cannot be the zero address"
+            "Lib_Ownable: new owner cannot be the zero address"
         );
 
         emit OwnershipTransferred(owner, _newOwner);

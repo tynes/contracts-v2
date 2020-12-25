@@ -7,6 +7,7 @@ import { Lib_OVMCodec } from "../../libraries/codec/Lib_OVMCodec.sol";
 import { Lib_AddressResolver } from "../../libraries/resolver/Lib_AddressResolver.sol";
 import { Lib_AddressManager } from "../../libraries/resolver/Lib_AddressManager.sol";
 import { Lib_SecureMerkleTrie } from "../../libraries/trie/Lib_SecureMerkleTrie.sol";
+import { Lib_SmartRequire } from "../../libraries/utils/Lib_SmartRequire.sol";
 
 /* Interface Imports */
 import { iOVM_L1CrossDomainMessenger } from "../../iOVM/bridge/iOVM_L1CrossDomainMessenger.sol";
@@ -19,7 +20,12 @@ import { OVM_BaseCrossDomainMessenger } from "./OVM_BaseCrossDomainMessenger.sol
 /**
  * @title OVM_L1CrossDomainMessenger
  */
-contract OVM_L1CrossDomainMessenger is iOVM_L1CrossDomainMessenger, OVM_BaseCrossDomainMessenger, Lib_AddressResolver {
+contract OVM_L1CrossDomainMessenger is
+    Lib_AddressResolver,
+    Lib_SmartRequire,
+    iOVM_L1CrossDomainMessenger,
+    OVM_BaseCrossDomainMessenger
+{
 
     /***************
      * Constructor *
@@ -30,6 +36,7 @@ contract OVM_L1CrossDomainMessenger is iOVM_L1CrossDomainMessenger, OVM_BaseCros
      */
     constructor()
         Lib_AddressResolver(address(0))
+        Lib_SmartRequire("OVM_L1CrossDomainMessenger")
     {}
 
 
@@ -64,7 +71,11 @@ contract OVM_L1CrossDomainMessenger is iOVM_L1CrossDomainMessenger, OVM_BaseCros
     )
         public
     {
-        require(address(libAddressManager) == address(0), "L1CrossDomainMessenger already intialized.");
+        require(
+            address(libAddressManager) == address(0),
+            "L1CrossDomainMessenger already intialized."
+        );
+
         libAddressManager = Lib_AddressManager(_libAddressManager);
     }
 

@@ -7,7 +7,9 @@ import { iOVM_SafetyChecker } from "../../iOVM/execution/iOVM_SafetyChecker.sol"
 /**
  * @title OVM_SafetyChecker
  */
-contract OVM_SafetyChecker is iOVM_SafetyChecker {
+contract OVM_SafetyChecker is
+    iOVM_SafetyChecker
+{
 
     /********************
      * Public Functions *

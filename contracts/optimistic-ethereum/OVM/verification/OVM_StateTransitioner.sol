@@ -5,6 +5,7 @@ pragma experimental ABIEncoderV2;
 /* Library Imports */
 import { Lib_OVMCodec } from "../../libraries/codec/Lib_OVMCodec.sol";
 import { Lib_AddressResolver } from "../../libraries/resolver/Lib_AddressResolver.sol";
+import { Lib_SmartRequire } from "../../libraries/utils/Lib_SmartRequire.sol";
 import { Lib_EthUtils } from "../../libraries/utils/Lib_EthUtils.sol";
 import { Lib_Bytes32Utils } from "../../libraries/utils/Lib_Bytes32Utils.sol";
 import { Lib_BytesUtils } from "../../libraries/utils/Lib_BytesUtils.sol";
@@ -25,7 +26,12 @@ import { OVM_FraudContributor } from "./OVM_FraudContributor.sol";
 /**
  * @title OVM_StateTransitioner
  */
-contract OVM_StateTransitioner is Lib_AddressResolver, OVM_FraudContributor, iOVM_StateTransitioner {
+contract OVM_StateTransitioner is
+    Lib_AddressResolver,
+    Lib_SmartRequire,
+    iOVM_StateTransitioner,
+    OVM_FraudContributor
+{
 
     /*********
      * Enums *
@@ -75,6 +81,7 @@ contract OVM_StateTransitioner is Lib_AddressResolver, OVM_FraudContributor, iOV
         bytes32 _transactionHash
     )
         Lib_AddressResolver(_libAddressManager)
+        Lib_SmartRequire("OVM_StateTransitioner")
     {
         stateTransitionIndex = _stateTransitionIndex;
         preStateRoot = _preStateRoot;
@@ -209,7 +216,7 @@ contract OVM_StateTransitioner is Lib_AddressResolver, OVM_FraudContributor, iOV
                 // of the code stored on L2.
                 require(
                     Lib_EthUtils.getCodeHash(ethContractAddress) == account.codeHash,
-                    "OVM_StateTransitioner: Provided L1 contract code hash does not match L2 contract code hash."
+                    "Provided L1 contract code hash does not match L2 contract code hash."
                 );
             }
 

@@ -9,7 +9,9 @@ import { iOVM_L2ToL1MessagePasser } from "../../iOVM/precompiles/iOVM_L2ToL1Mess
  * @title OVM_L2ToL1MessagePasser
  * @dev L2 CONTRACT (COMPILED)
  */
-contract OVM_L2ToL1MessagePasser is iOVM_L2ToL1MessagePasser {
+contract OVM_L2ToL1MessagePasser is
+    iOVM_L2ToL1MessagePasser
+{
 
     /*************
      * Variables *

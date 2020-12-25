@@ -5,6 +5,7 @@ pragma experimental ABIEncoderV2;
 /* Library Imports */
 import { Lib_OVMCodec } from "../../libraries/codec/Lib_OVMCodec.sol";
 import { Lib_AddressResolver } from "../../libraries/resolver/Lib_AddressResolver.sol";
+import { Lib_SmartRequire } from "../../libraries/utils/Lib_SmartRequire.sol";
 import { Lib_EthUtils } from "../../libraries/utils/Lib_EthUtils.sol";
 
 /* Interface Imports */
@@ -20,7 +21,11 @@ import { OVM_DeployerWhitelist } from "../precompiles/OVM_DeployerWhitelist.sol"
 /**
  * @title OVM_ExecutionManager
  */
-contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
+contract OVM_ExecutionManager is
+    Lib_AddressResolver,
+    Lib_SmartRequire,
+    iOVM_ExecutionManager
+{
 
     /********************************
      * External Contract References *
@@ -67,6 +72,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         GlobalContext memory _globalContext
     )
         Lib_AddressResolver(_libAddressManager)
+        Lib_SmartRequire("OVM_ExecutionManager")
     {
         ovmSafetyChecker = iOVM_SafetyChecker(resolve("OVM_SafetyChecker"));
         gasMeterConfig = _gasMeterConfig;
@@ -171,7 +177,8 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         }
 
         // Check gas right before the call to get total gas consumed by OVM transaction.
-        uint256 gasProvided = gasleft();
+        // TEMPORARY: Gas metering is disabled for minnet.
+        // uint256 gasProvided = gasleft();
 
         // Run the transaction, make sure to meter the gas usage.
         ovmCALL(
@@ -179,7 +186,8 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
             _transaction.entrypoint,
             _transaction.data
         );
-        uint256 gasUsed = gasProvided - gasleft();
+        // TEMPORARY: Gas metering is disabled for minnet.
+        // uint256 gasUsed = gasProvided - gasleft();
 
         // TEMPORARY: Gas metering is disabled for minnet.
         // // Update the cumulative gas based on the amount of gas used.
@@ -613,7 +621,6 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     {
         // DELEGATECALL does not change anything about the message context.
         MessageContext memory nextMessageContext = messageContext;
-        bool isStaticEntrypoint = false;
 
         return _callContract(
             nextMessageContext,

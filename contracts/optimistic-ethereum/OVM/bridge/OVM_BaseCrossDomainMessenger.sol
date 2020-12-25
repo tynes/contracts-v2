@@ -12,7 +12,10 @@ import { Lib_ReentrancyGuard } from "../../libraries/utils/Lib_ReentrancyGuard.s
 /**
  * @title OVM_BaseCrossDomainMessenger
  */
-abstract contract OVM_BaseCrossDomainMessenger is iOVM_BaseCrossDomainMessenger, Lib_ReentrancyGuard {
+abstract contract OVM_BaseCrossDomainMessenger is
+    Lib_ReentrancyGuard,
+    iOVM_BaseCrossDomainMessenger
+{
 
     /*************
      * Variables *
@@ -41,9 +44,7 @@ abstract contract OVM_BaseCrossDomainMessenger is iOVM_BaseCrossDomainMessenger,
 
     /**
      * Sends a cross domain message to the target messenger.
-     * @param _target Target contract address.
-     * @param _message Message to send to the target.
-     * @param _gasLimit Gas limit for the provided message.
+     * @inheritdoc iOVM_BaseCrossDomainMessenger
      */
     function sendMessage(
         address _target,

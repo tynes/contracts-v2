@@ -101,9 +101,20 @@ library Lib_BytesUtils {
             bytes memory
         )
     {
-        require(_length + 31 >= _length, "slice_overflow");
-        require(_start + _length >= _start, "slice_overflow");
-        require(_bytes.length >= _start + _length, "slice_outOfBounds");
+        require(
+            _length + 31 >= _length,
+            "Lib_BytesUtils: slice_overflow"
+        );
+
+        require(
+            _start + _length >= _start,
+            "Lib_BytesUtils: slice_overflow"
+        );
+
+        require(
+            _bytes.length >= _start + _length,
+            "Lib_BytesUtils: slice_outOfBounds"
+        );
 
         bytes memory tempBytes;
 
@@ -235,8 +246,16 @@ library Lib_BytesUtils {
             uint24
         )
     {
-        require(_start + 3 >= _start, "toUint24_overflow");
-        require(_bytes.length >= _start + 3 , "toUint24_outOfBounds");
+        require(
+            _start + 3 >= _start,
+            "Lib_BytesUtils: toUint24_overflow"
+        );
+
+        require(
+            _bytes.length >= _start + 3,
+            "Lib_BytesUtils: toUint24_outOfBounds"
+        );
+
         uint24 tempUint;
 
         assembly {
@@ -256,8 +275,16 @@ library Lib_BytesUtils {
             uint8
         )
     {
-        require(_start + 1 >= _start, "toUint8_overflow");
-        require(_bytes.length >= _start + 1 , "toUint8_outOfBounds");
+        require(
+            _start + 1 >= _start,
+            "Lib_BytesUtils: toUint8_overflow"
+        );
+
+        require(
+            _bytes.length >= _start + 1,
+            "Lib_BytesUtils: toUint8_outOfBounds"
+        );
+
         uint8 tempUint;
 
         assembly {
@@ -277,8 +304,16 @@ library Lib_BytesUtils {
             address
         )
     {
-        require(_start + 20 >= _start, "toAddress_overflow");
-        require(_bytes.length >= _start + 20, "toAddress_outOfBounds");
+        require(
+            _start + 20 >= _start,
+            "Lib_BytesUtils: toAddress_overflow"
+        );
+
+        require(
+            _bytes.length >= _start + 20,
+            "Lib_BytesUtils: toAddress_outOfBounds"
+        );
+
         address tempAddress;
 
         assembly {

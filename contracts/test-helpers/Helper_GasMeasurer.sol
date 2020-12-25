@@ -27,7 +27,11 @@ contract Helper_GasMeasurer {
             success := call(gas(), _target, 0, calldataStart, calldataLength, 0, 0)
             gasAfter := gas()
         }
-        require(success, "Call failed, but calls we want to measure gas for should succeed!");
+
+        require(
+            success,
+            "Call failed, but calls we want to measure gas for should succeed!"
+        );
 
         return gasBefore - gasAfter;
     }

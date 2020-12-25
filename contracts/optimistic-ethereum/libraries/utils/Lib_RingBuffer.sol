@@ -171,7 +171,7 @@ library Lib_RingBuffer {
 
         require(
             _index < ctx.globalIndex,
-            "Index out of bounds."
+            "Lib_RingBuffer: Index out of bounds."
         );
 
         Buffer storage currBuffer = _self.getBuffer(ctx.currBufferIndex);
@@ -185,7 +185,7 @@ library Lib_RingBuffer {
             // Shouldn't happen but why not check.
             require(
                 relativeIndex < currBuffer.length,
-                "Index out of bounds."
+                "Lib_RingBuffer: Index out of bounds."
             );
 
             return currBuffer.buf[relativeIndex];
@@ -197,13 +197,13 @@ library Lib_RingBuffer {
             // Condition only fails in the case that we deleted and flipped buffers.
             require(
                 ctx.currResetIndex > ctx.prevResetIndex,
-                "Index out of bounds."
+                "Lib_RingBuffer: Index out of bounds."
             );
 
             // Make sure we're not trying to read beyond the array.
             require(
                 relativeIndex <= prevBuffer.length,
-                "Index out of bounds."
+                "Lib_RingBuffer: Index out of bounds."
             );
 
             return prevBuffer.buf[prevBuffer.length - relativeIndex];
@@ -227,7 +227,7 @@ library Lib_RingBuffer {
 
         require(
             _index < ctx.globalIndex && _index >= ctx.prevResetIndex,
-            "Index out of bounds."
+            "Lib_RingBuffer: Index out of bounds."
         );
 
         Buffer storage currBuffer = _self.getBuffer(ctx.currBufferIndex);

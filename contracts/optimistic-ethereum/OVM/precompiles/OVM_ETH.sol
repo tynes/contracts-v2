@@ -2,6 +2,9 @@
 // +build ovm
 pragma solidity >0.5.0 <0.8.0;
 
+/* Library Imports */
+import { Lib_SmartRequire } from "../../libraries/utils/Lib_SmartRequire.sol";
+
 /* Interface Imports */
 import { iOVM_ERC20 } from "../../iOVM/precompiles/iOVM_ERC20.sol";
 
@@ -9,7 +12,10 @@ import { iOVM_ERC20 } from "../../iOVM/precompiles/iOVM_ERC20.sol";
  * @title OVM_ETH
  * @dev L2 CONTRACT (COMPILED)
  */
-contract OVM_ETH is iOVM_ERC20 {
+contract OVM_ETH is
+    Lib_SmartRequire,
+    iOVM_ERC20
+{
 
     /*************
      * Constants *
@@ -43,6 +49,7 @@ contract OVM_ETH is iOVM_ERC20 {
         string memory _tokenSymbol
     )
         public
+        Lib_SmartRequire("OVM_ETH")
     {
         balances[msg.sender] = _initialAmount;
         totalSupply = _initialAmount;
@@ -66,7 +73,11 @@ contract OVM_ETH is iOVM_ERC20 {
             bool
         )
     {
-        require(balances[msg.sender] >= _value);
+        require(
+            balances[msg.sender] >= _value,
+            "Sender does not have enough balance."
+        );
+
         balances[msg.sender] -= _value;
         balances[_to] += _value;
         emit Transfer(msg.sender, _to, _value);
@@ -85,12 +96,22 @@ contract OVM_ETH is iOVM_ERC20 {
         )
     {
         uint256 allowance = allowed[_from][msg.sender];
-        require(balances[_from] >= _value && allowance >= _value);
+        require(
+            balances[_from] >= _value,
+            "From account does not have enough balance."
+        );
+            
+        require(
+            allowance >= _value,
+            "Sending account does not have enough allowance."
+        );
+
         balances[_to] += _value;
         balances[_from] -= _value;
         if (allowance < MAX_UINT256) {
             allowed[_from][msg.sender] -= _value;
         }
+
         emit Transfer(_from, _to, _value);
         return true;
     }

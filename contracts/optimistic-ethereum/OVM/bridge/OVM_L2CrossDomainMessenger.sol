@@ -5,6 +5,7 @@ pragma experimental ABIEncoderV2;
 
 /* Library Imports */
 import { Lib_AddressResolver } from "../../libraries/resolver/Lib_AddressResolver.sol";
+import { Lib_SmartRequire } from "../../libraries/utils/Lib_SmartRequire.sol";
 
 /* Interface Imports */
 import { iOVM_L2CrossDomainMessenger } from "../../iOVM/bridge/iOVM_L2CrossDomainMessenger.sol";
@@ -18,7 +19,12 @@ import { OVM_BaseCrossDomainMessenger } from "./OVM_BaseCrossDomainMessenger.sol
  * @title OVM_L2CrossDomainMessenger
  * @dev L2 CONTRACT (COMPILED)
  */
-contract OVM_L2CrossDomainMessenger is iOVM_L2CrossDomainMessenger, OVM_BaseCrossDomainMessenger, Lib_AddressResolver {
+contract OVM_L2CrossDomainMessenger is
+    Lib_AddressResolver,
+    Lib_SmartRequire,
+    iOVM_L2CrossDomainMessenger,
+    OVM_BaseCrossDomainMessenger
+{
 
     /***************
      * Constructor *
@@ -32,6 +38,7 @@ contract OVM_L2CrossDomainMessenger is iOVM_L2CrossDomainMessenger, OVM_BaseCros
     )
         public
         Lib_AddressResolver(_libAddressManager)
+        Lib_SmartRequire("OVM_L2CrossDomainMessenger")
     {}
 
 
@@ -109,7 +116,9 @@ contract OVM_L2CrossDomainMessenger is iOVM_L2CrossDomainMessenger, OVM_BaseCros
         )
     {
         return (
-            iOVM_L1MessageSender(resolve("OVM_L1MessageSender")).getL1MessageSender() == resolve("OVM_L1CrossDomainMessenger")
+            iOVM_L1MessageSender(
+                resolve("OVM_L1MessageSender")
+            ).getL1MessageSender() == resolve("OVM_L1CrossDomainMessenger")
         );
     }
 
@@ -125,6 +134,8 @@ contract OVM_L2CrossDomainMessenger is iOVM_L2CrossDomainMessenger, OVM_BaseCros
         override
         internal
     {
-        iOVM_L2ToL1MessagePasser(resolve("OVM_L2ToL1MessagePasser")).passMessageToL1(_message);
+        iOVM_L2ToL1MessagePasser(
+            resolve("OVM_L2ToL1MessagePasser")
+        ).passMessageToL1(_message);
     }
 }
