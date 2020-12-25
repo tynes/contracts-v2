@@ -82,8 +82,8 @@ contract mockOVM_ECDSAContractAccount is iOVM_ECDSAContractAccount {
     )
         public
         returns (
-            bool _success,
-            bytes memory _returndata
+            bool,
+            bytes memory
         )
     {
         return Lib_SafeExecutionManagerWrapper.safeCALL(

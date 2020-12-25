@@ -17,7 +17,7 @@ contract TestLib_RLPWriter {
         public
         pure
         returns (
-            bytes memory _out
+            bytes memory
         )
     {
         return Lib_RLPWriter.writeBytes(_in);
@@ -29,7 +29,7 @@ contract TestLib_RLPWriter {
         public
         pure
         returns (
-            bytes memory _out
+            bytes memory
         )
     {
         return Lib_RLPWriter.writeList(_in);
@@ -41,7 +41,7 @@ contract TestLib_RLPWriter {
         public
         pure
         returns (
-            bytes memory _out
+            bytes memory
         )
     {
         return Lib_RLPWriter.writeString(_in);
@@ -53,7 +53,7 @@ contract TestLib_RLPWriter {
         public
         pure
         returns (
-            bytes memory _out
+            bytes memory
         )
     {
         return Lib_RLPWriter.writeAddress(_in);
@@ -65,7 +65,7 @@ contract TestLib_RLPWriter {
         public
         pure
         returns (
-            bytes memory _out
+            bytes memory
         )
     {
         return Lib_RLPWriter.writeUint(_in);
@@ -77,7 +77,7 @@ contract TestLib_RLPWriter {
         public
         pure
         returns (
-            bytes memory _out
+            bytes memory
         )
     {
         return Lib_RLPWriter.writeBool(_in);
@@ -88,7 +88,7 @@ contract TestLib_RLPWriter {
     )
         public
         returns (
-            bytes memory _out
+            bytes memory
         )
     {
         new TestERC20();

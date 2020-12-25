@@ -199,14 +199,14 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
 
     /**
      * @notice Overrides CALLER.
-     * @return _CALLER Address of the CALLER within the current message context.
+     * @return Address of the CALLER within the current message context.
      */
     function ovmCALLER()
         override
         public
         view
         returns (
-            address _CALLER
+            address
         )
     {
         return messageContext.ovmCALLER;
@@ -214,14 +214,14 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
 
     /**
      * @notice Overrides ADDRESS.
-     * @return _ADDRESS Active ADDRESS within the current message context.
+     * @return Active ADDRESS within the current message context.
      */
     function ovmADDRESS()
         override
         public
         view
         returns (
-            address _ADDRESS
+            address
         )
     {
         return messageContext.ovmADDRESS;
@@ -229,14 +229,14 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
 
     /**
      * @notice Overrides TIMESTAMP.
-     * @return _TIMESTAMP Value of the TIMESTAMP within the transaction context.
+     * @return Value of the TIMESTAMP within the transaction context.
      */
     function ovmTIMESTAMP()
         override
         public
         view
         returns (
-            uint256 _TIMESTAMP
+            uint256
         )
     {
         return transactionContext.ovmTIMESTAMP;
@@ -244,14 +244,14 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
 
     /**
      * @notice Overrides NUMBER.
-     * @return _NUMBER Value of the NUMBER within the transaction context.
+     * @return Value of the NUMBER within the transaction context.
      */
     function ovmNUMBER()
         override
         public
         view
         returns (
-            uint256 _NUMBER
+            uint256
         )
     {
         return transactionContext.ovmNUMBER;
@@ -259,14 +259,14 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
 
     /**
      * @notice Overrides GASLIMIT.
-     * @return _GASLIMIT Value of the block's GASLIMIT within the transaction context.
+     * @return Value of the block's GASLIMIT within the transaction context.
      */
     function ovmGASLIMIT()
         override
         public
         view
         returns (
-            uint256 _GASLIMIT
+            uint256
         )
     {
         return transactionContext.ovmGASLIMIT;
@@ -274,14 +274,14 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
 
     /**
      * @notice Overrides CHAINID.
-     * @return _CHAINID Value of the chain's CHAINID within the global context.
+     * @return Value of the chain's CHAINID within the global context.
      */
     function ovmCHAINID()
         override
         public
         view
         returns (
-            uint256 _CHAINID
+            uint256
         )
     {
         return globalContext.ovmCHAINID;
@@ -293,14 +293,14 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
 
     /**
      * @notice Specifies from which L1 rollup queue this transaction originated from.
-     * @return _queueOrigin Address of the ovmL1QUEUEORIGIN within the current message context.
+     * @return Address of the ovmL1QUEUEORIGIN within the current message context.
      */
     function ovmL1QUEUEORIGIN()
         override
         public
         view
         returns (
-            Lib_OVMCodec.QueueOrigin _queueOrigin
+            Lib_OVMCodec.QueueOrigin
         )
     {
         return transactionContext.ovmL1QUEUEORIGIN;
@@ -308,14 +308,14 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
 
     /**
      * @notice Specifies what L1 EOA, if any, sent this transaction.
-     * @return _l1TxOrigin Address of the EOA which send the tx into L2 from L1.
+     * @return Address of the EOA which send the tx into L2 from L1.
      */
     function ovmL1TXORIGIN()
         override
         public
         view
         returns (
-            address _l1TxOrigin
+            address
         )
     {
         return transactionContext.ovmL1TXORIGIN;
@@ -346,7 +346,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     /**
      * @notice Overrides CREATE.
      * @param _bytecode Code to be used to CREATE a new contract.
-     * @return _contract Address of the created contract.
+     * @return Address of the created contract.
      */
     function ovmCREATE(
         bytes memory _bytecode
@@ -356,7 +356,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         notStatic
         fixedGasDiscount(40000)
         returns (
-            address _contract
+            address
         )
     {
         // Creator is always the current ADDRESS.
@@ -382,7 +382,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
      * @notice Overrides CREATE2.
      * @param _bytecode Code to be used to CREATE2 a new contract.
      * @param _salt Value used to determine the contract's address.
-     * @return _contract Address of the created contract.
+     * @return Address of the created contract.
      */
     function ovmCREATE2(
         bytes memory _bytecode,
@@ -393,7 +393,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         notStatic
         fixedGasDiscount(40000)
         returns (
-            address _contract
+            address
         )
     {
         // Creator is always the current ADDRESS.
@@ -423,13 +423,13 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
 
     /**
      * Retrieves the nonce of the current ovmADDRESS.
-     * @return _nonce Nonce of the current contract.
+     * @return Nonce of the current contract.
      */
     function ovmGETNONCE()
         override
         public
         returns (
-            uint256 _nonce
+            uint256
         )
     {
         return _getAccountNonce(ovmADDRESS());
@@ -526,8 +526,8 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
      * @param _gasLimit Amount of gas to be passed into this call.
      * @param _address Address of the contract to call.
      * @param _calldata Data to send along with the call.
-     * @return _success Whether or not the call returned (rather than reverted).
-     * @return _returndata Data returned by the call.
+     * @return Whether or not the call returned (rather than reverted).
+     * @return Data returned by the call.
      */
     function ovmCALL(
         uint256 _gasLimit,
@@ -538,8 +538,8 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         public
         fixedGasDiscount(100000)
         returns (
-            bool _success,
-            bytes memory _returndata
+            bool,
+            bytes memory
         )
     {
         // CALL updates the CALLER and ADDRESS.
@@ -560,8 +560,8 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
      * @param _gasLimit Amount of gas to be passed into this call.
      * @param _address Address of the contract to call.
      * @param _calldata Data to send along with the call.
-     * @return _success Whether or not the call returned (rather than reverted).
-     * @return _returndata Data returned by the call.
+     * @return Whether or not the call returned (rather than reverted).
+     * @return Data returned by the call.
      */
     function ovmSTATICCALL(
         uint256 _gasLimit,
@@ -572,8 +572,8 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         public
         fixedGasDiscount(80000)
         returns (
-            bool _success,
-            bytes memory _returndata
+            bool,
+            bytes memory
         )
     {
         // STATICCALL updates the CALLER, updates the ADDRESS, and runs in a static context.
@@ -595,8 +595,8 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
      * @param _gasLimit Amount of gas to be passed into this call.
      * @param _address Address of the contract to call.
      * @param _calldata Data to send along with the call.
-     * @return _success Whether or not the call returned (rather than reverted).
-     * @return _returndata Data returned by the call.
+     * @return Whether or not the call returned (rather than reverted).
+     * @return Data returned by the call.
      */
     function ovmDELEGATECALL(
         uint256 _gasLimit,
@@ -607,8 +607,8 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         public
         fixedGasDiscount(40000)
         returns (
-            bool _success,
-            bytes memory _returndata
+            bool,
+            bytes memory
         )
     {
         // DELEGATECALL does not change anything about the message context.
@@ -631,7 +631,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     /**
      * @notice Overrides SLOAD.
      * @param _key 32 byte key of the storage slot to load.
-     * @return _value 32 byte value of the requested storage slot.
+     * @return 32 byte value of the requested storage slot.
      */
     function ovmSLOAD(
         bytes32 _key
@@ -640,7 +640,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         public
         netGasCost(40000)
         returns (
-            bytes32 _value
+            bytes32
         )
     {
         // We always SLOAD from the storage of ADDRESS.
@@ -686,7 +686,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
      * @param _contract Address of the contract to copy code from.
      * @param _offset Offset in bytes from the start of contract code to copy beyond.
      * @param _length Total number of bytes to copy from the contract's code.
-     * @return _code Bytes of code copied from the requested contract.
+     * @return Bytes of code copied from the requested contract.
      */
     function ovmEXTCODECOPY(
         address _contract,
@@ -696,7 +696,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         override
         public
         returns (
-            bytes memory _code
+            bytes memory
         )
     {
         // `ovmEXTCODECOPY` is the only overridden opcode capable of producing exactly one byte of
@@ -716,7 +716,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     /**
      * @notice Overrides EXTCODESIZE.
      * @param _contract Address of the contract to query the size of.
-     * @return _EXTCODESIZE Size of the requested contract in bytes.
+     * @return Size of the requested contract in bytes.
      */
     function ovmEXTCODESIZE(
         address _contract
@@ -724,7 +724,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         override
         public
         returns (
-            uint256 _EXTCODESIZE
+            uint256
         )
     {
         return Lib_EthUtils.getCodeSize(
@@ -735,7 +735,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     /**
      * @notice Overrides EXTCODEHASH.
      * @param _contract Address of the contract to query the hash of.
-     * @return _EXTCODEHASH Hash of the requested contract.
+     * @return Hash of the requested contract.
      */
     function ovmEXTCODEHASH(
         address _contract
@@ -743,7 +743,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         override
         public
         returns (
-            bytes32 _EXTCODEHASH
+            bytes32
         )
     {
         return Lib_EthUtils.getCodeHash(
@@ -844,7 +844,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         view
         override
         returns (
-            uint256 _maxTransactionGasLimit
+            uint256
         )
     {
         return gasMeterConfig.maxTransactionGasLimit;
@@ -885,7 +885,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
      * Creates a new contract and associates it with some contract address.
      * @param _contractAddress Address to associate the created contract with.
      * @param _bytecode Bytecode to be used to create the contract.
-     * @return _created Final OVM contract address.
+     * @return Final OVM contract address.
      */
     function _createContract(
         address _contractAddress,
@@ -893,7 +893,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     )
         internal
         returns (
-            address _created
+            address
         )
     {
         // We always update the nonce of the creating account, even if the creation fails.
@@ -932,8 +932,8 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
      * @param _gasLimit Amount of gas to be passed into this call.
      * @param _contract OVM address to be called.
      * @param _calldata Data to send along with the call.
-     * @return _success Whether or not the call returned (rather than reverted).
-     * @return _returndata Data returned by the call.
+     * @return Whether or not the call returned (rather than reverted).
+     * @return Data returned by the call.
      */
     function _callContract(
         MessageContext memory _nextMessageContext,
@@ -943,8 +943,8 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     )
         internal
         returns (
-            bool _success,
-            bytes memory _returndata
+            bool,
+            bytes memory
         )
     {
         // We reserve addresses of the form 0xdeaddeaddead...NNNN for the container contracts in L2 geth.
@@ -976,8 +976,8 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
      * @param _gasLimit Amount of gas to be passed into this call.
      * @param _target Address of the contract to call.
      * @param _data Data to send along with the call.
-     * @return _success Whether or not the call returned (rather than reverted).
-     * @return _returndata Data returned by the call.
+     * @return Whether or not the call returned (rather than reverted).
+     * @return Data returned by the call.
      */
     function _handleExternalInteraction(
         MessageContext memory _nextMessageContext,
@@ -987,8 +987,8 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     )
         internal
         returns (
-            bool _success,
-            bytes memory _returndata
+            bool,
+            bytes memory
         )
     {
         // We need to switch over to our next message context for the duration of this call.
@@ -1079,14 +1079,14 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     /**
      * Checks whether an account exists within the OVM_StateManager.
      * @param _address Address of the account to check.
-     * @return _exists Whether or not the account exists.
+     * @return Whether or not the account exists.
      */
     function _hasAccount(
         address _address
     )
         internal
         returns (
-            bool _exists
+            bool
         )
     {
         _checkAccountLoad(_address);
@@ -1096,14 +1096,14 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     /**
      * Checks whether a known empty account exists within the OVM_StateManager.
      * @param _address Address of the account to check.
-     * @return _exists Whether or not the account empty exists.
+     * @return Whether or not the account empty exists.
      */
     function _hasEmptyAccount(
         address _address
     )
         internal
         returns (
-            bool _exists
+            bool
         )
     {
         _checkAccountLoad(_address);
@@ -1128,14 +1128,14 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     /**
      * Gets the nonce of an account.
      * @param _address Address of the account to access.
-     * @return _nonce Nonce of the account.
+     * @return Nonce of the account.
      */
     function _getAccountNonce(
         address _address
     )
         internal
         returns (
-            uint256 _nonce
+            uint256
         )
     {
         _checkAccountLoad(_address);
@@ -1145,14 +1145,14 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     /**
      * Retrieves the Ethereum address of an account.
      * @param _address Address of the account to access.
-     * @return _ethAddress Corresponding Ethereum address.
+     * @return Corresponding Ethereum address.
      */
     function _getAccountEthAddress(
         address _address
     )
         internal
         returns (
-            address _ethAddress
+            address
         )
     {
         _checkAccountLoad(_address);
@@ -1202,7 +1202,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
      * Retrieves the value of a storage slot.
      * @param _contract Address of the contract to query.
      * @param _key 32 byte key of the storage slot.
-     * @return _value 32 byte storage slot value.
+     * @return 32 byte storage slot value.
      */
     function _getContractStorage(
         address _contract,
@@ -1210,7 +1210,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     )
         internal
         returns (
-            bytes32 _value
+            bytes32
         )
     {
         _checkContractStorageLoad(_contract, _key);
@@ -1393,7 +1393,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
      * Simple encoding for revert data.
      * @param _flag Flag to revert with.
      * @param _data Additional user-provided revert data.
-     * @return _revertdata Encoded revert data.
+     * @return Encoded revert data.
      */
     function _encodeRevertData(
         RevertFlag _flag,
@@ -1402,7 +1402,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         internal
         view
         returns (
-            bytes memory _revertdata
+            bytes memory
         )
     {
         // Out of gas and create exceptions will fundamentally return no data, so simulating it shouldn't either.
@@ -1435,10 +1435,10 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     /**
      * Simple decoding for revert data.
      * @param _revertdata Revert data to decode.
-     * @return _flag Flag used to revert.
-     * @return _nuisanceGasLeft Amount of nuisance gas unused by the message.
-     * @return _ovmGasRefund Amount of gas refunded during the message.
-     * @return _data Additional user-provided revert data.
+     * @return Flag used to revert.
+     * @return Amount of nuisance gas unused by the message.
+     * @return Amount of gas refunded during the message.
+     * @return Additional user-provided revert data.
      */
     function _decodeRevertData(
         bytes memory _revertdata
@@ -1446,10 +1446,10 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         internal
         pure
         returns (
-            RevertFlag _flag,
-            uint256 _nuisanceGasLeft,
-            uint256 _ovmGasRefund,
-            bytes memory _data
+            RevertFlag,
+            uint256,
+            uint256,
+            bytes memory
         )
     {
         // A length of zero means the call ran out of gas, just return empty data.
@@ -1530,7 +1530,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
      *      is set to exactly equal the lesser of the gas limit or remaining gas. It's likely that
      *      this implementation is perfectly fine, but we may change this formula later.
      * @param _gasLimit Gas limit to compute from.
-     * @return _nuisanceGasLimit Computed nuisance gas limit.
+     * @return Computed nuisance gas limit.
      */
     function _getNuisanceGasLimit(
         uint256 _gasLimit
@@ -1538,7 +1538,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         internal
         view
         returns (
-            uint256 _nuisanceGasLimit
+            uint256
         )
     {
         return _gasLimit < gasleft() ? _gasLimit : gasleft();
@@ -1607,7 +1607,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
      * Validates the gas limit for a given transaction.
      * @param _gasLimit Gas limit provided by the transaction.
      * @param _queueOrigin Queue from which the transaction originated.
-     * @return _valid Whether or not the gas limit is valid.
+     * @return Whether or not the gas limit is valid.
      */
     function _isValidGasLimit(
         uint256 _gasLimit,
@@ -1615,7 +1615,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     )
         internal
         returns (
-            bool _valid
+            bool
         )
     {
         // Always have to be below the maximum gas limit.
@@ -1681,14 +1681,14 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     /**
      * Retrieves the value of a gas metadata key.
      * @param _key Gas metadata key to retrieve.
-     * @return _value Value stored at the given key.
+     * @return Value stored at the given key.
      */
     function _getGasMetadata(
         GasMetadataKey _key
     )
         internal
         returns (
-            uint256 _value
+            uint256
         )
     {
         return uint256(_getContractStorage(

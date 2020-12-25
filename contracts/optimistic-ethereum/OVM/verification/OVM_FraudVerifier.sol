@@ -47,7 +47,7 @@ contract OVM_FraudVerifier is Lib_AddressResolver, OVM_FraudContributor, iOVM_Fr
     /**
      * Retrieves the state transitioner for a given root.
      * @param _preStateRoot State root to query a transitioner for.
-     * @return _transitioner Corresponding state transitioner contract.
+     * @return Corresponding state transitioner contract.
      */
     function getStateTransitioner(
         bytes32 _preStateRoot,
@@ -57,7 +57,7 @@ contract OVM_FraudVerifier is Lib_AddressResolver, OVM_FraudContributor, iOVM_Fr
         public
         view
         returns (
-            iOVM_StateTransitioner _transitioner
+            iOVM_StateTransitioner
         )
     {
         return transitioners[keccak256(abi.encodePacked(_preStateRoot, _txHash))];
@@ -89,7 +89,10 @@ contract OVM_FraudVerifier is Lib_AddressResolver, OVM_FraudContributor, iOVM_Fr
     )
         override
         public
-        contributesToFraudProof(_preStateRoot, Lib_OVMCodec.hashTransaction(_transaction))
+        contributesToFraudProof(
+            _preStateRoot,
+            Lib_OVMCodec.hashTransaction(_transaction)
+        )
     {
         bytes32 _txHash = Lib_OVMCodec.hashTransaction(_transaction);
 
@@ -148,7 +151,10 @@ contract OVM_FraudVerifier is Lib_AddressResolver, OVM_FraudContributor, iOVM_Fr
     )
         override
         public
-        contributesToFraudProof(_preStateRoot, _txHash)
+        contributesToFraudProof(
+            _preStateRoot,
+            _txHash
+        )
     {
         iOVM_StateTransitioner transitioner = getStateTransitioner(_preStateRoot, _txHash);
         iOVM_StateCommitmentChain ovmStateCommitmentChain = iOVM_StateCommitmentChain(resolve("OVM_StateCommitmentChain"));
@@ -202,7 +208,7 @@ contract OVM_FraudVerifier is Lib_AddressResolver, OVM_FraudContributor, iOVM_Fr
     /**
      * Checks whether a transitioner already exists for a given pre-state root.
      * @param _preStateRoot Pre-state root to check.
-     * @return _exists Whether or not we already have a transitioner for the root.
+     * @return Whether or not we already have a transitioner for the root.
      */
     function _hasStateTransitioner(
         bytes32 _preStateRoot,
@@ -211,7 +217,7 @@ contract OVM_FraudVerifier is Lib_AddressResolver, OVM_FraudContributor, iOVM_Fr
         internal
         view
         returns (
-            bool _exists
+            bool
         )
     {
         return address(getStateTransitioner(_preStateRoot, _txHash)) != address(0);

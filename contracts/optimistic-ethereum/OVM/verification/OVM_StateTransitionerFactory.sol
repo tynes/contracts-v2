@@ -17,8 +17,16 @@ import { OVM_StateTransitioner } from "./OVM_StateTransitioner.sol";
  */
 contract OVM_StateTransitionerFactory is iOVM_StateTransitionerFactory, Lib_AddressResolver {
 
-    constructor( address _libAddressManager)
-        Lib_AddressResolver(_libAddressManager){}
+    /***************
+     * Constructor *
+     ***************/
+
+    constructor(
+        address _libAddressManager
+    )
+        Lib_AddressResolver(_libAddressManager)
+    {}
+
 
     /***************************************
      * Public Functions: Contract Creation *
@@ -30,7 +38,7 @@ contract OVM_StateTransitionerFactory is iOVM_StateTransitionerFactory, Lib_Addr
      * @param _stateTransitionIndex Index of the state transition being verified.
      * @param _preStateRoot State root before the transition was executed.
      * @param _transactionHash Hash of the executed transaction.
-     * @return _ovmStateTransitioner New OVM_StateTransitioner instance.
+     * @return New OVM_StateTransitioner instance.
      */
     function create(
         address _libAddressManager,
@@ -41,13 +49,14 @@ contract OVM_StateTransitionerFactory is iOVM_StateTransitionerFactory, Lib_Addr
         override
         public
         returns (
-            iOVM_StateTransitioner _ovmStateTransitioner
+            iOVM_StateTransitioner
         )
     {
         require(
             msg.sender == resolve("OVM_FraudVerifier"),
             "Create can only be done by the OVM_FraudVerifier."
         );
+
         return new OVM_StateTransitioner(
             _libAddressManager,
             _stateTransitionIndex,

@@ -19,7 +19,7 @@ contract TestLib_ECDSAUtils {
         public
         pure
         returns (
-            address _sender
+            address
         )
     {
         return Lib_ECDSAUtils.recover(

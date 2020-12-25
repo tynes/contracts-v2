@@ -168,7 +168,7 @@ contract OVM_DeployerWhitelist is iOVM_DeployerWhitelist {
     /**
      * Checks whether an address is allowed to deploy contracts.
      * @param _deployer Address to check.
-     * @return _allowed Whether or not the address can deploy contracts.
+     * @return Whether or not the address can deploy contracts.
      */
     function isDeployerAllowed(
         address _deployer
@@ -176,7 +176,7 @@ contract OVM_DeployerWhitelist is iOVM_DeployerWhitelist {
         override
         public
         returns (
-            bool _allowed
+            bool
         )
     {
         bool initialized = Lib_Bytes32Utils.toBool(

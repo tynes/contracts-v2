@@ -16,7 +16,9 @@ contract TestLib_BytesUtils {
     )
         public
         pure
-        returns (bytes memory)
+        returns (
+            bytes memory
+        )
     {
         return Lib_BytesUtils.concat(
             _preBytes,
@@ -31,7 +33,9 @@ contract TestLib_BytesUtils {
     )
         public
         pure
-        returns (bytes memory)
+        returns (
+            bytes memory
+        )
     {
         return Lib_BytesUtils.slice(
             _bytes,
@@ -45,7 +49,9 @@ contract TestLib_BytesUtils {
     )
         public
         pure
-        returns (bytes32)
+        returns (
+            bytes32
+        )
     {
         return Lib_BytesUtils.toBytes32(
             _bytes
@@ -57,7 +63,9 @@ contract TestLib_BytesUtils {
     )
         public
         pure
-        returns (uint256)
+        returns (
+            uint256
+        )
     {
         return Lib_BytesUtils.toUint256(
             _bytes
@@ -69,7 +77,9 @@ contract TestLib_BytesUtils {
     )
         public
         pure
-        returns (bytes memory)
+        returns (
+            bytes memory
+        )
     {
         return Lib_BytesUtils.toNibbles(
             _bytes
@@ -81,7 +91,9 @@ contract TestLib_BytesUtils {
     )
         public
         pure
-        returns (bytes memory)
+        returns (
+            bytes memory
+        )
     {
         return Lib_BytesUtils.fromNibbles(
             _bytes
@@ -94,7 +106,9 @@ contract TestLib_BytesUtils {
     )
         public
         pure
-        returns (bool)
+        returns (
+            bool
+        )
     {
         return Lib_BytesUtils.equal(
             _bytes,

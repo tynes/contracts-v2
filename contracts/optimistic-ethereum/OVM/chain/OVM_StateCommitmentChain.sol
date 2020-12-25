@@ -77,7 +77,7 @@ contract OVM_StateCommitmentChain is iOVM_StateCommitmentChain, Lib_AddressResol
         public
         view
         returns (
-            uint256 _totalElements
+            uint256
         )
     {
         (uint40 totalElements, ) = _getBatchExtraData();
@@ -92,7 +92,7 @@ contract OVM_StateCommitmentChain is iOVM_StateCommitmentChain, Lib_AddressResol
         public
         view
         returns (
-            uint256 _totalBatches
+            uint256
         )
     {
         return batches().length();
@@ -106,7 +106,7 @@ contract OVM_StateCommitmentChain is iOVM_StateCommitmentChain, Lib_AddressResol
         public
         view
         returns (
-            uint256 _lastSequencerTimestamp
+            uint256
         )
     {
         (, uint40 lastSequencerTimestamp) = _getBatchExtraData();
@@ -225,7 +225,7 @@ contract OVM_StateCommitmentChain is iOVM_StateCommitmentChain, Lib_AddressResol
         public
         view
         returns (
-            bool _inside
+            bool
         )
     {
         (uint256 timestamp,) = abi.decode(

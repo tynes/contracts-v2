@@ -116,14 +116,14 @@ contract OVM_StateTransitioner is Lib_AddressResolver, OVM_FraudContributor, iOV
 
     /**
      * Retrieves the state root before execution.
-     * @return _preStateRoot State root before execution.
+     * @return State root before execution.
      */
     function getPreStateRoot()
         override
         public
         view
         returns (
-            bytes32 _preStateRoot
+            bytes32
         )
     {
         return preStateRoot;
@@ -131,14 +131,14 @@ contract OVM_StateTransitioner is Lib_AddressResolver, OVM_FraudContributor, iOV
 
     /**
      * Retrieves the state root after execution.
-     * @return _postStateRoot State root after execution.
+     * @return State root after execution.
      */
     function getPostStateRoot()
         override
         public
         view
         returns (
-            bytes32 _postStateRoot
+            bytes32
         )
     {
         return postStateRoot;
@@ -146,14 +146,14 @@ contract OVM_StateTransitioner is Lib_AddressResolver, OVM_FraudContributor, iOV
 
     /**
      * Checks whether the transitioner is complete.
-     * @return _complete Whether or not the transition process is finished.
+     * @return Whether or not the transition process is finished.
      */
     function isComplete()
         override
         public
         view
         returns (
-            bool _complete
+            bool
         )
     {
         return phase == TransitionPhase.COMPLETE;

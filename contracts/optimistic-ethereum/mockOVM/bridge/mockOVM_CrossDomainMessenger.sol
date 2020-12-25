@@ -114,13 +114,13 @@ contract mockOVM_CrossDomainMessenger is iOVM_BaseCrossDomainMessenger {
 
     /**
      * Checks whether we have messages to relay.
-     * @param _exists Whether or not we have more messages to relay.
+     * @return _exists Whether or not we have more messages to relay.
      */
     function hasNextMessage()
         public
         view
         returns (
-            bool _exists
+            bool
         )
     {
         return fullReceivedMessages.length > lastRelayedMessage;

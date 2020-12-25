@@ -15,7 +15,7 @@ contract TestLib_Bytes32Utils {
         public
         pure
         returns (
-            bool _out
+            bool
         )
     {
         return Lib_Bytes32Utils.toBool(_in);
@@ -27,7 +27,7 @@ contract TestLib_Bytes32Utils {
         public
         pure
         returns (
-            bytes32 _out
+            bytes32
         )
     {
         return Lib_Bytes32Utils.fromBool(_in);
@@ -39,7 +39,7 @@ contract TestLib_Bytes32Utils {
         public
         pure
         returns (
-            address _out
+            address
         )
     {
         return Lib_Bytes32Utils.toAddress(_in);
@@ -51,7 +51,7 @@ contract TestLib_Bytes32Utils {
         public
         pure
         returns (
-            bytes32 _out
+            bytes32
         )
     {
         return Lib_Bytes32Utils.fromAddress(_in);

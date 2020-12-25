@@ -17,7 +17,7 @@ contract TestLib_OVMCodec {
         public
         pure
         returns (
-            Lib_OVMCodec.EIP155Transaction memory _decoded
+            Lib_OVMCodec.EIP155Transaction memory
         )
     {
         return Lib_OVMCodec.decodeEIP155Transaction(_transaction, _isEthSignedMessage);
@@ -29,7 +29,7 @@ contract TestLib_OVMCodec {
         public
         pure
         returns (
-            bytes memory _encoded
+            bytes memory
         )
     {
         return Lib_OVMCodec.encodeTransaction(_transaction);
@@ -41,7 +41,7 @@ contract TestLib_OVMCodec {
         public
         pure
         returns (
-            bytes32 _hash
+            bytes32
         )
     {
         return Lib_OVMCodec.hashTransaction(_transaction);
@@ -52,7 +52,7 @@ contract TestLib_OVMCodec {
     )
         public
         returns (
-            Lib_OVMCodec.EIP155Transaction memory _decompressed
+            Lib_OVMCodec.EIP155Transaction memory
         )
     {
         return Lib_OVMCodec.decompressEIP155Transaction(_transaction);

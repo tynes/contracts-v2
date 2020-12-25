@@ -10,19 +10,13 @@ import { iOVM_ERC20 } from "../../iOVM/precompiles/iOVM_ERC20.sol";
  * @dev L2 CONTRACT (COMPILED)
  */
 contract OVM_ETH is iOVM_ERC20 {
+    uint256 private constant MAX_UINT256 = 2**256 - 1;
+    mapping(address => uint256) public balances;
+    mapping(address => mapping(address => uint256)) public allowed;
 
-    uint256 constant private MAX_UINT256 = 2**256 - 1;
-    mapping (address => uint256) public balances;
-    mapping (address => mapping (address => uint256)) public allowed;
-    /*
-    NOTE:
-    The following variables are OPTIONAL vanities. One does not have to include them.
-    They allow one to customise the token contract & in no way influences the core functionality.
-    Some wallets/interfaces might not even bother to look at this information.
-    */
-    string public name;                   //fancy name: eg OVM Coin
-    uint8 public decimals;                //How many decimals to show.
-    string public symbol;                 //An identifier: eg OVM
+    string public name;
+    uint8 public decimals;
+    string public symbol;
     uint256 public override totalSupply;
 
     constructor(
@@ -31,14 +25,23 @@ contract OVM_ETH is iOVM_ERC20 {
         uint8 _decimalUnits,
         string memory _tokenSymbol
     ) public {
-        balances[msg.sender] = _initialAmount;               // Give the creator all initial tokens
-        totalSupply = _initialAmount;                        // Update total supply
-        name = _tokenName;                                   // Set the name for display purposes
-        decimals = _decimalUnits;                            // Amount of decimals for display purposes
-        symbol = _tokenSymbol;                               // Set the symbol for display purposes
+        balances[msg.sender] = _initialAmount;
+        totalSupply = _initialAmount;
+        name = _tokenName;
+        decimals = _decimalUnits;
+        symbol = _tokenSymbol;
     }
 
-    function transfer(address _to, uint256 _value) external override returns (bool success) {
+    function transfer(
+        address _to,
+        uint256 _value
+    )
+        override
+        external
+        returns (
+            bool
+        )
+    {
         require(balances[msg.sender] >= _value);
         balances[msg.sender] -= _value;
         balances[_to] += _value;
@@ -46,7 +49,17 @@ contract OVM_ETH is iOVM_ERC20 {
         return true;
     }
 
-    function transferFrom(address _from, address _to, uint256 _value) external override returns (bool success) {
+    function transferFrom(
+        address _from,
+        address _to,
+        uint256 _value
+    )
+        override
+        external
+        returns (
+            bool
+        )
+    {
         uint256 allowance = allowed[_from][msg.sender];
         require(balances[_from] >= _value && allowance >= _value);
         balances[_to] += _value;
@@ -58,17 +71,45 @@ contract OVM_ETH is iOVM_ERC20 {
         return true;
     }
 
-    function balanceOf(address _owner) external view override returns (uint256 balance) {
+    function balanceOf(
+        address _owner
+    )
+        override
+        external
+        view
+        returns (
+            uint256
+        )
+    {
         return balances[_owner];
     }
 
-    function approve(address _spender, uint256 _value) external override returns (bool success) {
+    function approve(
+        address _spender,
+        uint256 _value
+    )
+        override
+        external
+        returns (
+            bool
+        )
+    {
         allowed[msg.sender][_spender] = _value;
         emit Approval(msg.sender, _spender, _value);
         return true;
     }
 
-    function allowance(address _owner, address _spender) external view override returns (uint256 remaining) {
+    function allowance(
+        address _owner,
+        address _spender
+    )
+        override
+        external
+        view
+        returns (
+            uint256
+        )
+    {
         return allowed[_owner][_spender];
     }
 }

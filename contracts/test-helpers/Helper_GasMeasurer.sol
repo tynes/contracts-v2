@@ -7,7 +7,9 @@ contract Helper_GasMeasurer {
         bytes memory _data
     )
         public
-        returns ( uint256 )
+        returns (
+            uint256
+        )
     {
         uint256 gasBefore;
         uint256 gasAfter;

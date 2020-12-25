@@ -18,7 +18,7 @@ contract TestLib_EthUtils {
         public
         view
         returns (
-            bytes memory _code
+            bytes memory
         )
     {
         return Lib_EthUtils.getCode(
@@ -34,7 +34,7 @@ contract TestLib_EthUtils {
         public
         view
         returns (
-            bytes memory _code
+            bytes memory
         )
     {
         return Lib_EthUtils.getCode(
@@ -48,7 +48,7 @@ contract TestLib_EthUtils {
         public
         view
         returns (
-            uint256 _codeSize
+            uint256
         )
     {
         return Lib_EthUtils.getCodeSize(
@@ -62,7 +62,7 @@ contract TestLib_EthUtils {
         public
         view
         returns (
-            bytes32 _codeHash
+            bytes32
         )
     {
         return Lib_EthUtils.getCodeHash(
@@ -75,7 +75,7 @@ contract TestLib_EthUtils {
     )
         public
         returns (
-            address _created
+            address
         )
     {
         return Lib_EthUtils.createContract(
@@ -90,7 +90,7 @@ contract TestLib_EthUtils {
         public
         pure
         returns (
-            address _address
+            address
         )
     {
         return Lib_EthUtils.getAddressForCREATE(
@@ -106,7 +106,9 @@ contract TestLib_EthUtils {
     )
         public
         pure
-        returns (address _address)
+        returns (
+            address
+        )
     {
         return Lib_EthUtils.getAddressForCREATE2(
             _creator,

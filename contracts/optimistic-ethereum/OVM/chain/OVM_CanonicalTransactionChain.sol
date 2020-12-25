@@ -110,7 +110,7 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, Lib_Ad
         public
         view
         returns (
-            uint256 _totalElements
+            uint256
         )
     {
         (uint40 totalElements,,,) = _getBatchExtraData();
@@ -125,7 +125,7 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, Lib_Ad
         public
         view
         returns (
-            uint256 _totalBatches
+            uint256
         )
     {
         return batches().length();
@@ -156,7 +156,7 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, Lib_Ad
         public
         view
         returns (
-            Lib_OVMCodec.QueueElement memory _element
+            Lib_OVMCodec.QueueElement memory
         )
     {
         uint40 trueIndex = uint40(_index * 2);

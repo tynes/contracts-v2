@@ -56,13 +56,13 @@ interface iOVM_StateCommitmentChain {
 
     /**
      * Retrieves the timestamp of the last batch submitted by the sequencer.
-     * @return _lastSequencerTimestamp Last sequencer batch timestamp.
+     * @return Last sequencer batch timestamp.
      */
     function getLastSequencerTimestamp()
         external
         view
         returns (
-            uint256 _lastSequencerTimestamp
+            uint256
         );
 
     /**

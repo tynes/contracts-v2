@@ -119,7 +119,7 @@ interface iOVM_CanonicalTransactionChain {
     /**
      * Gets the queue element at a particular index.
      * @param _index Index of the queue element to access.
-     * @return _element Queue element at the given index.
+     * @return Queue element at the given index.
      */
     function getQueueElement(
         uint256 _index

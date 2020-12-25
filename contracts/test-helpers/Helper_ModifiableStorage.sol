@@ -43,7 +43,7 @@ contract Helper_ModifiableStorage {
         public
         view
         returns (
-            bytes32 _value
+            bytes32
         )
     {
         bytes32 value;

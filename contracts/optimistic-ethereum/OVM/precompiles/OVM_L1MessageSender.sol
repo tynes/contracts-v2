@@ -16,14 +16,14 @@ contract OVM_L1MessageSender is iOVM_L1MessageSender {
      ********************/
 
     /**
-     * @return _l1MessageSender L1 message sender address (msg.sender).
+     * @return L1 message sender address (msg.sender).
      */
     function getL1MessageSender()
         override
         public
         view
         returns (
-            address _l1MessageSender
+            address
         )
     {
         return iOVM_ExecutionManager(msg.sender).ovmL1TXORIGIN();

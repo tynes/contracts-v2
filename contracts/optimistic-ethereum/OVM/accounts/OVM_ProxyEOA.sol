@@ -69,7 +69,7 @@ contract OVM_ProxyEOA {
     function getImplementation()
         public
         returns (
-            address _implementation
+            address
         )
     {
         return address(uint160(uint256(

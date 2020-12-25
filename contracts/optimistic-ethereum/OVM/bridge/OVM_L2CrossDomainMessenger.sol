@@ -100,12 +100,12 @@ contract OVM_L2CrossDomainMessenger is iOVM_L2CrossDomainMessenger, OVM_BaseCros
 
     /**
      * Verifies that a received cross domain message is valid.
-     * @return _valid Whether or not the message is valid.
+     * @return Whether or not the message is valid.
      */
     function _verifyXDomainMessage()
         internal
         returns (
-            bool _valid
+            bool
         )
     {
         return (
