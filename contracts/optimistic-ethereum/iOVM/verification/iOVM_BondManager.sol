@@ -23,9 +23,9 @@ library Errors {
  */
 interface iOVM_BondManager {
 
-    /*******************
-     * Data Structures *
-     *******************/
+    /*********
+     * Enums *
+     *********/
 
     /// The lifecycle of a proposer's bond
     enum State {
@@ -36,6 +36,11 @@ interface iOVM_BondManager {
         // After a user has initiated a withdrawal
         WITHDRAWING
     }
+
+
+    /***********
+     * Structs *
+     ***********/
 
     /// A bond posted by a proposer
     struct Bond {

@@ -13,27 +13,21 @@ import { iOVM_StateManager } from "../../iOVM/execution/iOVM_StateManager.sol";
  */
 contract OVM_StateManager is iOVM_StateManager {
 
-    /**********************
-     * Contract Constants *
-     **********************/
+    /*************
+     * Constants *
+     *************/
 
     bytes32 constant internal EMPTY_ACCOUNT_STORAGE_ROOT = 0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421;
     bytes32 constant internal EMPTY_ACCOUNT_CODE_HASH =    0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470;
     bytes32 constant internal STORAGE_XOR_VALUE =          0xFEEDFACECAFEBEEFFEEDFACECAFEBEEFFEEDFACECAFEBEEFFEEDFACECAFEBEEF;
 
 
-    /*******************************************
-     * Contract Variables: Contract References *
-     *******************************************/
+    /*************
+     * Variables *
+     *************/
 
     address override public owner;
     address override public ovmExecutionManager;
-
-
-    /****************************************
-     * Contract Variables: Internal Storage *
-     ****************************************/
-
     mapping (address => Lib_OVMCodec.Account) internal accounts;
     mapping (address => mapping (bytes32 => bytes32)) internal contractStorage;
     mapping (address => mapping (bytes32 => bool)) internal verifiedContractStorage;
@@ -72,10 +66,10 @@ contract OVM_StateManager is iOVM_StateManager {
         _;
     }
 
+
     /***************************
      * Public Functions: Misc *
      ***************************/
-
 
     function isAuthenticated(
         address _address
@@ -89,6 +83,7 @@ contract OVM_StateManager is iOVM_StateManager {
     {
         return (_address == owner || _address == ovmExecutionManager);
     }
+
 
     /***************************
      * Public Functions: Setup *

@@ -11,11 +11,21 @@ import { Lib_AddressResolver } from "../../libraries/resolver/Lib_AddressResolve
  * @title mockOVM_BondManager
  */
 contract mockOVM_BondManager is iOVM_BondManager, Lib_AddressResolver {
+
+    /***************
+     * Constructor *
+     ***************/
+
     constructor(
         address _libAddressManager
     )
         Lib_AddressResolver(_libAddressManager)
     {}
+
+
+    /********************
+     * Public Functions *
+     ********************/
 
     function recordGasSpent(
         bytes32 _preStateRoot,

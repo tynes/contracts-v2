@@ -13,9 +13,9 @@ import { iOVM_BaseCrossDomainMessenger } from "./iOVM_BaseCrossDomainMessenger.s
  */
 interface iOVM_L1CrossDomainMessenger is iOVM_BaseCrossDomainMessenger {
 
-    /*******************
-     * Data Structures *
-     *******************/
+    /***********
+     * Structs *
+     ***********/
 
     struct L2MessageInclusionProof {
         bytes32 stateRoot;

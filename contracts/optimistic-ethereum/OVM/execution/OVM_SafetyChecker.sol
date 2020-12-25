@@ -12,6 +12,7 @@ contract OVM_SafetyChecker is iOVM_SafetyChecker {
     /********************
      * Public Functions *
      ********************/
+
     /**
      * Returns whether or not all of the provided bytecode is safe.
      * @param _bytecode The bytecode to safety check.

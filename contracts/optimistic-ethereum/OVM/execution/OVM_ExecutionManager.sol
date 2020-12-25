@@ -850,9 +850,10 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         return gasMeterConfig.maxTransactionGasLimit;
     }
 
-    /********************************************
-     * Public Functions: Deployment Witelisting *
-     ********************************************/
+
+    /***********************************************
+     * Internal Functions: Deployment Whitelisting *
+     ***********************************************/
 
     /**
      * Checks whether the given address is on the whitelst to ovmCREATE/ovmCREATE2, and reverts if not.
@@ -876,6 +877,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
             _revertWithFlag(RevertFlag.CREATOR_NOT_ALLOWED);
         }   
     }
+
 
     /********************************************
      * Internal Functions: Contract Interaction *

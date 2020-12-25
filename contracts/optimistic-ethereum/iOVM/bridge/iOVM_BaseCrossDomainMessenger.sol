@@ -21,9 +21,9 @@ interface iOVM_BaseCrossDomainMessenger {
     );
 
 
-    /**********************
-     * Contract Variables *
-     **********************/
+    /*************
+     * Variables *
+     *************/
 
     function xDomainMessageSender()
         external

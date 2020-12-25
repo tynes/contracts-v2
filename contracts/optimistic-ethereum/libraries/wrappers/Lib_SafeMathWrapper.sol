@@ -20,6 +20,11 @@ import { Lib_SafeExecutionManagerWrapper } from "./Lib_SafeExecutionManagerWrapp
  * class of bugs, so it's recommended to use it always.
  */
 library Lib_SafeMathWrapper {
+
+    /**********************
+     * Internal Functions *
+     **********************/
+
     /**
      * @dev Returns the addition of two unsigned integers, reverting on
      * overflow.

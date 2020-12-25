@@ -11,9 +11,9 @@ import { Lib_RLPWriter } from "../rlp/Lib_RLPWriter.sol";
  */
 library Lib_MerkleTrie {
 
-    /*******************
-     * Data Structures *
-     *******************/
+    /*********
+     * Enums *
+     *********/
 
     enum NodeType {
         BranchNode,
@@ -21,15 +21,20 @@ library Lib_MerkleTrie {
         LeafNode
     }
 
+    
+    /***********
+     * Structs *
+     ***********/
+
     struct TrieNode {
         bytes encoded;
         Lib_RLPReader.RLPItem[] decoded;
     }
 
 
-    /**********************
-     * Contract Constants *
-     **********************/
+    /*************
+     * Constants *
+     *************/
 
     // TREE_RADIX determines the number of elements per branch node.
     uint256 constant TREE_RADIX = 16;

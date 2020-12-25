@@ -10,9 +10,9 @@ import { Ownable } from "./Lib_Ownable.sol";
  */
 contract Lib_AddressManager is Ownable {
 
-    /*******************************************
-     * Contract Variables: Internal Accounting *
-     *******************************************/
+    /*************
+     * Variables *
+     *************/
 
     mapping (bytes32 => address) private addresses;
 

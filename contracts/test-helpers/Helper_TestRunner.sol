@@ -155,10 +155,10 @@ contract Helper_TestRunner {
         internal
         pure
         returns (
-            uint256 _flag,
-            uint256 _nuisanceGasLeft,
-            uint256 _ovmGasRefund,
-            bytes memory _data
+            uint256,
+            uint256,
+            uint256,
+            bytes memory
         )
     {
         if (_revertdata.length == 0) {

@@ -14,9 +14,9 @@ import { Lib_ReentrancyGuard } from "../../libraries/utils/Lib_ReentrancyGuard.s
  */
 abstract contract OVM_BaseCrossDomainMessenger is iOVM_BaseCrossDomainMessenger, Lib_ReentrancyGuard {
 
-    /**********************
-     * Contract Variables *
-     **********************/
+    /*************
+     * Variables *
+     *************/
 
     mapping (bytes32 => bool) public relayedMessages;
     mapping (bytes32 => bool) public successfulMessages;
@@ -24,11 +24,20 @@ abstract contract OVM_BaseCrossDomainMessenger is iOVM_BaseCrossDomainMessenger,
     uint256 public messageNonce;
     address override public xDomainMessageSender;
 
+    
+    /***************
+     * Constructor *
+     ***************/
+
+    constructor()
+        Lib_ReentrancyGuard()
+        internal
+    {}
+
+
     /********************
      * Public Functions *
      ********************/
-
-    constructor() Lib_ReentrancyGuard() internal {}
 
     /**
      * Sends a cross domain message to the target messenger.
@@ -58,6 +67,7 @@ abstract contract OVM_BaseCrossDomainMessenger is iOVM_BaseCrossDomainMessenger,
         _sendXDomainMessage(xDomainCalldata, _gasLimit);
         emit SentMessage(xDomainCalldata);
     }
+
 
     /**********************
      * Internal Functions *

@@ -10,9 +10,9 @@ import { Lib_AddressManager } from "./Lib_AddressManager.sol";
  */
 contract Lib_AddressResolver {
 
-    /*******************************************
-     * Contract Variables: Contract References *
-     *******************************************/
+    /*************
+     * Variables *
+     *************/
 
     Lib_AddressManager internal libAddressManager;
 

@@ -9,9 +9,9 @@ import { iOVM_StateManager } from "./iOVM_StateManager.sol";
  */
 interface iOVM_StateManagerFactory {
 
-    /***************************************
-     * Public Functions: Contract Creation *
-     ***************************************/
+    /********************
+     * Public Functions *
+     ********************/
 
     function create(
         address _owner

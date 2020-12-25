@@ -11,9 +11,9 @@ import { iOVM_L2ToL1MessagePasser } from "../../iOVM/precompiles/iOVM_L2ToL1Mess
  */
 contract OVM_L2ToL1MessagePasser is iOVM_L2ToL1MessagePasser {
 
-    /**********************
-     * Contract Variables *
-     **********************/
+    /*************
+     * Variables *
+     *************/
 
     mapping (bytes32 => bool) public sentMessages;
 

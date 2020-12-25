@@ -32,18 +32,6 @@ contract OVM_L1CrossDomainMessenger is iOVM_L1CrossDomainMessenger, OVM_BaseCros
         Lib_AddressResolver(address(0))
     {}
 
-    /**
-     * @param _libAddressManager Address of the Address Manager.
-     */
-    function initialize(
-        address _libAddressManager
-    )
-        public
-    {
-        require(address(libAddressManager) == address(0), "L1CrossDomainMessenger already intialized.");
-        libAddressManager = Lib_AddressManager(_libAddressManager);
-    }
-
 
     /**********************
      * Function Modifiers *
@@ -67,6 +55,18 @@ contract OVM_L1CrossDomainMessenger is iOVM_L1CrossDomainMessenger, OVM_BaseCros
     /********************
      * Public Functions *
      ********************/
+
+    /**
+     * @param _libAddressManager Address of the Address Manager.
+     */
+    function initialize(
+        address _libAddressManager
+    )
+        public
+    {
+        require(address(libAddressManager) == address(0), "L1CrossDomainMessenger already intialized.");
+        libAddressManager = Lib_AddressManager(_libAddressManager);
+    }
 
     /**
      * Relays a cross domain message to a contract.

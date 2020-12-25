@@ -14,9 +14,9 @@ import { Lib_SafeExecutionManagerWrapper } from "../../libraries/wrappers/Lib_Sa
  */
 contract OVM_DeployerWhitelist is iOVM_DeployerWhitelist {
 
-    /**********************
-     * Contract Constants *
-     **********************/
+    /*************
+     * Constants *
+     *************/
 
     bytes32 internal constant KEY_INITIALIZED =                0x0000000000000000000000000000000000000000000000000000000000000010;
     bytes32 internal constant KEY_OWNER =                      0x0000000000000000000000000000000000000000000000000000000000000011;

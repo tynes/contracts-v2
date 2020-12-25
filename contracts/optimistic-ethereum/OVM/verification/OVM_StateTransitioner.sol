@@ -27,9 +27,9 @@ import { OVM_FraudContributor } from "./OVM_FraudContributor.sol";
  */
 contract OVM_StateTransitioner is Lib_AddressResolver, OVM_FraudContributor, iOVM_StateTransitioner {
 
-    /*******************
-     * Data Structures *
-     *******************/
+    /*********
+     * Enums *
+     *********/
 
     enum TransitionPhase {
         PRE_EXECUTION,
@@ -38,17 +38,11 @@ contract OVM_StateTransitioner is Lib_AddressResolver, OVM_FraudContributor, iOV
     }
 
 
-    /*******************************************
-     * Contract Variables: Contract References *
-     *******************************************/
+    /*************
+     * Variables *
+     *************/
 
     iOVM_StateManager public ovmStateManager;
-
-
-    /*******************************************
-     * Contract Variables: Internal Accounting *
-     *******************************************/
-
     bytes32 internal preStateRoot;
     bytes32 internal postStateRoot;
     TransitionPhase public phase;

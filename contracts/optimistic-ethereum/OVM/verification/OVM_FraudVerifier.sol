@@ -19,9 +19,9 @@ import { OVM_FraudContributor } from "./OVM_FraudContributor.sol";
 
 contract OVM_FraudVerifier is Lib_AddressResolver, OVM_FraudContributor, iOVM_FraudVerifier {
 
-    /*******************************************
-     * Contract Variables: Internal Accounting *
-     *******************************************/
+    /*************
+     * Variables *
+     *************/
 
     mapping (bytes32 => iOVM_StateTransitioner) internal transitioners;
 
@@ -40,9 +40,9 @@ contract OVM_FraudVerifier is Lib_AddressResolver, OVM_FraudContributor, iOVM_Fr
     {}
 
 
-    /***************************************
-     * Public Functions: Transition Status *
-     ***************************************/
+    /********************
+     * Public Functions *
+     ********************/
 
     /**
      * Retrieves the state transitioner for a given root.
@@ -62,11 +62,6 @@ contract OVM_FraudVerifier is Lib_AddressResolver, OVM_FraudContributor, iOVM_Fr
     {
         return transitioners[keccak256(abi.encodePacked(_preStateRoot, _txHash))];
     }
-
-
-    /****************************************
-     * Public Functions: Fraud Verification *
-     ****************************************/
 
     /**
      * Begins the fraud verification process.

@@ -24,9 +24,9 @@ contract mockOVM_CrossDomainMessenger is iOVM_BaseCrossDomainMessenger {
     }
 
 
-    /**********************
-     * Contract Variables *
-     **********************/
+    /*************
+     * Variables *
+     *************/
 
     ReceivedMessage[] internal fullReceivedMessages;
     address internal targetMessengerAddress;

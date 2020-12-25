@@ -28,9 +28,9 @@ contract OVM_StateTransitionerFactory is iOVM_StateTransitionerFactory, Lib_Addr
     {}
 
 
-    /***************************************
-     * Public Functions: Contract Creation *
-     ***************************************/
+    /********************
+     * Public Functions *
+     ********************/
 
     /**
      * Creates a new OVM_StateTransitioner

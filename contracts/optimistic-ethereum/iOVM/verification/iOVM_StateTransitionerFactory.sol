@@ -9,9 +9,9 @@ import { iOVM_StateTransitioner } from "./iOVM_StateTransitioner.sol";
  */
 interface iOVM_StateTransitionerFactory {
 
-    /***************************************
-     * Public Functions: Contract Creation *
-     ***************************************/
+    /********************
+     * Public Functions *
+     ********************/
 
     function create(
         address _proxyManager,

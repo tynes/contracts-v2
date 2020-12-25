@@ -10,9 +10,9 @@ import { Lib_OVMCodec } from "../../libraries/codec/Lib_OVMCodec.sol";
  */
 interface iOVM_StateManager {
 
-    /*******************
-     * Data Structures *
-     *******************/
+    /*********
+     * Enums *
+     *********/
 
     enum ItemState {
         ITEM_UNTOUCHED,
@@ -21,9 +21,10 @@ interface iOVM_StateManager {
         ITEM_COMMITTED
     }
 
-    /***************************
-     * Public Functions: Misc *
-     ***************************/
+
+    /************************************
+     * Public Functions: Authentication *
+     ************************************/
 
     function isAuthenticated(
         address _address
@@ -33,10 +34,6 @@ interface iOVM_StateManager {
         returns (
             bool
         );
-
-    /***************************
-     * Public Functions: Setup *
-     ***************************/
 
     function owner()
         external

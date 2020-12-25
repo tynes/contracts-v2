@@ -10,27 +10,51 @@ import { iOVM_ERC20 } from "../../iOVM/precompiles/iOVM_ERC20.sol";
  * @dev L2 CONTRACT (COMPILED)
  */
 contract OVM_ETH is iOVM_ERC20 {
-    uint256 private constant MAX_UINT256 = 2**256 - 1;
-    mapping(address => uint256) public balances;
-    mapping(address => mapping(address => uint256)) public allowed;
 
+    /*************
+     * Constants *
+     *************/
+
+    uint256 private constant MAX_UINT256 = 2**256 - 1;
+
+
+    /*************
+     * Variables *
+     *************/
+
+    mapping (address => uint256) public balances;
+    mapping (address => mapping (address => uint256)) public allowed;
+
+    // All technically optional w/r/t ERC20 spec.
     string public name;
     uint8 public decimals;
     string public symbol;
     uint256 public override totalSupply;
+
+
+    /***************
+     * Constructor *
+     ***************/
 
     constructor(
         uint256 _initialAmount,
         string memory _tokenName,
         uint8 _decimalUnits,
         string memory _tokenSymbol
-    ) public {
+    )
+        public
+    {
         balances[msg.sender] = _initialAmount;
         totalSupply = _initialAmount;
         name = _tokenName;
         decimals = _decimalUnits;
         symbol = _tokenSymbol;
     }
+
+
+    /********************
+     * Public Functions *
+     ********************/
 
     function transfer(
         address _to,

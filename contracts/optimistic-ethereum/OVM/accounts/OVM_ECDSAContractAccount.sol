@@ -16,8 +16,13 @@ import { Lib_SafeMathWrapper } from "../../libraries/wrappers/Lib_SafeMathWrappe
  */
 contract OVM_ECDSAContractAccount is iOVM_ECDSAContractAccount {
 
+    /*************
+     * Constants *
+     *************/
+
     address constant ETH_ERC20_ADDRESS = 0x4200000000000000000000000000000000000006;
     uint256 constant EXECUTION_VALIDATION_GAS_OVERHEAD = 25000; // TODO: should be the amount sufficient to cover the gas costs of all of the transactions up to and including the CALL/CREATE which forms the entrypoint of the transaction.
+
 
     /********************
      * Public Functions *

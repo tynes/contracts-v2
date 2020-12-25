@@ -28,17 +28,12 @@ contract OVM_BondManager is iOVM_BondManager, Lib_AddressResolver {
     uint256 public constant requiredCollateral = 1 ether;
 
 
-    /*******************************************
-     * Contract Variables: Contract References *
-     *******************************************/
+    /*************
+     * Variables *
+     *************/
 
     /// The bond token
     iOVM_ERC20 immutable public token;
-
-
-    /********************************************
-     * Contract Variables: Internal Accounting  *
-     *******************************************/
 
     /// The bonds posted by each proposer
     mapping(address => Bond) public bonds;

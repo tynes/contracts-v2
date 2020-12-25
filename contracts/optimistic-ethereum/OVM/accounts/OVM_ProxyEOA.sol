@@ -11,7 +11,12 @@ import { Lib_SafeExecutionManagerWrapper } from "../../libraries/wrappers/Lib_Sa
  */
 contract OVM_ProxyEOA {
 
+    /*************
+     * Constants *
+     *************/
+
     bytes32 constant IMPLEMENTATION_KEY = 0xdeaddeaddeaddeaddeaddeaddeaddeaddeaddeaddeaddeaddeaddeaddeaddead;
+
 
     /***************
      * Constructor *
@@ -78,6 +83,7 @@ contract OVM_ProxyEOA {
             )
         )));
     }
+
 
     /**********************
      * Internal Functions *
