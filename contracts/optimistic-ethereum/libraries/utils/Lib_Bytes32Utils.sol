@@ -16,7 +16,7 @@ library Lib_Bytes32Utils {
         internal
         pure
         returns (
-            bool _out
+            bool
         )
     {
         return _in != 0;
@@ -28,7 +28,7 @@ library Lib_Bytes32Utils {
         internal
         pure
         returns (
-            bytes32 _out
+            bytes32
         )
     {
         return bytes32(uint256(_in ? 1 : 0));
@@ -40,7 +40,7 @@ library Lib_Bytes32Utils {
         internal
         pure
         returns (
-            address _out
+            address
         )
     {
         return address(uint160(uint256(_in)));
@@ -52,7 +52,7 @@ library Lib_Bytes32Utils {
         internal
         pure
         returns (
-            bytes32 _out
+            bytes32
         )
     {
         return bytes32(uint256(_in));
@@ -64,7 +64,7 @@ library Lib_Bytes32Utils {
         internal
         pure
         returns (
-            bytes memory _out
+            bytes memory
         )
     {
         bytes memory out;

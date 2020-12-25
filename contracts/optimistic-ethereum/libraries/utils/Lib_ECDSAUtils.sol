@@ -17,7 +17,7 @@ library Lib_ECDSAUtils {
      * @param _v Signature `v` parameter.
      * @param _r Signature `r` parameter.
      * @param _s Signature `s` parameter.
-     * @return _sender Signer address.
+     * @return Signer address.
      */
     function recover(
         bytes memory _message,
@@ -29,7 +29,7 @@ library Lib_ECDSAUtils {
         internal
         pure
         returns (
-            address _sender
+            address
         )
     {
         bytes32 messageHash = getMessageHash(_message, _isEthSignedMessage);
@@ -48,7 +48,10 @@ library Lib_ECDSAUtils {
     )
         internal
         pure
-        returns (bytes32) {
+        returns (
+            bytes32
+        )
+    {
         if (_isEthSignedMessage) {
             return getEthSignedMessageHash(_message);
         }
@@ -63,7 +66,7 @@ library Lib_ECDSAUtils {
     /**
      * Gets the native message hash (simple keccak256) for a message.
      * @param _message Message to hash.
-     * @return _messageHash Native message hash.
+     * @return Native message hash.
      */
     function getNativeMessageHash(
         bytes memory _message
@@ -71,7 +74,7 @@ library Lib_ECDSAUtils {
         private
         pure
         returns (
-            bytes32 _messageHash
+            bytes32
         )
     {
         return keccak256(_message);
@@ -80,7 +83,7 @@ library Lib_ECDSAUtils {
     /**
      * Gets the hash of a message with the `Ethereum Signed Message` prefix.
      * @param _message Message to hash.
-     * @return _messageHash Prefixed message hash.
+     * @return Prefixed message hash.
      */
     function getEthSignedMessageHash(
         bytes memory _message
@@ -88,7 +91,7 @@ library Lib_ECDSAUtils {
         private
         pure
         returns (
-            bytes32 _messageHash
+            bytes32
         )
     {
         bytes memory prefix = "\x19Ethereum Signed Message:\n32";

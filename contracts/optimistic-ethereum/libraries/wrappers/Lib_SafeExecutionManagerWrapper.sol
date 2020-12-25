@@ -15,8 +15,8 @@ library Lib_SafeExecutionManagerWrapper {
      * @param _gasLimit Gas limit for the call.
      * @param _target Address to call.
      * @param _calldata Data to send to the call.
-     * @return _success Whether or not the call reverted.
-     * @return _returndata Data returned by the call.
+     * @return Whether or not the call reverted.
+     * @return Data returned by the call.
      */
     function safeCALL(
         uint256 _gasLimit,
@@ -25,8 +25,8 @@ library Lib_SafeExecutionManagerWrapper {
     )
         internal
         returns (
-            bool _success,
-            bytes memory _returndata
+            bool,
+            bytes memory
         )
     {
         bytes memory returndata = _safeExecutionManagerInteraction(
@@ -46,8 +46,8 @@ library Lib_SafeExecutionManagerWrapper {
      * @param _gasLimit Gas limit for the call.
      * @param _target Address to call.
      * @param _calldata Data to send to the call.
-     * @return _success Whether or not the call reverted.
-     * @return _returndata Data returned by the call.
+     * @return Whether or not the call reverted.
+     * @return Data returned by the call.
      */
     function safeDELEGATECALL(
         uint256 _gasLimit,
@@ -56,8 +56,8 @@ library Lib_SafeExecutionManagerWrapper {
     )
         internal
         returns (
-            bool _success,
-            bytes memory _returndata
+            bool,
+            bytes memory
         )
     {
         bytes memory returndata = _safeExecutionManagerInteraction(
@@ -76,7 +76,7 @@ library Lib_SafeExecutionManagerWrapper {
      * Performs an ovmCREATE and the necessary safety checks.
      * @param _gasLimit Gas limit for the creation.
      * @param _bytecode Code for the new contract.
-     * @return _contract Address of the created contract.
+     * @return Address of the created contract.
      */
     function safeCREATE(
         uint256 _gasLimit,
@@ -84,7 +84,7 @@ library Lib_SafeExecutionManagerWrapper {
     )
         internal
         returns (
-            address _contract
+            address
         )
     {
         bytes memory returndata = _safeExecutionManagerInteraction(
@@ -101,14 +101,14 @@ library Lib_SafeExecutionManagerWrapper {
     /**
      * Performs an ovmEXTCODESIZE and the necessary safety checks.
      * @param _contract Address of the contract to query the size of.
-     * @return _EXTCODESIZE Size of the requested contract in bytes.
+     * @return Size of the requested contract in bytes.
      */
     function safeEXTCODESIZE(
         address _contract
     )
         internal
         returns (
-            uint256 _EXTCODESIZE
+            uint256
         )
     {
         bytes memory returndata = _safeExecutionManagerInteraction(
@@ -123,12 +123,12 @@ library Lib_SafeExecutionManagerWrapper {
 
     /**
      * Performs a safe ovmCHAINID call.
-     * @return _CHAINID Result of calling ovmCHAINID.
+     * @return Result of calling ovmCHAINID.
      */
     function safeCHAINID()
         internal
         returns (
-            uint256 _CHAINID
+            uint256
         )
     {
         bytes memory returndata = _safeExecutionManagerInteraction(
@@ -142,12 +142,12 @@ library Lib_SafeExecutionManagerWrapper {
 
     /**
      * Performs a safe ovmCALLER call.
-     * @return _CALLER Result of calling ovmCALLER.
+     * @return Result of calling ovmCALLER.
      */
     function safeCALLER()
         internal
         returns (
-            address _CALLER
+            address
         )
     {
         bytes memory returndata = _safeExecutionManagerInteraction(
@@ -161,12 +161,12 @@ library Lib_SafeExecutionManagerWrapper {
 
     /**
      * Performs a safe ovmADDRESS call.
-     * @return _ADDRESS Result of calling ovmADDRESS.
+     * @return Result of calling ovmADDRESS.
      */
     function safeADDRESS()
         internal
         returns (
-            address _ADDRESS
+            address
         )
     {
         bytes memory returndata = _safeExecutionManagerInteraction(
@@ -180,12 +180,12 @@ library Lib_SafeExecutionManagerWrapper {
 
     /**
      * Performs a safe ovmGETNONCE call.
-     * @return _nonce Result of calling ovmGETNONCE.
+     * @return Result of calling ovmGETNONCE.
      */
     function safeGETNONCE()
         internal
         returns (
-            uint256 _nonce
+            uint256
         )
     {
         bytes memory returndata = _safeExecutionManagerInteraction(
@@ -322,7 +322,7 @@ library Lib_SafeExecutionManagerWrapper {
      * Performs an ovm interaction and the necessary safety checks.
      * @param _gasLimit Gas limit for the interaction.
      * @param _calldata Data to send to the OVM_ExecutionManager (encoded with sighash).
-     * @return _returndata Data sent back by the OVM_ExecutionManager.
+     * @return Data sent back by the OVM_ExecutionManager.
      */
     function _safeExecutionManagerInteraction(
         uint256 _gasLimit,
@@ -330,7 +330,7 @@ library Lib_SafeExecutionManagerWrapper {
     )
         private
         returns (
-            bytes memory _returndata
+            bytes memory
         )
     {
         address ovmExecutionManager = msg.sender;
@@ -357,7 +357,7 @@ library Lib_SafeExecutionManagerWrapper {
     )
         private
         returns (
-            bytes memory _returndata
+            bytes memory
         )
     {
         return _safeExecutionManagerInteraction(

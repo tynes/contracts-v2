@@ -7,9 +7,6 @@ import { Lib_SafeExecutionManagerWrapper } from "./Lib_SafeExecutionManagerWrapp
 
 /**
  * @title Lib_SafeMathWrapper
- */
-
-/**
  * @dev Wrappers over Solidity's arithmetic operations with added overflow
  * checks.
  *
@@ -22,7 +19,6 @@ import { Lib_SafeExecutionManagerWrapper } from "./Lib_SafeExecutionManagerWrapp
  * Using this library instead of the unchecked operations eliminates an entire
  * class of bugs, so it's recommended to use it always.
  */
-
 library Lib_SafeMathWrapper {
     /**
      * @dev Returns the addition of two unsigned integers, reverting on
@@ -34,9 +30,21 @@ library Lib_SafeMathWrapper {
      *
      * - Addition cannot overflow.
      */
-    function add(uint256 a, uint256 b) internal returns (uint256) {
-        uint256 c = a + b;
-        Lib_SafeExecutionManagerWrapper.safeREQUIRE(c >= a, "Lib_SafeMathWrapper: addition overflow");
+    function add(
+        uint256 _a,
+        uint256 _b
+    )
+        internal
+        returns (
+            uint256
+        )
+    {
+        uint256 c = _a + _b;
+
+        Lib_SafeExecutionManagerWrapper.safeREQUIRE(
+            c >= _a,
+            "Lib_SafeMathWrapper: addition overflow"
+        );
 
         return c;
     }
@@ -51,8 +59,16 @@ library Lib_SafeMathWrapper {
      *
      * - Subtraction cannot overflow.
      */
-    function sub(uint256 a, uint256 b) internal returns (uint256) {
-        return sub(a, b, "Lib_SafeMathWrapper: subtraction overflow");
+    function sub(
+        uint256 _a,
+        uint256 _b
+    )
+        internal
+        returns (
+            uint256
+        )
+    {
+        return sub(_a, _b, "Lib_SafeMathWrapper: subtraction overflow");
     }
 
     /**
@@ -65,9 +81,18 @@ library Lib_SafeMathWrapper {
      *
      * - Subtraction cannot overflow.
      */
-    function sub(uint256 a, uint256 b, string memory errorMessage) internal returns (uint256) {
-        Lib_SafeExecutionManagerWrapper.safeREQUIRE(b <= a, errorMessage);
-        uint256 c = a - b;
+    function sub(
+        uint256 _a,
+        uint256 _b,
+        string memory _errorMessage
+    )
+        internal
+        returns (
+            uint256
+        )
+    {
+        Lib_SafeExecutionManagerWrapper.safeREQUIRE(_b <= _a, _errorMessage);
+        uint256 c = _a - _b;
 
         return c;
     }
@@ -82,16 +107,28 @@ library Lib_SafeMathWrapper {
      *
      * - Multiplication cannot overflow.
      */
-    function mul(uint256 a, uint256 b) internal returns (uint256) {
+    function mul(
+        uint256 _a,
+        uint256 _b
+    )
+        internal
+        returns (
+            uint256
+        )
+    {
         // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
         // benefit is lost if 'b' is also tested.
         // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522
-        if (a == 0) {
+        if (_a == 0) {
             return 0;
         }
 
-        uint256 c = a * b;
-        Lib_SafeExecutionManagerWrapper.safeREQUIRE(c / a == b, "Lib_SafeMathWrapper: multiplication overflow");
+        uint256 c = _a * _b;
+
+        Lib_SafeExecutionManagerWrapper.safeREQUIRE(
+            c / _a == _b,
+            "Lib_SafeMathWrapper: multiplication overflow"
+        );
 
         return c;
     }
@@ -108,8 +145,16 @@ library Lib_SafeMathWrapper {
      *
      * - The divisor cannot be zero.
      */
-    function div(uint256 a, uint256 b) internal returns (uint256) {
-        return div(a, b, "Lib_SafeMathWrapper: division by zero");
+    function div(
+        uint256 _a,
+        uint256 _b
+    )
+        internal
+        returns (
+            uint256
+        )
+    {
+        return div(_a, _b, "Lib_SafeMathWrapper: division by zero");
     }
 
     /**
@@ -124,9 +169,22 @@ library Lib_SafeMathWrapper {
      *
      * - The divisor cannot be zero.
      */
-    function div(uint256 a, uint256 b, string memory errorMessage) internal returns (uint256) {
-        Lib_SafeExecutionManagerWrapper.safeREQUIRE(b > 0, errorMessage);
-        uint256 c = a / b;
+    function div(
+        uint256 _a,
+        uint256 _b,
+        string memory _errorMessage
+    )
+        internal
+        returns (
+            uint256
+        )
+    {
+        Lib_SafeExecutionManagerWrapper.safeREQUIRE(
+            _b > 0,
+            _errorMessage
+        );
+
+        uint256 c = _a / _b;
         // assert(a == b * c + a % b); // There is no case in which this doesn't hold
 
         return c;
@@ -144,8 +202,16 @@ library Lib_SafeMathWrapper {
      *
      * - The divisor cannot be zero.
      */
-    function mod(uint256 a, uint256 b) internal returns (uint256) {
-        return mod(a, b, "Lib_SafeMathWrapper: modulo by zero");
+    function mod(
+        uint256 _a,
+        uint256 _b
+    )
+        internal
+        returns (
+            uint256
+        )
+    {
+        return mod(_a, _b, "Lib_SafeMathWrapper: modulo by zero");
     }
 
     /**
@@ -160,8 +226,17 @@ library Lib_SafeMathWrapper {
      *
      * - The divisor cannot be zero.
      */
-    function mod(uint256 a, uint256 b, string memory errorMessage) internal returns (uint256) {
-        Lib_SafeExecutionManagerWrapper.safeREQUIRE(b != 0, errorMessage);
-        return a % b;
+    function mod(
+        uint256 _a,
+        uint256 _b,
+        string memory _errorMessage
+    )
+        internal
+        returns (
+            uint256
+        )
+    {
+        Lib_SafeExecutionManagerWrapper.safeREQUIRE(_b != 0, _errorMessage);
+        return _a % _b;
     }
 }

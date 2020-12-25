@@ -41,7 +41,7 @@ contract Lib_AddressResolver {
         public
         view
         returns (
-            address _contract
+            address
         )
     {
         return libAddressManager.getAddress(_name);

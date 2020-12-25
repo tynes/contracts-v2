@@ -18,7 +18,7 @@ library Lib_RLPWriter {
     /**
      * RLP encodes a byte string.
      * @param _in The byte string to encode.
-     * @return _out The RLP encoded string in bytes.
+     * @return The RLP encoded string in bytes.
      */
     function writeBytes(
         bytes memory _in
@@ -26,7 +26,7 @@ library Lib_RLPWriter {
         internal
         pure
         returns (
-            bytes memory _out
+            bytes memory
         )
     {
         bytes memory encoded;
@@ -43,7 +43,7 @@ library Lib_RLPWriter {
     /**
      * RLP encodes a list of RLP encoded byte byte strings.
      * @param _in The list of RLP encoded byte strings.
-     * @return _out The RLP encoded list of items in bytes.
+     * @return The RLP encoded list of items in bytes.
      */
     function writeList(
         bytes[] memory _in
@@ -51,7 +51,7 @@ library Lib_RLPWriter {
         internal
         pure
         returns (
-            bytes memory _out
+            bytes memory
         )
     {
         bytes memory list = _flatten(_in);
@@ -61,7 +61,7 @@ library Lib_RLPWriter {
     /**
      * RLP encodes a string.
      * @param _in The string to encode.
-     * @return _out The RLP encoded string in bytes.
+     * @return The RLP encoded string in bytes.
      */
     function writeString(
         string memory _in
@@ -69,7 +69,7 @@ library Lib_RLPWriter {
         internal
         pure
         returns (
-            bytes memory _out
+            bytes memory
         )
     {
         return writeBytes(bytes(_in));
@@ -78,7 +78,7 @@ library Lib_RLPWriter {
     /**
      * RLP encodes an address.
      * @param _in The address to encode.
-     * @return _out The RLP encoded address in bytes.
+     * @return The RLP encoded address in bytes.
      */
     function writeAddress(
         address _in
@@ -86,7 +86,7 @@ library Lib_RLPWriter {
         internal
         pure
         returns (
-            bytes memory _out
+            bytes memory
         )
     {
         return writeBytes(abi.encodePacked(_in));
@@ -95,7 +95,7 @@ library Lib_RLPWriter {
     /**
      * RLP encodes a uint.
      * @param _in The uint256 to encode.
-     * @return _out The RLP encoded uint256 in bytes.
+     * @return The RLP encoded uint256 in bytes.
      */
     function writeUint(
         uint256 _in
@@ -103,7 +103,7 @@ library Lib_RLPWriter {
         internal
         pure
         returns (
-            bytes memory _out
+            bytes memory
         )
     {
         return writeBytes(_toBinary(_in));
@@ -112,7 +112,7 @@ library Lib_RLPWriter {
     /**
      * RLP encodes a bool.
      * @param _in The bool to encode.
-     * @return _out The RLP encoded bool in bytes.
+     * @return The RLP encoded bool in bytes.
      */
     function writeBool(
         bool _in
@@ -120,7 +120,7 @@ library Lib_RLPWriter {
         internal
         pure
         returns (
-            bytes memory _out
+            bytes memory
         )
     {
         bytes memory encoded = new bytes(1);
@@ -137,7 +137,7 @@ library Lib_RLPWriter {
      * Encode the first byte, followed by the `len` in binary form if `length` is more than 55.
      * @param _len The length of the string or the payload.
      * @param _offset 128 if item is string, 192 if item is list.
-     * @return _encoded RLP encoded bytes.
+     * @return RLP encoded bytes.
      */
     function _writeLength(
         uint256 _len,
@@ -146,7 +146,7 @@ library Lib_RLPWriter {
         private
         pure
         returns (
-            bytes memory _encoded
+            bytes memory
         )
     {
         bytes memory encoded;
@@ -176,7 +176,7 @@ library Lib_RLPWriter {
      * Encode integer in big endian binary form with no leading zeroes.
      * @notice TODO: This should be optimized with assembly to save gas costs.
      * @param _x The integer to encode.
-     * @return _binary RLP encoded bytes.
+     * @return RLP encoded bytes.
      */
     function _toBinary(
         uint256 _x
@@ -184,7 +184,7 @@ library Lib_RLPWriter {
         private
         pure
         returns (
-            bytes memory _binary
+            bytes memory
         )
     {
         bytes memory b = abi.encodePacked(_x);
@@ -243,7 +243,7 @@ library Lib_RLPWriter {
      * Flattens a list of byte strings into one byte string.
      * @notice From: https://github.com/sammayo/solidity-rlp-encoder/blob/master/RLPEncode.sol.
      * @param _list List of byte strings to flatten.
-     * @return _flattened The flattened byte string.
+     * @return The flattened byte string.
      */
     function _flatten(
         bytes[] memory _list
@@ -251,7 +251,7 @@ library Lib_RLPWriter {
         private
         pure
         returns (
-            bytes memory _flattened
+            bytes memory
         )
     {
         if (_list.length == 0) {

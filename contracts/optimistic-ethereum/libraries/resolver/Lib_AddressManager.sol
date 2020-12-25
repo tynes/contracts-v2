@@ -36,7 +36,9 @@ contract Lib_AddressManager is Ownable {
     )
         public
         view
-        returns (address)
+        returns (
+            address
+        )
     {
         return addresses[_getNameHash(_name)];
     }
@@ -52,7 +54,7 @@ contract Lib_AddressManager is Ownable {
         internal
         pure
         returns (
-            bytes32 _hash
+            bytes32
         )
     {
         return keccak256(abi.encodePacked(_name));
