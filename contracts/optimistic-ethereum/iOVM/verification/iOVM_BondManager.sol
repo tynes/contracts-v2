@@ -1,11 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >0.5.0 <0.8.0;
 
-interface ERC20 {
-    function transfer(address, uint256) external returns (bool);
-    function transferFrom(address, address, uint256) external returns (bool);
-}
-
 /// All the errors which may be encountered on the bond manager
 library Errors {
     string constant ERC20_ERR = "BondManager: Could not post bond";
@@ -79,30 +74,46 @@ interface iOVM_BondManager {
         bytes32 _txHash,
         address _who,
         uint256 _gasSpent
-    ) external;
+    )
+        external;
 
     function finalize(
         bytes32 _preStateRoot,
         address _publisher,
         uint256 _timestamp
-    ) external;
+    )
+        external;
 
-    function deposit() external;
+    function deposit()
+        external;
 
-    function startWithdrawal() external;
+    function startWithdrawal()
+        external;
 
-    function finalizeWithdrawal() external;
+    function finalizeWithdrawal()
+        external;
 
     function claim(
         address _who
-    ) external;
+    )
+        external;
 
     function isCollateralized(
         address _who
-    ) external view returns (bool);
+    )
+        external
+        view
+        returns (
+            bool
+        );
 
     function getGasSpent(
         bytes32 _preStateRoot,
         address _who
-    ) external view returns (uint256);
+    )
+        external
+        view
+        returns (
+            uint256
+        );
 }

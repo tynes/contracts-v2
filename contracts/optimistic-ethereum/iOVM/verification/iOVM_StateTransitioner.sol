@@ -28,9 +28,26 @@ interface iOVM_StateTransitioner {
      * Public Functions: State Access *
      **********************************/
 
-    function getPreStateRoot() external view returns (bytes32 _preStateRoot);
-    function getPostStateRoot() external view returns (bytes32 _postStateRoot);
-    function isComplete() external view returns (bool _complete);
+    function getPreStateRoot()
+        external
+        view
+        returns (
+            bytes32
+        );
+
+    function getPostStateRoot()
+        external
+        view
+        returns (
+            bytes32
+        );
+
+    function isComplete()
+        external
+        view
+        returns (
+            bool
+        );
 
 
     /***********************************
@@ -41,13 +58,15 @@ interface iOVM_StateTransitioner {
         address _ovmContractAddress,
         address _ethContractAddress,
         bytes calldata _stateTrieWitness
-    ) external;
+    )
+        external;
 
     function proveStorageSlot(
         address _ovmContractAddress,
         bytes32 _key,
         bytes calldata _storageTrieWitness
-    ) external;
+    )
+        external;
 
 
     /*******************************
@@ -56,7 +75,8 @@ interface iOVM_StateTransitioner {
 
     function applyTransaction(
         Lib_OVMCodec.Transaction calldata _transaction
-    ) external;
+    )
+        external;
 
 
     /************************************
@@ -66,18 +86,21 @@ interface iOVM_StateTransitioner {
     function commitContractState(
         address _ovmContractAddress,
         bytes calldata _stateTrieWitness
-    ) external;
+    )
+        external;
 
     function commitStorageSlot(
         address _ovmContractAddress,
         bytes32 _key,
         bytes calldata _storageTrieWitness
-    ) external;
+    )
+        external;
 
 
     /**********************************
      * Public Functions: Finalization *
      **********************************/
 
-    function completeTransition() external;
+    function completeTransition()
+        external;
 }

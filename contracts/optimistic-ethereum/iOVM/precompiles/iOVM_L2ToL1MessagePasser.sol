@@ -22,5 +22,8 @@ interface iOVM_L2ToL1MessagePasser {
      * Public Functions *
      ********************/
 
-    function passMessageToL1(bytes calldata _message) external;
+    function passMessageToL1(
+        bytes calldata _message
+    )
+        external;
 }

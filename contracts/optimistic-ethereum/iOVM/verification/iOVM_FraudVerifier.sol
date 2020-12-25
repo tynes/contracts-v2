@@ -17,7 +17,15 @@ interface iOVM_FraudVerifier {
      * Public Functions: Transition Status *
      ***************************************/
 
-    function getStateTransitioner(bytes32 _preStateRoot, bytes32 _txHash) external view returns (iOVM_StateTransitioner _transitioner);
+    function getStateTransitioner(
+        bytes32 _preStateRoot,
+        bytes32 _txHash
+    )
+        external
+        view
+        returns (
+            iOVM_StateTransitioner
+        );
 
 
     /****************************************
@@ -32,7 +40,8 @@ interface iOVM_FraudVerifier {
         Lib_OVMCodec.TransactionChainElement calldata _txChainElement,
         Lib_OVMCodec.ChainBatchHeader calldata _transactionBatchHeader,
         Lib_OVMCodec.ChainInclusionProof calldata _transactionProof
-    ) external;
+    )
+        external;
 
     function finalizeFraudVerification(
         bytes32 _preStateRoot,
@@ -42,5 +51,6 @@ interface iOVM_FraudVerifier {
         bytes32 _postStateRoot,
         Lib_OVMCodec.ChainBatchHeader calldata _postStateRootBatchHeader,
         Lib_OVMCodec.ChainInclusionProof calldata _postStateRootProof
-    ) external;
+    )
+        external;
 }

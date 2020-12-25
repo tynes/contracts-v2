@@ -21,6 +21,6 @@ interface iOVM_StateTransitionerFactory {
     )
         external
         returns (
-            iOVM_StateTransitioner _ovmStateTransitioner
+            iOVM_StateTransitioner
         );
 }

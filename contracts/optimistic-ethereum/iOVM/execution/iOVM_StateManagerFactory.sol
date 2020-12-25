@@ -18,6 +18,6 @@ interface iOVM_StateManagerFactory {
     )
         external
         returns (
-            iOVM_StateManager _ovmStateManager
+            iOVM_StateManager
         );
 }

@@ -27,5 +27,6 @@ interface iOVM_L2CrossDomainMessenger is iOVM_BaseCrossDomainMessenger {
         address _sender,
         bytes memory _message,
         uint256 _messageNonce
-    ) external;
+    )
+        external;
 }

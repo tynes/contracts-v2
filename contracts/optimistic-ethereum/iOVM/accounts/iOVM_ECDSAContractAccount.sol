@@ -20,5 +20,10 @@ interface iOVM_ECDSAContractAccount {
         uint8 _v,
         bytes32 _r,
         bytes32 _s
-    ) external returns (bool _success, bytes memory _returndata);
+    )
+        external
+        returns (
+            bool,
+            bytes memory
+        );
 }
