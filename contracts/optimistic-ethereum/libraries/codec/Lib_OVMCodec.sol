@@ -75,14 +75,14 @@ library Lib_OVMCodec {
         bytes32[] siblings;
     }
 
-    struct Transaction {
+    struct Transaction { // aka OvmTransition (the input to an ovm state transition)
         uint256 timestamp;
         uint256 blockNumber;
         QueueOrigin l1QueueOrigin;
         address l1TxOrigin;
         address entrypoint;
         uint256 gasLimit;
-        bytes data;
+        bytes data; // basically a meta transaction encoded in here.
     }
 
     struct TransactionChainElement {

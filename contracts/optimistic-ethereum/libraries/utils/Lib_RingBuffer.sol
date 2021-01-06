@@ -1,5 +1,15 @@
 pragma solidity ^0.7.0;
 
+/* 
+@dev: 
+- maintains two lists
+- always appending to one of two
+- 
+
+
+ */
+
+
 library Lib_RingBuffer {
     using Lib_RingBuffer for RingBuffer;
 
