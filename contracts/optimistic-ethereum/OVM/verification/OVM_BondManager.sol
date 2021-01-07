@@ -64,6 +64,7 @@ contract OVM_BondManager is iOVM_BondManager, Lib_AddressResolver {
      * Public Functions *
      ********************/
 
+    // @note: many of these public functions can be 'external'
     /// Adds `who` to the list of witnessProviders for the provided `preStateRoot`.
     function recordGasSpent(bytes32 _preStateRoot, bytes32 _txHash, address who, uint256 gasSpent) override public {
         // The sender must be the transitioner that corresponds to the claimed pre-state root

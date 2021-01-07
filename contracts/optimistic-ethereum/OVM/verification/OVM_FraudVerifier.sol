@@ -152,6 +152,7 @@ contract OVM_FraudVerifier is Lib_AddressResolver, OVM_FraudContributor, iOVM_Fr
     {
         iOVM_StateTransitioner transitioner = getStateTransitioner(_preStateRoot, _txHash);
         iOVM_StateCommitmentChain ovmStateCommitmentChain = iOVM_StateCommitmentChain(resolve("OVM_StateCommitmentChain"));
+        // @note: unused variable
         iOVM_BondManager ovmBondManager = iOVM_BondManager(resolve("OVM_BondManager"));
 
         require(

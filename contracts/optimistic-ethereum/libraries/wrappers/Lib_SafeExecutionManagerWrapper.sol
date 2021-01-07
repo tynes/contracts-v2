@@ -314,6 +314,12 @@ library Lib_SafeExecutionManagerWrapper {
         );
     }
 
+    // @question: why are some functions private, and some internal? 
+    // well, this is a library. Meaning... what? 
+    // public: functions get DELEGATECALLED
+    // external: functions get DELEGATECALLED???
+    // internal: functions are inlined
+    // private: ???
     /*********************
      * Private Functions *
      *********************/
@@ -333,7 +339,7 @@ library Lib_SafeExecutionManagerWrapper {
             bytes memory _returndata
         )
     {
-        address ovmExecutionManager = msg.sender;
+        address ovmExecutionManager = msg.sender; // @note: check that this is ACL'd 
         (
             bool success,
             bytes memory returndata

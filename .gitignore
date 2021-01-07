@@ -4,3 +4,4 @@ cache/
 yarn-error.log
 build/
 .DS_STORE
+package-lock.json

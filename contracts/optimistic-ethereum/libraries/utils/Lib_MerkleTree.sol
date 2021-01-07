@@ -148,7 +148,7 @@ library Lib_MerkleTree {
         bytes32 computedRoot = _leaf;
 
         for (uint256 i = 0; i < _siblings.length; i++) {
-            if ((_index & 1) == 1) {
+            if ((_index & 1) == 1) { // @j: why does it matter if even?
                 computedRoot = keccak256(
                     abi.encodePacked(
                         _siblings[i],
