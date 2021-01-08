@@ -175,6 +175,7 @@ contract OVM_DeployerWhitelist is iOVM_DeployerWhitelist {
     )
         override
         public
+        view // @note: can/should be marked view I believe
         returns (
             bool _allowed
         )

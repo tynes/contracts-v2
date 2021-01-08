@@ -1,0 +1,783 @@
+digraph G {
+  graph [ ratio = "auto", page = "100", compound =true, bgcolor = "#2e3e56"];
+  node [ style = "filled", fillcolor = "#edad56", color = "#edad56", penwidth =3 ];
+  edge [ color = "#fcfcfc", penwidth =2, fontname = "helvetica Neue Ultra Light" ];
+subgraph "clusterOVM_ExecutionManager" {
+  graph [ label = "OVM_ExecutionManager", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "OVM_ExecutionManager.<Constructor>" [ label = "<Constructor>", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.netGasCost" [ label = "netGasCost", color = "#1bc6a6", shape =doubleoctagon ];
+  "OVM_ExecutionManager.fixedGasDiscount" [ label = "fixedGasDiscount", color = "#1bc6a6", shape =doubleoctagon ];
+  "OVM_ExecutionManager.notStatic" [ label = "notStatic", color = "#1bc6a6", shape =doubleoctagon ];
+  "OVM_ExecutionManager.run" [ label = "run", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmCALLER" [ label = "ovmCALLER", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmADDRESS" [ label = "ovmADDRESS" ];
+  "OVM_ExecutionManager.ovmTIMESTAMP" [ label = "ovmTIMESTAMP", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmNUMBER" [ label = "ovmNUMBER", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmGASLIMIT" [ label = "ovmGASLIMIT", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmCHAINID" [ label = "ovmCHAINID", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmL1QUEUEORIGIN" [ label = "ovmL1QUEUEORIGIN", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmL1TXORIGIN" [ label = "ovmL1TXORIGIN", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmREVERT" [ label = "ovmREVERT", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmCREATE" [ label = "ovmCREATE", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmCREATE2" [ label = "ovmCREATE2", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmGETNONCE" [ label = "ovmGETNONCE", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmSETNONCE" [ label = "ovmSETNONCE", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmCREATEEOA" [ label = "ovmCREATEEOA", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmCALL" [ label = "ovmCALL" ];
+  "OVM_ExecutionManager.ovmSTATICCALL" [ label = "ovmSTATICCALL", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmDELEGATECALL" [ label = "ovmDELEGATECALL", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmSLOAD" [ label = "ovmSLOAD", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmSSTORE" [ label = "ovmSSTORE", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmEXTCODECOPY" [ label = "ovmEXTCODECOPY", color = "#FF9797", fillcolor = "#FF9797" ];                     
+  "OVM_ExecutionManager.ovmEXTCODESIZE" [ label = "ovmEXTCODESIZE", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.ovmEXTCODEHASH" [ label = "ovmEXTCODEHASH", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.safeCREATE" [ label = "safeCREATE", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ExecutionManager.getMaxTransactionGasLimit" [ label = "getMaxTransactionGasLimit", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "OVM_ExecutionManager._checkDeployerAllowed" [ label = "_checkDeployerAllowed" ];
+  "OVM_ExecutionManager._createContract" [ label = "_createContract" ];
+  "OVM_ExecutionManager._callContract" [ label = "_callContract" ];
+  "OVM_ExecutionManager._handleExternalInteraction" [ label = "_handleExternalInteraction" ];
+  "OVM_ExecutionManager._hasAccount" [ label = "_hasAccount", color = "#f2c383", fillcolor = "#f2c383" ];
+  "OVM_ExecutionManager._hasEmptyAccount" [ label = "_hasEmptyAccount" ];
+  "OVM_ExecutionManager._setAccountNonce" [ label = "_setAccountNonce" ];
+  "OVM_ExecutionManager._getAccountNonce" [ label = "_getAccountNonce" ];
+  "OVM_ExecutionManager._getAccountEthAddress" [ label = "_getAccountEthAddress" ];
+  "OVM_ExecutionManager._initPendingAccount" [ label = "_initPendingAccount" ];
+  "OVM_ExecutionManager._commitPendingAccount" [ label = "_commitPendingAccount" ];
+  "OVM_ExecutionManager._getContractStorage" [ label = "_getContractStorage" ];
+  "OVM_ExecutionManager._putContractStorage" [ label = "_putContractStorage" ];
+  "OVM_ExecutionManager._checkAccountLoad" [ label = "_checkAccountLoad" ];
+  "OVM_ExecutionManager._checkAccountChange" [ label = "_checkAccountChange" ];
+  "OVM_ExecutionManager._checkContractStorageLoad" [ label = "_checkContractStorageLoad" ];
+  "OVM_ExecutionManager._checkContractStorageChange" [ label = "_checkContractStorageChange" ];
+  "OVM_ExecutionManager._encodeRevertData" [ label = "_encodeRevertData" ];
+  "OVM_ExecutionManager._decodeRevertData" [ label = "_decodeRevertData" ];
+  "OVM_ExecutionManager._revertWithFlag" [ label = "_revertWithFlag" ];
+  "OVM_ExecutionManager._getNuisanceGasLimit" [ label = "_getNuisanceGasLimit" ];
+  "OVM_ExecutionManager._useNuisanceGas" [ label = "_useNuisanceGas" ];
+  "OVM_ExecutionManager._checkNeedsNewEpoch" [ label = "_checkNeedsNewEpoch", color = "#f2c383", fillcolor = "#f2c383" ];
+  "OVM_ExecutionManager._isValidGasLimit" [ label = "_isValidGasLimit" ];
+  "OVM_ExecutionManager._updateCumulativeGas" [ label = "_updateCumulativeGas", color = "#f2c383", fillcolor = "#f2c383" ];
+  "OVM_ExecutionManager._getGasMetadata" [ label = "_getGasMetadata" ];
+  "OVM_ExecutionManager._putGasMetadata" [ label = "_putGasMetadata" ];
+  "OVM_ExecutionManager._switchMessageContext" [ label = "_switchMessageContext" ];
+  "OVM_ExecutionManager._initContext" [ label = "_initContext" ];
+  "OVM_ExecutionManager._resetContext" [ label = "_resetContext" ];
+  "OVM_ExecutionManager.resolve" [ label = "resolve" ];
+}
+
+subgraph "clusterLib_OVMCodec" {
+  graph [ label = "Lib_OVMCodec  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Lib_OVMCodec.decodeEIP155Transaction" [ label = "decodeEIP155Transaction", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_OVMCodec.decompressEIP155Transaction" [ label = "decompressEIP155Transaction", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_OVMCodec.encodeEIP155Transaction" [ label = "encodeEIP155Transaction", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_OVMCodec.encodeTransaction" [ label = "encodeTransaction" ];
+  "Lib_OVMCodec.hashTransaction" [ label = "hashTransaction", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_OVMCodec.toEVMAccount" [ label = "toEVMAccount", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_OVMCodec.encodeEVMAccount" [ label = "encodeEVMAccount", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_OVMCodec.decodeEVMAccount" [ label = "decodeEVMAccount", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_OVMCodec.hashBatchHeader" [ label = "hashBatchHeader", color = "#f2c383", fillcolor = "#f2c383" ];
+}
+
+subgraph "clusterLib_RLPReader" {
+  graph [ label = "Lib_RLPReader  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Lib_RLPReader.readList" [ label = "readList", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_RLPReader.readUint256" [ label = "readUint256", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_RLPReader.readAddress" [ label = "readAddress", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_RLPReader.readBytes" [ label = "readBytes", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_RLPReader.readBytes32" [ label = "readBytes32", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_RLPReader.toRLPItem" [ label = "toRLPItem" ];
+  "Lib_RLPReader.readString" [ label = "readString", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_RLPReader.readBool" [ label = "readBool" ];
+  "Lib_RLPReader.readRawBytes" [ label = "readRawBytes", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_RLPReader._decodeLength" [ label = "_decodeLength" ];
+  "Lib_RLPReader._copy" [ label = "_copy" ];
+}
+
+subgraph "clusterLib_RLPWriter" {
+  graph [ label = "Lib_RLPWriter  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Lib_RLPWriter.writeUint" [ label = "writeUint", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_RLPWriter.writeBytes" [ label = "writeBytes", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_RLPWriter.writeAddress" [ label = "writeAddress", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_RLPWriter.writeList" [ label = "writeList", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_RLPWriter.writeString" [ label = "writeString", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_RLPWriter.writeBool" [ label = "writeBool", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_RLPWriter._writeLength" [ label = "_writeLength" ];
+  "Lib_RLPWriter._toBinary" [ label = "_toBinary" ];
+  "Lib_RLPWriter._memcpy" [ label = "_memcpy" ];
+  "Lib_RLPWriter._flatten" [ label = "_flatten" ];
+}
+
+subgraph "clusterLib_BytesUtils" {
+  graph [ label = "Lib_BytesUtils  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Lib_BytesUtils.toUint24" [ label = "toUint24", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_BytesUtils.toAddress" [ label = "toAddress", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_BytesUtils.slice" [ label = "slice", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_BytesUtils.concat" [ label = "concat", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_BytesUtils.toBytes32PadLeft" [ label = "toBytes32PadLeft", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_BytesUtils.toBytes32" [ label = "toBytes32" ];
+  "Lib_BytesUtils.toUint256" [ label = "toUint256", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_BytesUtils.toUint8" [ label = "toUint8", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_BytesUtils.toNibbles" [ label = "toNibbles", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_BytesUtils.fromNibbles" [ label = "fromNibbles", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_BytesUtils.equal" [ label = "equal", color = "#f2c383", fillcolor = "#f2c383" ];
+}
+
+subgraph "clusterLib_Bytes32Utils" {
+  graph [ label = "Lib_Bytes32Utils  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Lib_Bytes32Utils.removeLeadingZeros" [ label = "removeLeadingZeros", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_Bytes32Utils.toBool" [ label = "toBool" ];
+  "Lib_Bytes32Utils.fromBool" [ label = "fromBool" ];
+  "Lib_Bytes32Utils.toAddress" [ label = "toAddress" ];
+  "Lib_Bytes32Utils.fromAddress" [ label = "fromAddress" ];
+}
+
+subgraph "clusterLib_SafeExecutionManagerWrapper" {
+  graph [ label = "Lib_SafeExecutionManagerWrapper  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Lib_SafeExecutionManagerWrapper.safeCHAINID" [ label = "safeCHAINID", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_SafeExecutionManagerWrapper.safeCALL" [ label = "safeCALL", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_SafeExecutionManagerWrapper.safeDELEGATECALL" [ label = "safeDELEGATECALL", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_SafeExecutionManagerWrapper.safeCREATE" [ label = "safeCREATE", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_SafeExecutionManagerWrapper.safeEXTCODESIZE" [ label = "safeEXTCODESIZE", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_SafeExecutionManagerWrapper.safeCALLER" [ label = "safeCALLER", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_SafeExecutionManagerWrapper.safeADDRESS" [ label = "safeADDRESS", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_SafeExecutionManagerWrapper.safeGETNONCE" [ label = "safeGETNONCE", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_SafeExecutionManagerWrapper.safeSETNONCE" [ label = "safeSETNONCE", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_SafeExecutionManagerWrapper.safeCREATEEOA" [ label = "safeCREATEEOA", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_SafeExecutionManagerWrapper.safeREVERT" [ label = "safeREVERT", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_SafeExecutionManagerWrapper.safeREQUIRE" [ label = "safeREQUIRE", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_SafeExecutionManagerWrapper.safeSLOAD" [ label = "safeSLOAD", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_SafeExecutionManagerWrapper.safeSSTORE" [ label = "safeSSTORE", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_SafeExecutionManagerWrapper._safeExecutionManagerInteraction" [ label = "_safeExecutionManagerInteraction" ];
+}
+
+subgraph "clusterLib_AddressResolver" {
+  graph [ label = "Lib_AddressResolver", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Lib_AddressResolver.<Constructor>" [ label = "<Constructor>", color = "#FF9797", fillcolor = "#FF9797" ];
+  "Lib_AddressResolver.resolve" [ label = "resolve", color = "#FF9797", fillcolor = "#FF9797" ];
+}
+
+subgraph "clusterLib_AddressManager" {
+  graph [ label = "Lib_AddressManager", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Lib_AddressManager.getAddress" [ label = "getAddress", color = "#FF9797", fillcolor = "#FF9797" ];
+  "Lib_AddressManager.setAddress" [ label = "setAddress", color = "#FF9797", fillcolor = "#FF9797" ];
+  "Lib_AddressManager._getNameHash" [ label = "_getNameHash" ];
+}
+
+subgraph "clusterOwnable" {
+  graph [ label = "Ownable", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Ownable.<Constructor>" [ label = "<Constructor>", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Ownable.onlyOwner" [ label = "onlyOwner", color = "#1bc6a6", shape =doubleoctagon ];
+  "Ownable.renounceOwnership" [ label = "renounceOwnership", color = "#FF9797", fillcolor = "#FF9797" ];
+  "Ownable.transferOwnership" [ label = "transferOwnership", color = "#FF9797", fillcolor = "#FF9797" ];
+}
+
+subgraph "clusterLib_EthUtils" {
+  graph [ label = "Lib_EthUtils  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Lib_EthUtils.getAddressForCREATE" [ label = "getAddressForCREATE", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_EthUtils.getAddressForCREATE2" [ label = "getAddressForCREATE2", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_EthUtils.getCode" [ label = "getCode", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_EthUtils.getCodeSize" [ label = "getCodeSize", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_EthUtils.getCodeHash" [ label = "getCodeHash", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_EthUtils.createContract" [ label = "createContract", color = "#f2c383", fillcolor = "#f2c383" ];
+}
+
+
+subgraph "clusterOVM_SafetyChecker" {
+  graph [ label = "OVM_SafetyChecker", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "iOVM_SafetyChecker.isBytecodeSafe" [ label = "isBytecodeSafe", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterOVM_ECDSAContractAccount" {
+  graph [ label = "OVM_ECDSAContractAccount", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "OVM_ECDSAContractAccount.execute" [ label = "execute", color = "#FF9797", fillcolor = "#FF9797" ];
+}
+
+subgraph "clusteriOVM_ECDSAContractAccount" {
+  graph [ label = "iOVM_ECDSAContractAccount  (iface)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "iOVM_ECDSAContractAccount.execute" [ label = "execute", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterLib_ECDSAUtils" {
+  graph [ label = "Lib_ECDSAUtils  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Lib_ECDSAUtils.recover" [ label = "recover", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_ECDSAUtils.getMessageHash" [ label = "getMessageHash" ];
+  "Lib_ECDSAUtils.getNativeMessageHash" [ label = "getNativeMessageHash" ];
+  "Lib_ECDSAUtils.getEthSignedMessageHash" [ label = "getEthSignedMessageHash" ];
+}
+
+subgraph "clusterLib_SafeMathWrapper" {
+  graph [ label = "Lib_SafeMathWrapper  (lib)", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "Lib_SafeMathWrapper.add" [ label = "add", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_SafeMathWrapper.sub" [ label = "sub" ];
+  "Lib_SafeMathWrapper.mul" [ label = "mul", color = "#f2c383", fillcolor = "#f2c383" ];
+  "Lib_SafeMathWrapper.div" [ label = "div" ];
+  "Lib_SafeMathWrapper.mod" [ label = "mod" ];
+}
+
+subgraph "clusterOVM_ProxyEOA" {
+  graph [ label = "OVM_ProxyEOA", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "OVM_ProxyEOA.<Constructor>" [ label = "<Constructor>", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_ProxyEOA.<Fallback>" [ label = "<Fallback>", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "OVM_ProxyEOA.upgrade" [ label = "upgrade", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "OVM_ProxyEOA.getImplementation" [ label = "getImplementation" ];
+  "OVM_ProxyEOA._setImplementation" [ label = "_setImplementation" ];
+}
+
+subgraph "clusterOVM_DeployerWhitelist" {
+  graph [ label = "OVM_DeployerWhitelist", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "OVM_DeployerWhitelist.onlyOwner" [ label = "onlyOwner", color = "#1bc6a6", shape =doubleoctagon ];
+  "OVM_DeployerWhitelist.initialize" [ label = "initialize", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_DeployerWhitelist.getOwner" [ label = "getOwner", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_DeployerWhitelist.setWhitelistedDeployer" [ label = "setWhitelistedDeployer", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_DeployerWhitelist.setOwner" [ label = "setOwner", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_DeployerWhitelist.setAllowArbitraryDeployment" [ label = "setAllowArbitraryDeployment", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_DeployerWhitelist.enableArbitraryContractDeployment" [ label = "enableArbitraryContractDeployment", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_DeployerWhitelist.isDeployerAllowed" [ label = "isDeployerAllowed", color = "#FF9797", fillcolor = "#FF9797" ];
+}
+
+subgraph "clusterOVM_DeployerWhitelist" {
+  graph [ label = "OVM_DeployerWhitelist", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "OVM_DeployerWhitelist.initialize" [ label = "initialize", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "OVM_DeployerWhitelist.getOwner" [ label = "getOwner", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "OVM_DeployerWhitelist.setWhitelistedDeployer" [ label = "setWhitelistedDeployer", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "OVM_DeployerWhitelist.setOwner" [ label = "setOwner", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "OVM_DeployerWhitelist.setAllowArbitraryDeployment" [ label = "setAllowArbitraryDeployment", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "OVM_DeployerWhitelist.enableArbitraryContractDeployment" [ label = "enableArbitraryContractDeployment", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+  "OVM_DeployerWhitelist.isDeployerAllowed" [ label = "isDeployerAllowed", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterOVM_SafetyChecker" {
+  graph [ label = "OVM_SafetyChecker", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "iOVM_SafetyChecker.isBytecodeSafe" [ label = "isBytecodeSafe", color = "#ffbdb9", fillcolor = "#ffbdb9" ];
+}
+
+subgraph "clusterOVM_StateManager" {
+  graph [ label = "OVM_StateManager", color = "#445773", fontcolor = "#f0f0f0", style = "rounded", bgcolor = "#445773" ];
+  "OVM_StateManager.isAuthenticated" [ label = "isAuthenticated", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.hasAccount" [ label = "hasAccount", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.hasEmptyAccount" [ label = "hasEmptyAccount", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.setAccountNonce" [ label = "setAccountNonce", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.getAccountNonce" [ label = "getAccountNonce", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.getAccountEthAddress" [ label = "getAccountEthAddress", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.initPendingAccount" [ label = "initPendingAccount", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.commitPendingAccount" [ label = "commitPendingAccount", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.getContractStorage" [ label = "getContractStorage", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.putContractStorage" [ label = "putContractStorage", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.testAndSetAccountLoaded" [ label = "testAndSetAccountLoaded", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.testAndSetAccountChanged" [ label = "testAndSetAccountChanged", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.incrementTotalUncommittedAccounts" [ label = "incrementTotalUncommittedAccounts", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.hasContractStorage" [ label = "hasContractStorage", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.testAndSetContractStorageLoaded" [ label = "testAndSetContractStorageLoaded", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.testAndSetContractStorageChanged" [ label = "testAndSetContractStorageChanged", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.incrementTotalUncommittedContractStorage" [ label = "incrementTotalUncommittedContractStorage", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.<Constructor>" [ label = "<Constructor>", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.authenticated" [ label = "authenticated", color = "#1bc6a6", shape =doubleoctagon ];
+  "OVM_StateManager.setExecutionManager" [ label = "setExecutionManager", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.putAccount" [ label = "putAccount", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.putEmptyAccount" [ label = "putEmptyAccount", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.getAccount" [ label = "getAccount", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.getAccountStorageRoot" [ label = "getAccountStorageRoot", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.commitAccount" [ label = "commitAccount", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.getTotalUncommittedAccounts" [ label = "getTotalUncommittedAccounts", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.wasAccountChanged" [ label = "wasAccountChanged", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.wasAccountCommitted" [ label = "wasAccountCommitted", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.commitContractStorage" [ label = "commitContractStorage", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.getTotalUncommittedContractStorage" [ label = "getTotalUncommittedContractStorage", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.wasContractStorageChanged" [ label = "wasContractStorageChanged", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager.wasContractStorageCommitted" [ label = "wasContractStorageCommitted", color = "#FF9797", fillcolor = "#FF9797" ];
+  "OVM_StateManager._getItemHash" [ label = "_getItemHash" ];
+  "OVM_StateManager._testAndSetItemState" [ label = "_testAndSetItemState" ];
+}
+
+  "OVM_ExecutionManager.<Constructor>";
+  "OVM_ExecutionManager.resolve";
+  "OVM_ExecutionManager.notStatic";
+  "OVM_ExecutionManager._revertWithFlag";
+  "OVM_ExecutionManager.run";
+  "OVM_StateManager.isAuthenticated";
+  "OVM_ExecutionManager._initContext";
+  "OVM_ExecutionManager._isValidGasLimit";
+  "OVM_ExecutionManager.ovmCALL";
+  "OVM_ExecutionManager._resetContext";
+  "OVM_ExecutionManager.ovmREVERT";
+  "OVM_ExecutionManager.ovmCREATE";
+  "OVM_ExecutionManager.ovmADDRESS";
+  "OVM_ExecutionManager._checkDeployerAllowed";
+  "Lib_EthUtils.getAddressForCREATE";
+  "OVM_ExecutionManager._getAccountNonce";
+  "OVM_ExecutionManager._createContract";
+  "OVM_ExecutionManager.ovmCREATE2";
+  "Lib_EthUtils.getAddressForCREATE2";
+  "OVM_ExecutionManager.ovmGETNONCE";
+  "OVM_ExecutionManager.ovmSETNONCE";
+  "OVM_ExecutionManager._setAccountNonce";
+  "OVM_ExecutionManager.ovmCREATEEOA";
+  "OVM_ExecutionManager._hasEmptyAccount";
+  "OVM_ExecutionManager._initPendingAccount";
+  "OVM_ExecutionManager._commitPendingAccount";
+  "Lib_EthUtils.getCode";
+  "OVM_ExecutionManager._callContract";
+  "OVM_ExecutionManager.ovmSTATICCALL";
+  "OVM_ExecutionManager.ovmDELEGATECALL";
+  "OVM_ExecutionManager.ovmSLOAD";
+  "OVM_ExecutionManager._getContractStorage";
+  "OVM_ExecutionManager.ovmSSTORE";
+  "OVM_ExecutionManager._putContractStorage";
+  "OVM_ExecutionManager.ovmEXTCODECOPY";
+  "OVM_ExecutionManager._getAccountEthAddress";
+  "OVM_ExecutionManager.ovmEXTCODESIZE";
+  "Lib_EthUtils.getCodeSize";
+  "OVM_ExecutionManager.ovmEXTCODEHASH";
+  "Lib_EthUtils.getCodeHash";
+  "OVM_ExecutionManager.safeCREATE";
+  "iOVM_SafetyChecker.isBytecodeSafe";
+  "Lib_EthUtils.createContract";
+  "OVM_ExecutionManager._handleExternalInteraction";
+  "OVM_ExecutionManager._switchMessageContext";
+  "OVM_ExecutionManager._getNuisanceGasLimit";
+  "OVM_ExecutionManager._decodeRevertData";
+  "OVM_ExecutionManager._hasAccount";
+  "OVM_ExecutionManager._checkAccountLoad";
+  "OVM_StateManager.hasAccount";
+  "OVM_StateManager.hasEmptyAccount";
+  "OVM_ExecutionManager._checkAccountChange";
+  "OVM_StateManager.setAccountNonce";
+  "OVM_StateManager.getAccountNonce";
+  "OVM_StateManager.getAccountEthAddress";
+  "OVM_StateManager.initPendingAccount";
+  "OVM_StateManager.commitPendingAccount";
+  "OVM_ExecutionManager._checkContractStorageLoad";
+  "OVM_StateManager.getContractStorage";
+  "OVM_ExecutionManager._checkContractStorageChange";
+  "OVM_StateManager.putContractStorage";
+  "OVM_StateManager.testAndSetAccountLoaded";
+  "OVM_ExecutionManager._useNuisanceGas";
+  "OVM_StateManager.testAndSetAccountChanged";
+  "OVM_StateManager.incrementTotalUncommittedAccounts";
+  "OVM_StateManager.hasContractStorage";
+  "OVM_StateManager.testAndSetContractStorageLoaded";
+  "OVM_StateManager.testAndSetContractStorageChanged";
+  "OVM_StateManager.incrementTotalUncommittedContractStorage";
+  "OVM_ExecutionManager._encodeRevertData";
+  "OVM_ExecutionManager._checkNeedsNewEpoch";
+  "OVM_ExecutionManager._getGasMetadata";
+  "OVM_ExecutionManager._putGasMetadata";
+  "OVM_ExecutionManager._updateCumulativeGas";
+  "Lib_OVMCodec.decodeEIP155Transaction";
+  "Lib_RLPReader.readList";
+  "Lib_RLPReader.readUint256";
+  "Lib_RLPReader.readAddress";
+  "Lib_RLPReader.readBytes";
+  "Lib_OVMCodec.decompressEIP155Transaction";
+  "Lib_BytesUtils.toUint24";
+  "Lib_BytesUtils.toAddress";
+  "Lib_BytesUtils.slice";
+  "Lib_SafeExecutionManagerWrapper.safeCHAINID";
+  "Lib_OVMCodec.encodeEIP155Transaction";
+  "Lib_RLPWriter.writeUint";
+  "Lib_RLPWriter.writeBytes";
+  "Lib_RLPWriter.writeAddress";
+  "Lib_RLPWriter.writeList";
+  "Lib_OVMCodec.hashTransaction";
+  "Lib_OVMCodec.encodeTransaction";
+  "Lib_OVMCodec.encodeEVMAccount";
+  "Lib_Bytes32Utils.removeLeadingZeros";
+  "Lib_OVMCodec.decodeEVMAccount";
+  "Lib_RLPReader.readBytes32";
+  "Lib_RLPReader._decodeLength";
+  "Lib_RLPReader.toRLPItem";
+  "Lib_RLPReader._copy";
+  "Lib_RLPReader.readString";
+  "Lib_RLPReader.readBool";
+  "Lib_RLPReader.readRawBytes";
+  "Lib_BytesUtils.concat";
+  "Lib_RLPWriter._writeLength";
+  "Lib_RLPWriter._flatten";
+  "Lib_RLPWriter.writeString";
+  "Lib_RLPWriter._toBinary";
+  "Lib_RLPWriter._memcpy";
+  "Lib_BytesUtils.toUint256";
+  "Lib_BytesUtils.toBytes32";
+  "Lib_SafeExecutionManagerWrapper.safeCALL";
+  "Lib_SafeExecutionManagerWrapper._safeExecutionManagerInteraction";
+  "Lib_SafeExecutionManagerWrapper.safeDELEGATECALL";
+  "Lib_SafeExecutionManagerWrapper.safeCREATE";
+  "Lib_SafeExecutionManagerWrapper.safeEXTCODESIZE";
+  "Lib_SafeExecutionManagerWrapper.safeCALLER";
+  "Lib_SafeExecutionManagerWrapper.safeADDRESS";
+  "Lib_SafeExecutionManagerWrapper.safeGETNONCE";
+  "Lib_SafeExecutionManagerWrapper.safeSETNONCE";
+  "Lib_SafeExecutionManagerWrapper.safeCREATEEOA";
+  "Lib_SafeExecutionManagerWrapper.safeREVERT";
+  "Lib_SafeExecutionManagerWrapper.safeREQUIRE";
+  "Lib_SafeExecutionManagerWrapper.safeSLOAD";
+  "Lib_SafeExecutionManagerWrapper.safeSSTORE";
+  "Lib_AddressResolver.resolve";
+  "Lib_AddressManager.getAddress";
+  "Lib_AddressManager.setAddress";
+  "Lib_AddressManager._getNameHash";
+  "Lib_Bytes32Utils.toAddress";
+  "OVM_ECDSAContractAccount.execute";
+  "Lib_ECDSAUtils.recover";
+  "Lib_ECDSAUtils.getMessageHash";
+  "Lib_ECDSAUtils.getEthSignedMessageHash";
+  "Lib_ECDSAUtils.getNativeMessageHash";
+  "Lib_SafeMathWrapper.add";
+  "Lib_SafeMathWrapper.sub";
+  "Lib_SafeMathWrapper.mul";
+  "Lib_SafeMathWrapper.div";
+  "Lib_SafeMathWrapper.mod";
+  "OVM_ProxyEOA.<Constructor>";
+  "OVM_ProxyEOA._setImplementation";
+  "OVM_ProxyEOA.<Fallback>";
+  "OVM_ProxyEOA.getImplementation";
+  "OVM_ProxyEOA.upgrade";
+  "OVM_DeployerWhitelist.onlyOwner";
+  "OVM_DeployerWhitelist.initialize";
+  "Lib_Bytes32Utils.toBool";
+  "Lib_Bytes32Utils.fromBool";
+  "Lib_Bytes32Utils.fromAddress";
+  "OVM_DeployerWhitelist.getOwner";
+  "OVM_DeployerWhitelist.setWhitelistedDeployer";
+  "OVM_DeployerWhitelist.setOwner";
+  "OVM_DeployerWhitelist.setAllowArbitraryDeployment";
+  "OVM_DeployerWhitelist.enableArbitraryContractDeployment";
+  "OVM_DeployerWhitelist.isDeployerAllowed";
+  "OVM_StateManager._testAndSetItemState";
+  "OVM_StateManager._getItemHash";
+  "OVM_StateManager.commitAccount";
+  "OVM_StateManager.wasAccountChanged";
+  "OVM_StateManager.wasAccountCommitted";
+  "OVM_StateManager.commitContractStorage";
+  "OVM_StateManager.wasContractStorageChanged";
+  "OVM_StateManager.wasContractStorageCommitted";
+  "OVM_ExecutionManager.<Constructor>" -> "OVM_ExecutionManager.resolve" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.notStatic" -> "OVM_ExecutionManager._revertWithFlag" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.run" -> "OVM_StateManager.isAuthenticated" [ color = "white" ];
+  "OVM_ExecutionManager.run" -> "OVM_ExecutionManager._initContext" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.run" -> "OVM_ExecutionManager._isValidGasLimit" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.run" -> "OVM_ExecutionManager.ovmCALL" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.run" -> "OVM_ExecutionManager._resetContext" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmREVERT" -> "OVM_ExecutionManager._revertWithFlag" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmCREATE" -> "OVM_ExecutionManager.ovmADDRESS" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmCREATE" -> "OVM_ExecutionManager._checkDeployerAllowed" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmCREATE" -> "Lib_EthUtils.getAddressForCREATE" [ color = "white" ];
+  "OVM_ExecutionManager.ovmCREATE" -> "OVM_ExecutionManager._getAccountNonce" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmCREATE" -> "OVM_ExecutionManager._createContract" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmCREATE2" -> "OVM_ExecutionManager.ovmADDRESS" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmCREATE2" -> "OVM_ExecutionManager._checkDeployerAllowed" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmCREATE2" -> "Lib_EthUtils.getAddressForCREATE2" [ color = "white" ];
+  "OVM_ExecutionManager.ovmCREATE2" -> "OVM_ExecutionManager._createContract" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmGETNONCE" -> "OVM_ExecutionManager._getAccountNonce" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmGETNONCE" -> "OVM_ExecutionManager.ovmADDRESS" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmSETNONCE" -> "OVM_ExecutionManager._setAccountNonce" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmSETNONCE" -> "OVM_ExecutionManager.ovmADDRESS" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmCREATEEOA" -> "OVM_ExecutionManager.ovmREVERT" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmCREATEEOA" -> "OVM_ExecutionManager._hasEmptyAccount" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmCREATEEOA" -> "OVM_ExecutionManager._initPendingAccount" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmCREATEEOA" -> "OVM_ExecutionManager._commitPendingAccount" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmCREATEEOA" -> "Lib_EthUtils.getCode" [ color = "white" ];
+  "OVM_ExecutionManager.ovmCREATEEOA" -> "OVM_ExecutionManager._setAccountNonce" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmCALL" -> "OVM_ExecutionManager._callContract" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmSTATICCALL" -> "OVM_ExecutionManager._callContract" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmDELEGATECALL" -> "OVM_ExecutionManager._callContract" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmSLOAD" -> "OVM_ExecutionManager.ovmADDRESS" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmSLOAD" -> "OVM_ExecutionManager._getContractStorage" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmSSTORE" -> "OVM_ExecutionManager.ovmADDRESS" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmSSTORE" -> "OVM_ExecutionManager._putContractStorage" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmEXTCODECOPY" -> "Lib_EthUtils.getCode" [ color = "white" ];
+  "OVM_ExecutionManager.ovmEXTCODECOPY" -> "OVM_ExecutionManager._getAccountEthAddress" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmEXTCODESIZE" -> "Lib_EthUtils.getCodeSize" [ color = "white" ];
+  "OVM_ExecutionManager.ovmEXTCODESIZE" -> "OVM_ExecutionManager._getAccountEthAddress" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.ovmEXTCODEHASH" -> "Lib_EthUtils.getCodeHash" [ color = "white" ];
+  "OVM_ExecutionManager.ovmEXTCODEHASH" -> "OVM_ExecutionManager._getAccountEthAddress" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.safeCREATE" -> "OVM_ExecutionManager._hasEmptyAccount" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.safeCREATE" -> "OVM_ExecutionManager._revertWithFlag" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.safeCREATE" -> "iOVM_SafetyChecker.isBytecodeSafe" [ color = "white" ];
+  "OVM_ExecutionManager.safeCREATE" -> "OVM_ExecutionManager._revertWithFlag" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.safeCREATE" -> "OVM_ExecutionManager._initPendingAccount" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.safeCREATE" -> "Lib_EthUtils.createContract" [ color = "white" ];
+  "OVM_ExecutionManager.safeCREATE" -> "OVM_ExecutionManager._revertWithFlag" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.safeCREATE" -> "OVM_ExecutionManager._revertWithFlag" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.safeCREATE" -> "Lib_EthUtils.getCode" [ color = "white" ];
+  "OVM_ExecutionManager.safeCREATE" -> "iOVM_SafetyChecker.isBytecodeSafe" [ color = "white" ];
+  "OVM_ExecutionManager.safeCREATE" -> "OVM_ExecutionManager._revertWithFlag" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.safeCREATE" -> "OVM_ExecutionManager._commitPendingAccount" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager.safeCREATE" -> "Lib_EthUtils.getCodeHash" [ color = "white" ];
+  "OVM_ExecutionManager._checkDeployerAllowed" -> "OVM_ExecutionManager.ovmCALL" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkDeployerAllowed" -> "OVM_ExecutionManager._revertWithFlag" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._createContract" -> "OVM_ExecutionManager._setAccountNonce" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._createContract" -> "OVM_ExecutionManager.ovmADDRESS" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._createContract" -> "OVM_ExecutionManager._getAccountNonce" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._createContract" -> "OVM_ExecutionManager.ovmADDRESS" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._createContract" -> "OVM_ExecutionManager._handleExternalInteraction" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._callContract" -> "OVM_ExecutionManager._getAccountEthAddress" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._callContract" -> "OVM_ExecutionManager._handleExternalInteraction" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._handleExternalInteraction" -> "OVM_ExecutionManager._switchMessageContext" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._handleExternalInteraction" -> "OVM_ExecutionManager._getNuisanceGasLimit" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._handleExternalInteraction" -> "OVM_ExecutionManager._switchMessageContext" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._handleExternalInteraction" -> "OVM_ExecutionManager._decodeRevertData" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._handleExternalInteraction" -> "OVM_ExecutionManager._revertWithFlag" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._hasAccount" -> "OVM_ExecutionManager._checkAccountLoad" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._hasAccount" -> "OVM_StateManager.hasAccount" [ color = "white" ];
+  "OVM_ExecutionManager._hasEmptyAccount" -> "OVM_ExecutionManager._checkAccountLoad" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._hasEmptyAccount" -> "OVM_StateManager.hasEmptyAccount" [ color = "white" ];
+  "OVM_ExecutionManager._setAccountNonce" -> "OVM_ExecutionManager._checkAccountChange" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._setAccountNonce" -> "OVM_StateManager.setAccountNonce" [ color = "white" ];
+  "OVM_ExecutionManager._getAccountNonce" -> "OVM_ExecutionManager._checkAccountLoad" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._getAccountNonce" -> "OVM_StateManager.getAccountNonce" [ color = "white" ];
+  "OVM_ExecutionManager._getAccountEthAddress" -> "OVM_ExecutionManager._checkAccountLoad" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._getAccountEthAddress" -> "OVM_StateManager.getAccountEthAddress" [ color = "white" ];
+  "OVM_ExecutionManager._initPendingAccount" -> "OVM_ExecutionManager._checkAccountLoad" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._initPendingAccount" -> "OVM_StateManager.initPendingAccount" [ color = "white" ];
+  "OVM_ExecutionManager._commitPendingAccount" -> "OVM_ExecutionManager._checkAccountChange" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._commitPendingAccount" -> "OVM_StateManager.commitPendingAccount" [ color = "white" ];
+  "OVM_ExecutionManager._getContractStorage" -> "OVM_ExecutionManager._checkContractStorageLoad" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._getContractStorage" -> "OVM_StateManager.getContractStorage" [ color = "white" ];
+  "OVM_ExecutionManager._putContractStorage" -> "OVM_ExecutionManager._getContractStorage" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._putContractStorage" -> "OVM_ExecutionManager._checkContractStorageChange" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._putContractStorage" -> "OVM_StateManager.putContractStorage" [ color = "white" ];
+  "OVM_ExecutionManager._checkAccountLoad" -> "OVM_ExecutionManager._revertWithFlag" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkAccountLoad" -> "OVM_StateManager.hasAccount" [ color = "white" ];
+  "OVM_ExecutionManager._checkAccountLoad" -> "OVM_ExecutionManager._revertWithFlag" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkAccountLoad" -> "OVM_StateManager.testAndSetAccountLoaded" [ color = "white" ];
+  "OVM_ExecutionManager._checkAccountLoad" -> "OVM_ExecutionManager._useNuisanceGas" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkAccountLoad" -> "Lib_EthUtils.getCodeSize" [ color = "white" ];
+  "OVM_ExecutionManager._checkAccountLoad" -> "OVM_ExecutionManager._getAccountEthAddress" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkAccountChange" -> "OVM_ExecutionManager._checkAccountLoad" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkAccountChange" -> "OVM_StateManager.testAndSetAccountChanged" [ color = "white" ];
+  "OVM_ExecutionManager._checkAccountChange" -> "OVM_StateManager.incrementTotalUncommittedAccounts" [ color = "white" ];
+  "OVM_ExecutionManager._checkAccountChange" -> "OVM_ExecutionManager._useNuisanceGas" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkAccountChange" -> "Lib_EthUtils.getCodeSize" [ color = "white" ];
+  "OVM_ExecutionManager._checkAccountChange" -> "OVM_ExecutionManager._getAccountEthAddress" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkContractStorageLoad" -> "OVM_ExecutionManager._revertWithFlag" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkContractStorageLoad" -> "OVM_StateManager.hasContractStorage" [ color = "white" ];
+  "OVM_ExecutionManager._checkContractStorageLoad" -> "OVM_ExecutionManager._revertWithFlag" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkContractStorageLoad" -> "OVM_StateManager.testAndSetContractStorageLoaded" [ color = "white" ];
+  "OVM_ExecutionManager._checkContractStorageLoad" -> "OVM_ExecutionManager._useNuisanceGas" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkContractStorageChange" -> "OVM_ExecutionManager._checkContractStorageLoad" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkContractStorageChange" -> "OVM_StateManager.testAndSetContractStorageChanged" [ color = "white" ];
+  "OVM_ExecutionManager._checkContractStorageChange" -> "OVM_ExecutionManager._checkAccountChange" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkContractStorageChange" -> "OVM_StateManager.incrementTotalUncommittedContractStorage" [ color = "white" ];
+  "OVM_ExecutionManager._checkContractStorageChange" -> "OVM_ExecutionManager._useNuisanceGas" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._revertWithFlag" -> "OVM_ExecutionManager._encodeRevertData" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._revertWithFlag" -> "OVM_ExecutionManager._revertWithFlag" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._useNuisanceGas" -> "OVM_ExecutionManager._revertWithFlag" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkNeedsNewEpoch" -> "OVM_ExecutionManager._getGasMetadata" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkNeedsNewEpoch" -> "OVM_ExecutionManager._putGasMetadata" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkNeedsNewEpoch" -> "OVM_ExecutionManager._putGasMetadata" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkNeedsNewEpoch" -> "OVM_ExecutionManager._getGasMetadata" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkNeedsNewEpoch" -> "OVM_ExecutionManager._putGasMetadata" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._checkNeedsNewEpoch" -> "OVM_ExecutionManager._getGasMetadata" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._updateCumulativeGas" -> "OVM_ExecutionManager._putGasMetadata" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._updateCumulativeGas" -> "OVM_ExecutionManager._getGasMetadata" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._getGasMetadata" -> "OVM_ExecutionManager._getContractStorage" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._putGasMetadata" -> "OVM_ExecutionManager._putContractStorage" [ color = "#1bc6a6" ];
+  "OVM_ExecutionManager._initContext" -> "OVM_ExecutionManager._getNuisanceGasLimit" [ color = "#1bc6a6" ];
+  "Lib_OVMCodec.decodeEIP155Transaction" -> "Lib_RLPReader.readList" [ color = "white" ];
+  "Lib_OVMCodec.decodeEIP155Transaction" -> "Lib_RLPReader.readUint256" [ color = "white" ];
+  "Lib_OVMCodec.decodeEIP155Transaction" -> "Lib_RLPReader.readUint256" [ color = "white" ];
+  "Lib_OVMCodec.decodeEIP155Transaction" -> "Lib_RLPReader.readUint256" [ color = "white" ];
+  "Lib_OVMCodec.decodeEIP155Transaction" -> "Lib_RLPReader.readAddress" [ color = "white" ];
+  "Lib_OVMCodec.decodeEIP155Transaction" -> "Lib_RLPReader.readUint256" [ color = "white" ];
+  "Lib_OVMCodec.decodeEIP155Transaction" -> "Lib_RLPReader.readBytes" [ color = "white" ];
+  "Lib_OVMCodec.decodeEIP155Transaction" -> "Lib_RLPReader.readUint256" [ color = "white" ];
+  "Lib_OVMCodec.decompressEIP155Transaction" -> "Lib_BytesUtils.toUint24" [ color = "white" ];
+  "Lib_OVMCodec.decompressEIP155Transaction" -> "Lib_BytesUtils.toUint24" [ color = "white" ];
+  "Lib_OVMCodec.decompressEIP155Transaction" -> "Lib_BytesUtils.toUint24" [ color = "white" ];
+  "Lib_OVMCodec.decompressEIP155Transaction" -> "Lib_BytesUtils.toAddress" [ color = "white" ];
+  "Lib_OVMCodec.decompressEIP155Transaction" -> "Lib_BytesUtils.slice" [ color = "white" ];
+  "Lib_OVMCodec.decompressEIP155Transaction" -> "Lib_SafeExecutionManagerWrapper.safeCHAINID" [ color = "white" ];
+  "Lib_OVMCodec.encodeEIP155Transaction" -> "Lib_RLPWriter.writeUint" [ color = "white" ];
+  "Lib_OVMCodec.encodeEIP155Transaction" -> "Lib_RLPWriter.writeUint" [ color = "white" ];
+  "Lib_OVMCodec.encodeEIP155Transaction" -> "Lib_RLPWriter.writeUint" [ color = "white" ];
+  "Lib_OVMCodec.encodeEIP155Transaction" -> "Lib_RLPWriter.writeBytes" [ color = "white" ];
+  "Lib_OVMCodec.encodeEIP155Transaction" -> "Lib_RLPWriter.writeAddress" [ color = "white" ];
+  "Lib_OVMCodec.encodeEIP155Transaction" -> "Lib_RLPWriter.writeUint" [ color = "white" ];
+  "Lib_OVMCodec.encodeEIP155Transaction" -> "Lib_RLPWriter.writeBytes" [ color = "white" ];
+  "Lib_OVMCodec.encodeEIP155Transaction" -> "Lib_RLPWriter.writeUint" [ color = "white" ];
+  "Lib_OVMCodec.encodeEIP155Transaction" -> "Lib_RLPWriter.writeBytes" [ color = "white" ];
+  "Lib_OVMCodec.encodeEIP155Transaction" -> "Lib_RLPWriter.writeBytes" [ color = "white" ];
+  "Lib_OVMCodec.encodeEIP155Transaction" -> "Lib_RLPWriter.writeList" [ color = "white" ];
+  "Lib_OVMCodec.hashTransaction" -> "Lib_OVMCodec.encodeTransaction" [ color = "#1bc6a6" ];
+  "Lib_OVMCodec.encodeEVMAccount" -> "Lib_RLPWriter.writeBytes" [ color = "white" ];
+  "Lib_OVMCodec.encodeEVMAccount" -> "Lib_Bytes32Utils.removeLeadingZeros" [ color = "white" ];
+  "Lib_OVMCodec.encodeEVMAccount" -> "Lib_RLPWriter.writeBytes" [ color = "white" ];
+  "Lib_OVMCodec.encodeEVMAccount" -> "Lib_Bytes32Utils.removeLeadingZeros" [ color = "white" ];
+  "Lib_OVMCodec.encodeEVMAccount" -> "Lib_RLPWriter.writeBytes" [ color = "white" ];
+  "Lib_OVMCodec.encodeEVMAccount" -> "Lib_RLPWriter.writeBytes" [ color = "white" ];
+  "Lib_OVMCodec.encodeEVMAccount" -> "Lib_RLPWriter.writeList" [ color = "white" ];
+  "Lib_OVMCodec.decodeEVMAccount" -> "Lib_RLPReader.readList" [ color = "white" ];
+  "Lib_OVMCodec.decodeEVMAccount" -> "Lib_RLPReader.readUint256" [ color = "white" ];
+  "Lib_OVMCodec.decodeEVMAccount" -> "Lib_RLPReader.readUint256" [ color = "white" ];
+  "Lib_OVMCodec.decodeEVMAccount" -> "Lib_RLPReader.readBytes32" [ color = "white" ];
+  "Lib_OVMCodec.decodeEVMAccount" -> "Lib_RLPReader.readBytes32" [ color = "white" ];
+  "Lib_RLPReader.readList" -> "Lib_RLPReader._decodeLength" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readList" -> "Lib_RLPReader._decodeLength" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readList" -> "Lib_RLPReader.readList" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readList" -> "Lib_RLPReader.toRLPItem" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readBytes" -> "Lib_RLPReader._decodeLength" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readBytes" -> "Lib_RLPReader._copy" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readBytes" -> "Lib_RLPReader.readBytes" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readBytes" -> "Lib_RLPReader.toRLPItem" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readString" -> "Lib_RLPReader.readBytes" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readString" -> "Lib_RLPReader.readString" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readString" -> "Lib_RLPReader.toRLPItem" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readBytes32" -> "Lib_RLPReader._decodeLength" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readBytes32" -> "Lib_RLPReader.readBytes32" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readBytes32" -> "Lib_RLPReader.toRLPItem" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readUint256" -> "Lib_RLPReader.readBytes32" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readUint256" -> "Lib_RLPReader.readUint256" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readUint256" -> "Lib_RLPReader.toRLPItem" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readBool" -> "Lib_RLPReader.readBool" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readBool" -> "Lib_RLPReader.toRLPItem" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readAddress" -> "Lib_RLPReader.readUint256" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readAddress" -> "Lib_RLPReader.readAddress" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readAddress" -> "Lib_RLPReader.toRLPItem" [ color = "#1bc6a6" ];
+  "Lib_RLPReader.readRawBytes" -> "Lib_RLPReader._copy" [ color = "#1bc6a6" ];
+  "Lib_RLPReader._copy" -> "Lib_RLPReader._copy" [ color = "#1bc6a6" ];
+  "Lib_RLPWriter.writeBytes" -> "Lib_BytesUtils.concat" [ color = "white" ];
+  "Lib_RLPWriter.writeBytes" -> "Lib_RLPWriter._writeLength" [ color = "#1bc6a6" ];
+  "Lib_RLPWriter.writeList" -> "Lib_RLPWriter._flatten" [ color = "#1bc6a6" ];
+  "Lib_RLPWriter.writeList" -> "Lib_BytesUtils.concat" [ color = "white" ];
+  "Lib_RLPWriter.writeList" -> "Lib_RLPWriter._writeLength" [ color = "#1bc6a6" ];
+  "Lib_RLPWriter.writeString" -> "Lib_RLPWriter.writeBytes" [ color = "#1bc6a6" ];
+  "Lib_RLPWriter.writeAddress" -> "Lib_RLPWriter.writeBytes" [ color = "#1bc6a6" ];
+  "Lib_RLPWriter.writeUint" -> "Lib_RLPWriter.writeBytes" [ color = "#1bc6a6" ];
+  "Lib_RLPWriter.writeUint" -> "Lib_RLPWriter._toBinary" [ color = "#1bc6a6" ];
+  "Lib_RLPWriter._flatten" -> "Lib_RLPWriter._memcpy" [ color = "#1bc6a6" ];
+  "Lib_BytesUtils.slice" -> "Lib_BytesUtils.slice" [ color = "#1bc6a6" ];
+  "Lib_BytesUtils.toUint256" -> "Lib_BytesUtils.toBytes32" [ color = "#1bc6a6" ];
+  "Lib_SafeExecutionManagerWrapper.safeCALL" -> "Lib_SafeExecutionManagerWrapper._safeExecutionManagerInteraction" [ color = "#1bc6a6" ];
+  "Lib_SafeExecutionManagerWrapper.safeDELEGATECALL" -> "Lib_SafeExecutionManagerWrapper._safeExecutionManagerInteraction" [ color = "#1bc6a6" ];
+  "Lib_SafeExecutionManagerWrapper.safeCREATE" -> "Lib_SafeExecutionManagerWrapper._safeExecutionManagerInteraction" [ color = "#1bc6a6" ];
+  "Lib_SafeExecutionManagerWrapper.safeEXTCODESIZE" -> "Lib_SafeExecutionManagerWrapper._safeExecutionManagerInteraction" [ color = "#1bc6a6" ];
+  "Lib_SafeExecutionManagerWrapper.safeCHAINID" -> "Lib_SafeExecutionManagerWrapper._safeExecutionManagerInteraction" [ color = "#1bc6a6" ];
+  "Lib_SafeExecutionManagerWrapper.safeCALLER" -> "Lib_SafeExecutionManagerWrapper._safeExecutionManagerInteraction" [ color = "#1bc6a6" ];
+  "Lib_SafeExecutionManagerWrapper.safeADDRESS" -> "Lib_SafeExecutionManagerWrapper._safeExecutionManagerInteraction" [ color = "#1bc6a6" ];
+  "Lib_SafeExecutionManagerWrapper.safeGETNONCE" -> "Lib_SafeExecutionManagerWrapper._safeExecutionManagerInteraction" [ color = "#1bc6a6" ];
+  "Lib_SafeExecutionManagerWrapper.safeSETNONCE" -> "Lib_SafeExecutionManagerWrapper._safeExecutionManagerInteraction" [ color = "#1bc6a6" ];
+  "Lib_SafeExecutionManagerWrapper.safeCREATEEOA" -> "Lib_SafeExecutionManagerWrapper._safeExecutionManagerInteraction" [ color = "#1bc6a6" ];
+  "Lib_SafeExecutionManagerWrapper.safeREVERT" -> "Lib_SafeExecutionManagerWrapper._safeExecutionManagerInteraction" [ color = "#1bc6a6" ];
+  "Lib_SafeExecutionManagerWrapper.safeREQUIRE" -> "Lib_SafeExecutionManagerWrapper.safeREVERT" [ color = "#1bc6a6" ];
+  "Lib_SafeExecutionManagerWrapper.safeSLOAD" -> "Lib_SafeExecutionManagerWrapper._safeExecutionManagerInteraction" [ color = "#1bc6a6" ];
+  "Lib_SafeExecutionManagerWrapper.safeSSTORE" -> "Lib_SafeExecutionManagerWrapper._safeExecutionManagerInteraction" [ color = "#1bc6a6" ];
+  "Lib_SafeExecutionManagerWrapper._safeExecutionManagerInteraction" -> "Lib_SafeExecutionManagerWrapper._safeExecutionManagerInteraction" [ color = "#1bc6a6" ];
+  "Lib_AddressResolver.resolve" -> "Lib_AddressManager.getAddress" [ color = "white" ];
+  "Lib_AddressManager.setAddress" -> "Lib_AddressManager._getNameHash" [ color = "#1bc6a6" ];
+  "Lib_AddressManager.getAddress" -> "Lib_AddressManager._getNameHash" [ color = "#1bc6a6" ];
+  "Lib_EthUtils.getCode" -> "Lib_EthUtils.getCode" [ color = "#1bc6a6" ];
+  "Lib_EthUtils.getCode" -> "Lib_EthUtils.getCodeSize" [ color = "#1bc6a6" ];
+  "Lib_EthUtils.getAddressForCREATE" -> "Lib_RLPWriter.writeAddress" [ color = "white" ];
+  "Lib_EthUtils.getAddressForCREATE" -> "Lib_RLPWriter.writeUint" [ color = "white" ];
+  "Lib_EthUtils.getAddressForCREATE" -> "Lib_RLPWriter.writeList" [ color = "white" ];
+  "Lib_EthUtils.getAddressForCREATE" -> "Lib_Bytes32Utils.toAddress" [ color = "white" ];
+  "Lib_EthUtils.getAddressForCREATE2" -> "Lib_Bytes32Utils.toAddress" [ color = "white" ];
+  "OVM_ECDSAContractAccount.execute" -> "Lib_SafeExecutionManagerWrapper.safeREQUIRE" [ color = "white" ];
+  "OVM_ECDSAContractAccount.execute" -> "Lib_ECDSAUtils.recover" [ color = "white" ];
+  "OVM_ECDSAContractAccount.execute" -> "Lib_SafeExecutionManagerWrapper.safeADDRESS" [ color = "white" ];
+  "OVM_ECDSAContractAccount.execute" -> "Lib_OVMCodec.decodeEIP155Transaction" [ color = "white" ];
+  "OVM_ECDSAContractAccount.execute" -> "Lib_SafeExecutionManagerWrapper.safeREQUIRE" [ color = "white" ];
+  "OVM_ECDSAContractAccount.execute" -> "Lib_SafeExecutionManagerWrapper.safeCHAINID" [ color = "white" ];
+  "OVM_ECDSAContractAccount.execute" -> "Lib_SafeExecutionManagerWrapper.safeREQUIRE" [ color = "white" ];
+  "OVM_ECDSAContractAccount.execute" -> "Lib_SafeExecutionManagerWrapper.safeGETNONCE" [ color = "white" ];
+  "OVM_ECDSAContractAccount.execute" -> "Lib_SafeExecutionManagerWrapper.safeCALLER" [ color = "white" ];
+  "OVM_ECDSAContractAccount.execute" -> "Lib_SafeExecutionManagerWrapper.safeCALL" [ color = "white" ];
+  "OVM_ECDSAContractAccount.execute" -> "Lib_SafeExecutionManagerWrapper.safeREQUIRE" [ color = "white" ];
+  "OVM_ECDSAContractAccount.execute" -> "Lib_SafeExecutionManagerWrapper.safeCREATE" [ color = "white" ];
+  "OVM_ECDSAContractAccount.execute" -> "Lib_SafeExecutionManagerWrapper.safeSETNONCE" [ color = "white" ];
+  "OVM_ECDSAContractAccount.execute" -> "Lib_SafeExecutionManagerWrapper.safeCALL" [ color = "white" ];
+  "Lib_ECDSAUtils.recover" -> "Lib_ECDSAUtils.getMessageHash" [ color = "#1bc6a6" ];
+  "Lib_ECDSAUtils.getMessageHash" -> "Lib_ECDSAUtils.getEthSignedMessageHash" [ color = "#1bc6a6" ];
+  "Lib_ECDSAUtils.getMessageHash" -> "Lib_ECDSAUtils.getNativeMessageHash" [ color = "#1bc6a6" ];
+  "Lib_SafeMathWrapper.add" -> "Lib_SafeExecutionManagerWrapper.safeREQUIRE" [ color = "white" ];
+  "Lib_SafeMathWrapper.sub" -> "Lib_SafeMathWrapper.sub" [ color = "#1bc6a6" ];
+  "Lib_SafeMathWrapper.sub" -> "Lib_SafeExecutionManagerWrapper.safeREQUIRE" [ color = "white" ];
+  "Lib_SafeMathWrapper.mul" -> "Lib_SafeExecutionManagerWrapper.safeREQUIRE" [ color = "white" ];
+  "Lib_SafeMathWrapper.div" -> "Lib_SafeMathWrapper.div" [ color = "#1bc6a6" ];
+  "Lib_SafeMathWrapper.div" -> "Lib_SafeExecutionManagerWrapper.safeREQUIRE" [ color = "white" ];
+  "Lib_SafeMathWrapper.mod" -> "Lib_SafeMathWrapper.mod" [ color = "#1bc6a6" ];
+  "Lib_SafeMathWrapper.mod" -> "Lib_SafeExecutionManagerWrapper.safeREQUIRE" [ color = "white" ];
+  "OVM_ProxyEOA.<Constructor>" -> "OVM_ProxyEOA._setImplementation" [ color = "#1bc6a6" ];
+  "OVM_ProxyEOA.<Fallback>" -> "Lib_SafeExecutionManagerWrapper.safeDELEGATECALL" [ color = "white" ];
+  "OVM_ProxyEOA.<Fallback>" -> "OVM_ProxyEOA.getImplementation" [ color = "#1bc6a6" ];
+  "OVM_ProxyEOA.<Fallback>" -> "Lib_SafeExecutionManagerWrapper.safeREVERT" [ color = "white" ];
+  "OVM_ProxyEOA.upgrade" -> "Lib_SafeExecutionManagerWrapper.safeREQUIRE" [ color = "white" ];
+  "OVM_ProxyEOA.upgrade" -> "Lib_SafeExecutionManagerWrapper.safeADDRESS" [ color = "white" ];
+  "OVM_ProxyEOA.upgrade" -> "Lib_SafeExecutionManagerWrapper.safeCALLER" [ color = "white" ];
+  "OVM_ProxyEOA.upgrade" -> "OVM_ProxyEOA._setImplementation" [ color = "#1bc6a6" ];
+  "OVM_ProxyEOA.getImplementation" -> "Lib_SafeExecutionManagerWrapper.safeSLOAD" [ color = "white" ];
+  "OVM_ProxyEOA._setImplementation" -> "Lib_SafeExecutionManagerWrapper.safeSSTORE" [ color = "white" ];
+  "OVM_DeployerWhitelist.onlyOwner" -> "Lib_Bytes32Utils.toAddress" [ color = "white" ];
+  "OVM_DeployerWhitelist.onlyOwner" -> "Lib_SafeExecutionManagerWrapper.safeSLOAD" [ color = "white" ];
+  "OVM_DeployerWhitelist.onlyOwner" -> "Lib_SafeExecutionManagerWrapper.safeREQUIRE" [ color = "white" ];
+  "OVM_DeployerWhitelist.onlyOwner" -> "Lib_SafeExecutionManagerWrapper.safeCALLER" [ color = "white" ];
+  "OVM_DeployerWhitelist.initialize" -> "Lib_Bytes32Utils.toBool" [ color = "white" ];
+  "OVM_DeployerWhitelist.initialize" -> "Lib_SafeExecutionManagerWrapper.safeSLOAD" [ color = "white" ];
+  "OVM_DeployerWhitelist.initialize" -> "Lib_SafeExecutionManagerWrapper.safeSSTORE" [ color = "white" ];
+  "OVM_DeployerWhitelist.initialize" -> "Lib_Bytes32Utils.fromBool" [ color = "white" ];
+  "OVM_DeployerWhitelist.initialize" -> "Lib_SafeExecutionManagerWrapper.safeSSTORE" [ color = "white" ];
+  "OVM_DeployerWhitelist.initialize" -> "Lib_Bytes32Utils.fromAddress" [ color = "white" ];
+  "OVM_DeployerWhitelist.initialize" -> "Lib_SafeExecutionManagerWrapper.safeSSTORE" [ color = "white" ];
+  "OVM_DeployerWhitelist.initialize" -> "Lib_Bytes32Utils.fromBool" [ color = "white" ];
+  "OVM_DeployerWhitelist.getOwner" -> "Lib_Bytes32Utils.toAddress" [ color = "white" ];
+  "OVM_DeployerWhitelist.getOwner" -> "Lib_SafeExecutionManagerWrapper.safeSLOAD" [ color = "white" ];
+  "OVM_DeployerWhitelist.setWhitelistedDeployer" -> "Lib_SafeExecutionManagerWrapper.safeSSTORE" [ color = "white" ];
+  "OVM_DeployerWhitelist.setWhitelistedDeployer" -> "Lib_Bytes32Utils.fromAddress" [ color = "white" ];
+  "OVM_DeployerWhitelist.setWhitelistedDeployer" -> "Lib_Bytes32Utils.fromBool" [ color = "white" ];
+  "OVM_DeployerWhitelist.setOwner" -> "Lib_SafeExecutionManagerWrapper.safeSSTORE" [ color = "white" ];
+  "OVM_DeployerWhitelist.setOwner" -> "Lib_Bytes32Utils.fromAddress" [ color = "white" ];
+  "OVM_DeployerWhitelist.setAllowArbitraryDeployment" -> "Lib_SafeExecutionManagerWrapper.safeSSTORE" [ color = "white" ];
+  "OVM_DeployerWhitelist.setAllowArbitraryDeployment" -> "Lib_Bytes32Utils.fromBool" [ color = "white" ];
+  "OVM_DeployerWhitelist.enableArbitraryContractDeployment" -> "OVM_DeployerWhitelist.setAllowArbitraryDeployment" [ color = "#1bc6a6" ];
+  "OVM_DeployerWhitelist.enableArbitraryContractDeployment" -> "OVM_DeployerWhitelist.setOwner" [ color = "#1bc6a6" ];
+  "OVM_DeployerWhitelist.isDeployerAllowed" -> "Lib_Bytes32Utils.toBool" [ color = "white" ];
+  "OVM_DeployerWhitelist.isDeployerAllowed" -> "Lib_SafeExecutionManagerWrapper.safeSLOAD" [ color = "white" ];
+  "OVM_DeployerWhitelist.isDeployerAllowed" -> "Lib_Bytes32Utils.toBool" [ color = "white" ];
+  "OVM_DeployerWhitelist.isDeployerAllowed" -> "Lib_SafeExecutionManagerWrapper.safeSLOAD" [ color = "white" ];
+  "OVM_DeployerWhitelist.isDeployerAllowed" -> "Lib_Bytes32Utils.toBool" [ color = "white" ];
+  "OVM_DeployerWhitelist.isDeployerAllowed" -> "Lib_SafeExecutionManagerWrapper.safeSLOAD" [ color = "white" ];
+  "OVM_DeployerWhitelist.isDeployerAllowed" -> "Lib_Bytes32Utils.fromAddress" [ color = "white" ];
+  "OVM_StateManager.testAndSetAccountLoaded" -> "OVM_StateManager._testAndSetItemState" [ color = "#1bc6a6" ];
+  "OVM_StateManager.testAndSetAccountLoaded" -> "OVM_StateManager._getItemHash" [ color = "#1bc6a6" ];
+  "OVM_StateManager.testAndSetAccountChanged" -> "OVM_StateManager._testAndSetItemState" [ color = "#1bc6a6" ];
+  "OVM_StateManager.testAndSetAccountChanged" -> "OVM_StateManager._getItemHash" [ color = "#1bc6a6" ];
+  "OVM_StateManager.commitAccount" -> "OVM_StateManager._getItemHash" [ color = "#1bc6a6" ];
+  "OVM_StateManager.wasAccountChanged" -> "OVM_StateManager._getItemHash" [ color = "#1bc6a6" ];
+  "OVM_StateManager.wasAccountCommitted" -> "OVM_StateManager._getItemHash" [ color = "#1bc6a6" ];
+  "OVM_StateManager.testAndSetContractStorageLoaded" -> "OVM_StateManager._testAndSetItemState" [ color = "#1bc6a6" ];
+  "OVM_StateManager.testAndSetContractStorageLoaded" -> "OVM_StateManager._getItemHash" [ color = "#1bc6a6" ];
+  "OVM_StateManager.testAndSetContractStorageChanged" -> "OVM_StateManager._testAndSetItemState" [ color = "#1bc6a6" ];
+  "OVM_StateManager.testAndSetContractStorageChanged" -> "OVM_StateManager._getItemHash" [ color = "#1bc6a6" ];
+  "OVM_StateManager.commitContractStorage" -> "OVM_StateManager._getItemHash" [ color = "#1bc6a6" ];
+  "OVM_StateManager.wasContractStorageChanged" -> "OVM_StateManager._getItemHash" [ color = "#1bc6a6" ];
+  "OVM_StateManager.wasContractStorageCommitted" -> "OVM_StateManager._getItemHash" [ color = "#1bc6a6" ];
+
+
+rankdir=LR
+node [shape=plaintext]
+subgraph cluster_01 { 
+label = "Legend";
+key [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+  <tr><td align="right" port="i1">Internal Call</td></tr>
+  <tr><td align="right" port="i2">External Call</td></tr>
+  <tr><td align="right" port="i3">Defined Contract</td></tr>
+  <tr><td align="right" port="i4">Undefined Contract</td></tr>
+  </table>>]
+key2 [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+  <tr><td port="i1">&nbsp;&nbsp;&nbsp;</td></tr>
+  <tr><td port="i2">&nbsp;&nbsp;&nbsp;</td></tr>
+  <tr><td port="i3" bgcolor="#445773">&nbsp;&nbsp;&nbsp;</td></tr>
+  <tr><td port="i4">
+    <table border="1" cellborder="0" cellspacing="0" cellpadding="7" color="#e8726d">
+      <tr>
+       <td></td>
+      </tr>
+     </table>
+  </td></tr>
+  </table>>]
+key:i1:e -> key2:i1:w [color="#1bc6a6"]
+key:i2:e -> key2:i2:w [color="white"]
+}
+}

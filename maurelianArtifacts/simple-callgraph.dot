@@ -1,0 +1,162 @@
+digraph G {
+  graph [ ratio = "auto", page = "100", compound =true ];
+  "OVM_ECDSAContractAccount" [ label = "OVM_ECDSAContractAccount", color = "lightgray", style = "filled" ];
+  "OVM_ProxyEOA" [ label = "OVM_ProxyEOA", color = "lightgray", style = "filled" ];
+  "OVM_BaseCrossDomainMessenger" [ label = "OVM_BaseCrossDomainMessenger", color = "lightgray", style = "filled" ];
+  "OVM_L1CrossDomainMessenger" [ label = "OVM_L1CrossDomainMessenger", color = "lightgray", style = "filled" ];
+  "OVM_L2CrossDomainMessenger" [ label = "OVM_L2CrossDomainMessenger", color = "lightgray", style = "filled" ];
+  "OVM_CanonicalTransactionChain" [ label = "OVM_CanonicalTransactionChain", color = "lightgray", style = "filled" ];
+  "OVM_ChainStorageContainer" [ label = "OVM_ChainStorageContainer", color = "lightgray", style = "filled" ];
+  "OVM_StateCommitmentChain" [ label = "OVM_StateCommitmentChain", color = "lightgray", style = "filled" ];
+  "OVM_ExecutionManager" [ label = "OVM_ExecutionManager", color = "lightgray", style = "filled" ];
+  "OVM_SafetyChecker" [ label = "OVM_SafetyChecker", color = "lightgray", style = "filled" ];
+  "OVM_StateManager" [ label = "OVM_StateManager", color = "lightgray", style = "filled" ];
+  "OVM_StateManagerFactory" [ label = "OVM_StateManagerFactory", color = "lightgray", style = "filled" ];
+  "OVM_DeployerWhitelist" [ label = "OVM_DeployerWhitelist", color = "lightgray", style = "filled" ];
+  "OVM_ETH" [ label = "OVM_ETH", color = "lightgray", style = "filled" ];
+  "OVM_L1MessageSender" [ label = "OVM_L1MessageSender", color = "lightgray", style = "filled" ];
+  "OVM_L2ToL1MessagePasser" [ label = "OVM_L2ToL1MessagePasser", color = "lightgray", style = "filled" ];
+  "OVM_ProxySequencerEntrypoint" [ label = "OVM_ProxySequencerEntrypoint", color = "lightgray", style = "filled" ];
+  "OVM_SequencerEntrypoint" [ label = "OVM_SequencerEntrypoint", color = "lightgray", style = "filled" ];
+  "OVM_BondManager" [ label = "OVM_BondManager", color = "lightgray", style = "filled" ];
+  "OVM_FraudContributor" [ label = "OVM_FraudContributor", color = "lightgray", style = "filled" ];
+  "OVM_FraudVerifier" [ label = "OVM_FraudVerifier", color = "lightgray", style = "filled" ];
+  "OVM_StateTransitioner" [ label = "OVM_StateTransitioner", color = "lightgray", style = "filled" ];
+  "OVM_StateTransitionerFactory" [ label = "OVM_StateTransitionerFactory", color = "lightgray", style = "filled" ]; 
+  "ERC20" [ label = "ERC20", color = "lightgray", style = "filled" ];
+  "Errors" [ label = "Errors", color = "lightgray", style = "filled" ]; 
+  "Lib_OVMCodec" [ label = "Lib_OVMCodec", color = "lightgray", style = "filled" ];
+  "Lib_AddressManager" [ label = "Lib_AddressManager", color = "lightgray", style = "filled" ];
+  "Lib_AddressResolver" [ label = "Lib_AddressResolver", color = "lightgray", style = "filled" ];
+  "Ownable" [ label = "Ownable", color = "lightgray", style = "filled" ];
+  "Lib_ResolvedDelegateProxy" [ label = "Lib_ResolvedDelegateProxy", color = "lightgray", style = "filled" ];
+  "Lib_RLPReader" [ label = "Lib_RLPReader", color = "lightgray", style = "filled" ];
+  "Lib_RLPWriter" [ label = "Lib_RLPWriter", color = "lightgray", style = "filled" ];
+  "Lib_MerkleTrie" [ label = "Lib_MerkleTrie", color = "lightgray", style = "filled" ];
+  "Lib_SecureMerkleTrie" [ label = "Lib_SecureMerkleTrie", color = "lightgray", style = "filled" ];
+  "Lib_Bytes32Utils" [ label = "Lib_Bytes32Utils", color = "lightgray", style = "filled" ];
+  "Lib_BytesUtils" [ label = "Lib_BytesUtils", color = "lightgray", style = "filled" ];
+  "Lib_ECDSAUtils" [ label = "Lib_ECDSAUtils", color = "lightgray", style = "filled" ];
+  "Lib_EthUtils" [ label = "Lib_EthUtils", color = "lightgray", style = "filled" ];
+  "Lib_Math" [ label = "Lib_Math", color = "lightgray", style = "filled" ];
+  "Lib_MerkleTree" [ label = "Lib_MerkleTree", color = "lightgray", style = "filled" ];
+  "Lib_ReentrancyGuard" [ label = "Lib_ReentrancyGuard", color = "lightgray", style = "filled" ];
+  "Lib_RingBuffer" [ label = "Lib_RingBuffer", color = "lightgray", style = "filled" ];
+  "Lib_SafeExecutionManagerWrapper" [ label = "Lib_SafeExecutionManagerWrapper", color = "lightgray", style = "filled" ];
+  "Lib_SafeMathWrapper" [ label = "Lib_SafeMathWrapper", color = "lightgray", style = "filled" ];
+  "Lib_RingBuffer.RingBuffer" [ label = "Lib_RingBuffer.RingBuffer", color = "lightgray" ];
+  "SafeMath" [ label = "SafeMath", color = "lightgray" ];
+  "RingBuffer" [ label = "RingBuffer", color = "lightgray" ];
+  "OVM_ECDSAContractAccount" -> "Lib_SafeExecutionManagerWrapper" [ color = "orange" ];
+  "OVM_ECDSAContractAccount" -> "Lib_ECDSAUtils" [ color = "orange" ];
+  "OVM_ECDSAContractAccount" -> "Lib_OVMCodec" [ color = "orange" ];
+  "OVM_ProxyEOA" -> "OVM_ProxyEOA" [ color = "green" ];
+  "OVM_ProxyEOA" -> "Lib_SafeExecutionManagerWrapper" [ color = "orange" ];
+  "OVM_BaseCrossDomainMessenger" -> "OVM_BaseCrossDomainMessenger" [ color = "green" ];
+  "OVM_L1CrossDomainMessenger" -> "OVM_L1CrossDomainMessenger" [ color = "green" ];
+  "OVM_L1CrossDomainMessenger" -> "OVM_StateCommitmentChain" [ color = "orange" ];
+  "OVM_L1CrossDomainMessenger" -> "Lib_SecureMerkleTrie" [ color = "orange" ];
+  "OVM_L1CrossDomainMessenger" -> "Lib_OVMCodec" [ color = "orange" ];
+  "OVM_L2CrossDomainMessenger" -> "OVM_L2CrossDomainMessenger" [ color = "green" ];
+  "OVM_CanonicalTransactionChain" -> "OVM_CanonicalTransactionChain" [ color = "green" ];
+  "OVM_CanonicalTransactionChain" -> "Lib_OVMCodec" [ color = "orange" ];
+  "OVM_CanonicalTransactionChain" -> "Lib_Math" [ color = "orange" ];
+  "OVM_CanonicalTransactionChain" -> "Lib_MerkleTree" [ color = "orange" ];
+  "OVM_CanonicalTransactionChain" -> "OVM_ExecutionManager" [ color = "orange" ];
+  "OVM_ChainStorageContainer" -> "OVM_ChainStorageContainer" [ color = "green" ];
+  "OVM_ChainStorageContainer" -> "Lib_RingBuffer.RingBuffer" [ color = "orange" ];
+  "OVM_StateCommitmentChain" -> "OVM_StateCommitmentChain" [ color = "green" ];
+  "OVM_StateCommitmentChain" -> "Lib_MerkleTree" [ color = "orange" ];
+  "OVM_StateCommitmentChain" -> "SafeMath" [ color = "orange" ];
+  "OVM_StateCommitmentChain" -> "Lib_OVMCodec" [ color = "orange" ];
+  "OVM_ExecutionManager" -> "OVM_ExecutionManager" [ color = "green" ];
+  "OVM_ExecutionManager" -> "OVM_StateManager" [ color = "orange" ];
+  "OVM_ExecutionManager" -> "Lib_EthUtils" [ color = "orange" ];
+  "OVM_ExecutionManager" -> "OVM_SafetyChecker" [ color = "orange" ];
+  "OVM_StateManager" -> "OVM_StateManager" [ color = "green" ];
+  "OVM_DeployerWhitelist" -> "Lib_Bytes32Utils" [ color = "orange" ];
+  "OVM_DeployerWhitelist" -> "Lib_SafeExecutionManagerWrapper" [ color = "orange" ];
+  "OVM_DeployerWhitelist" -> "OVM_DeployerWhitelist" [ color = "green" ];
+  "OVM_ProxySequencerEntrypoint" -> "Lib_SafeExecutionManagerWrapper" [ color = "orange" ];
+  "OVM_ProxySequencerEntrypoint" -> "OVM_ProxySequencerEntrypoint" [ color = "green" ];
+  "OVM_SequencerEntrypoint" -> "OVM_SequencerEntrypoint" [ color = "green" ];
+  "OVM_SequencerEntrypoint" -> "Lib_BytesUtils" [ color = "orange" ];
+  "OVM_SequencerEntrypoint" -> "Lib_OVMCodec" [ color = "orange" ];
+  "OVM_SequencerEntrypoint" -> "Lib_ECDSAUtils" [ color = "orange" ];
+  "OVM_SequencerEntrypoint" -> "Lib_SafeExecutionManagerWrapper" [ color = "orange" ];
+  "OVM_BondManager" -> "OVM_BondManager" [ color = "green" ];
+  "OVM_BondManager" -> "ERC20" [ color = "orange" ];
+  "OVM_FraudContributor" -> "OVM_FraudContributor" [ color = "green" ];
+  "OVM_FraudVerifier" -> "Lib_OVMCodec" [ color = "orange" ];
+  "OVM_FraudVerifier" -> "OVM_FraudVerifier" [ color = "green" ];
+  "OVM_FraudVerifier" -> "OVM_StateCommitmentChain" [ color = "orange" ];
+  "OVM_FraudVerifier" -> "OVM_CanonicalTransactionChain" [ color = "orange" ];
+  "OVM_FraudVerifier" -> "OVM_StateTransitioner" [ color = "orange" ];
+  "OVM_FraudVerifier" -> "OVM_BondManager" [ color = "orange" ];
+  "OVM_StateTransitioner" -> "OVM_StateTransitioner" [ color = "green" ];
+  "OVM_StateTransitioner" -> "OVM_StateManager" [ color = "orange" ];
+  "OVM_StateTransitioner" -> "Lib_SecureMerkleTrie" [ color = "orange" ];
+  "OVM_StateTransitioner" -> "Lib_OVMCodec" [ color = "orange" ];
+  "OVM_StateTransitioner" -> "Lib_EthUtils" [ color = "orange" ];
+  "OVM_StateTransitioner" -> "Lib_BytesUtils" [ color = "orange" ];
+  "OVM_StateTransitioner" -> "Lib_RLPReader" [ color = "orange" ];
+  "OVM_StateTransitioner" -> "OVM_ExecutionManager" [ color = "orange" ];
+  "OVM_StateTransitioner" -> "Lib_RLPWriter" [ color = "orange" ];
+  "OVM_StateTransitioner" -> "Lib_Bytes32Utils" [ color = "orange" ];
+  "OVM_StateTransitionerFactory" -> "OVM_StateTransitionerFactory" [ color = "green" ];
+  "Lib_OVMCodec" -> "Lib_RLPReader" [ color = "orange" ];
+  "Lib_OVMCodec" -> "Lib_BytesUtils" [ color = "orange" ];
+  "Lib_OVMCodec" -> "Lib_SafeExecutionManagerWrapper" [ color = "orange" ];
+  "Lib_OVMCodec" -> "Lib_RLPWriter" [ color = "orange" ];
+  "Lib_OVMCodec" -> "Lib_OVMCodec" [ color = "green" ];
+  "Lib_OVMCodec" -> "Lib_Bytes32Utils" [ color = "orange" ];
+  "Lib_AddressManager" -> "Lib_AddressManager" [ color = "green" ];
+  "Lib_AddressResolver" -> "Lib_AddressManager" [ color = "orange" ];
+  "Lib_RLPReader" -> "Lib_RLPReader" [ color = "green" ];
+  "Lib_RLPWriter" -> "Lib_BytesUtils" [ color = "orange" ];
+  "Lib_RLPWriter" -> "Lib_RLPWriter" [ color = "green" ];
+  "Lib_MerkleTrie" -> "Lib_MerkleTrie" [ color = "green" ];
+  "Lib_MerkleTrie" -> "Lib_BytesUtils" [ color = "orange" ];
+  "Lib_MerkleTrie" -> "Lib_RLPReader" [ color = "orange" ];
+  "Lib_MerkleTrie" -> "Lib_RLPWriter" [ color = "orange" ];
+  "Lib_SecureMerkleTrie" -> "Lib_SecureMerkleTrie" [ color = "green" ];
+  "Lib_SecureMerkleTrie" -> "Lib_MerkleTrie" [ color = "orange" ];
+  "Lib_BytesUtils" -> "Lib_BytesUtils" [ color = "green" ];
+  "Lib_ECDSAUtils" -> "Lib_ECDSAUtils" [ color = "green" ];
+  "Lib_EthUtils" -> "Lib_EthUtils" [ color = "green" ];
+  "Lib_EthUtils" -> "Lib_RLPWriter" [ color = "orange" ];
+  "Lib_EthUtils" -> "Lib_Bytes32Utils" [ color = "orange" ];
+  "Lib_MerkleTree" -> "Lib_MerkleTree" [ color = "green" ];
+  "Lib_RingBuffer" -> "RingBuffer" [ color = "orange" ];
+  "Lib_SafeExecutionManagerWrapper" -> "Lib_SafeExecutionManagerWrapper" [ color = "green" ];
+  "Lib_SafeMathWrapper" -> "Lib_SafeExecutionManagerWrapper" [ color = "orange" ];
+  "Lib_SafeMathWrapper" -> "Lib_SafeMathWrapper" [ color = "green" ];
+
+
+rankdir=LR
+node [shape=plaintext]
+subgraph cluster_01 { 
+label = "Legend";
+key [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+  <tr><td align="right" port="i1">Internal Call</td></tr>
+  <tr><td align="right" port="i2">External Call</td></tr>
+  <tr><td align="right" port="i3">Defined Contract</td></tr>
+  <tr><td align="right" port="i4">Undefined Contract</td></tr>
+  </table>>]
+key2 [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+  <tr><td port="i1">&nbsp;&nbsp;&nbsp;</td></tr>
+  <tr><td port="i2">&nbsp;&nbsp;&nbsp;</td></tr>
+  <tr><td port="i3" bgcolor="lightgray">&nbsp;&nbsp;&nbsp;</td></tr>
+  <tr><td port="i4">
+    <table border="1" cellborder="0" cellspacing="0" cellpadding="7" color="lightgray">
+      <tr>
+       <td></td>
+      </tr>
+     </table>
+  </td></tr>
+  </table>>]
+key:i1:e -> key2:i1:w [color="green"]
+key:i2:e -> key2:i2:w [color="orange"]
+}
+}
+

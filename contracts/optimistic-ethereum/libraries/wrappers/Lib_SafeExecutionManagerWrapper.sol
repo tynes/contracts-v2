@@ -78,6 +78,7 @@ library Lib_SafeExecutionManagerWrapper {
      * @param _bytecode Code for the new contract.
      * @return _contract Address of the created contract.
      */
+        // @note: despite the comment above there are no checks here
     function safeCREATE(
         uint256 _gasLimit,
         bytes memory _bytecode

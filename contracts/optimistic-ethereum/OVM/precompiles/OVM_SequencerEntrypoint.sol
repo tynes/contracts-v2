@@ -6,6 +6,11 @@ import { Lib_OVMCodec } from "../../libraries/codec/Lib_OVMCodec.sol";
 import { Lib_ECDSAUtils } from "../../libraries/utils/Lib_ECDSAUtils.sol";
 import { Lib_SafeExecutionManagerWrapper } from "../../libraries/wrappers/Lib_SafeExecutionManagerWrapper.sol";
 
+
+/* 
+The only address the sequencer sends a transaction to is the OVM_SequencerEntrypoint
+ */
+
 /**
  * @title OVM_SequencerEntrypoint
  */

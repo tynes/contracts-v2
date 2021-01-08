@@ -930,6 +930,8 @@ contract OVM_CanonicalTransactionChain is iOVM_CanonicalTransactionChain, Lib_Ad
         require(
             _transaction.blockNumber        == _txChainElement.blockNumber
             && _transaction.timestamp       == _txChainElement.timestamp
+            // @note: "OVM_DecompressionPrecompileAddress" is now called "OVM_SequencerEntrypoint"
+            // but this source works because the deploy code sets the string as below.
             && _transaction.entrypoint      == resolve("OVM_DecompressionPrecompileAddress")
             && _transaction.gasLimit        == gasLimit
             && _transaction.l1TxOrigin      == address(0)

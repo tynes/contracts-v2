@@ -9,7 +9,7 @@ import { Lib_EthUtils } from "../../libraries/utils/Lib_EthUtils.sol";
 
 /* Interface Imports */
 import { iOVM_ExecutionManager } from "../../iOVM/execution/iOVM_ExecutionManager.sol";
-import { iOVM_StateManager } from "../../iOVM/execution/iOVM_StateManager.sol";
+import { OVM_StateManager } from "../../iOVM/execution/OVM_StateManager.sol";
 import { iOVM_SafetyChecker } from "../../iOVM/execution/iOVM_SafetyChecker.sol";
 
 /* Contract Imports */
@@ -27,7 +27,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
      ********************************/
 
     iOVM_SafetyChecker internal ovmSafetyChecker;
-    iOVM_StateManager internal ovmStateManager;
+    OVM_StateManager internal ovmStateManager;
 
 
     /*******************************
@@ -121,7 +121,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
      * Makes sure we're not inside a static context.
      */
     modifier notStatic() {
-        if (messageContext.isStatic == true) {
+        if (messageContext.isStatic == true) { // @note: or just if(messageContext.isStatic) :P
             _revertWithFlag(RevertFlag.STATIC_VIOLATION);
         }
         _;
@@ -135,7 +135,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     /**
      * Starts the execution of a transaction via the OVM_ExecutionManager.
      * @param _transaction Transaction data to be executed.
-     * @param _ovmStateManager iOVM_StateManager implementation providing account state.
+     * @param _ovmStateManager OVM_StateManager implementation providing account state.
      */
     function run(
         Lib_OVMCodec.Transaction memory _transaction,
@@ -146,7 +146,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
     {
         // Store our OVM_StateManager instance (significantly easier than attempting to pass the
         // address around in calldata).
-        ovmStateManager = iOVM_StateManager(_ovmStateManager);
+        ovmStateManager = OVM_StateManager(_ovmStateManager);
 
         // Make sure this function can't be called by anyone except the owner of the
         // OVM_StateManager (expected to be an OVM_StateTransitioner). We can revert here because
@@ -189,7 +189,7 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         _resetContext();
 
         // Reset the ovmStateManager.
-        ovmStateManager = iOVM_StateManager(address(0));
+        ovmStateManager = OVM_StateManager(address(0));
     }
 
 
@@ -534,7 +534,8 @@ contract OVM_ExecutionManager is iOVM_ExecutionManager, Lib_AddressResolver {
         address _address,
         bytes memory _calldata
     )
-        override
+        override 
+        // @note: doesn't need to have 'notStatic' because there is no value transfer on L2
         public
         fixedGasDiscount(100000)
         returns (
