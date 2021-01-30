@@ -37,9 +37,7 @@ contract OVM_MultiRelay is Ownable {
         emit RelaySet(_relay);
     }
 
-    // This function can safely be public because `relayMessage()`
-    // is permissioned.
-    function relayMessages(L2ToL1Message[] calldata _messages) public {
+    function relayMessages(L2ToL1Message[] calldata _messages) public onlyOwner {
         for (uint256 i = 0; i < _messages.length; i++) {
             L2ToL1Message memory message = _messages[i];
             iOVM_L1CrossDomainMessenger(relay).relayMessage(
